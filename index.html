@@ -793,7 +793,7 @@
     <div class="hero-text">
       <div class="hero-badge">Coming soon to the App Store</div>
       <h1>Your cards.<br/>Your <em>story</em>.</h1>
-      <p class="hero-sub">Every birthday holds a secret hand of cards. Cardy reveals your daily readings, personality insights, and connections — drawn from an ancient system hidden in a standard deck.</p>
+      <p class="hero-sub">Every birthday holds a secret hand of cards. Cardy reveals your daily readings, personality insights, and connections — derived from an ancient mathematical system encoded in a standard deck.</p>
       <div class="waitlist" id="download">
         <p class="waitlist-label">Be the first to know when we launch</p>
         <form class="waitlist-form" id="waitlistForm" onsubmit="submitWaitlist(event)">
@@ -829,22 +829,22 @@
 <section class="features" id="features">
   <div class="features-inner">
     <div class="section-label">What you'll discover</div>
-    <h2 class="section-title">A deck of cards knows more<br/>than you think</h2>
+    <h2 class="section-title">52 cards. One formula.<br/>Infinite insight.</h2>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">&#x2660;</div>
         <h3>Daily Card Stories</h3>
-        <p>Listen to the energies of the day and see how they impact you. Three cards drawn daily with narrated stories, reflections, and insights.</p>
+        <p>Each day maps to a card through a precise mathematical cycle. Listen to its story, see how the numbers align, and discover what the day's equation reveals about you.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#x2665;</div>
         <h3>Know Yourself</h3>
-        <p>Your birthday maps to a unique card. Explore your personality, strengths, and life path.</p>
+        <p>Your birthday is a coordinate in the card calendar. The formula maps it to a unique card that reveals your personality, strengths, and life path.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#x2666;</div>
         <h3>Connections</h3>
-        <p>Add friends and family to see how your cards relate. Discover compatibility, shared energy, and deeper bonds.</p>
+        <p>Add friends and family to calculate how your cards relate. The math between two cards reveals compatibility, shared patterns, and deeper bonds.</p>
       </div>
     </div>
   </div>
@@ -854,7 +854,7 @@
 <section class="cta-band" id="cta">
   <div class="cta-box">
     <h2>Start your reading today</h2>
-    <p>Free to download. Your first card is waiting.</p>
+    <p>Free to download. Your birth card is already calculated.</p>
     <div class="hero-buttons">
       <div class="store-btn store-btn--apple" style="cursor: default;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1081,19 +1081,43 @@
   window.addEventListener('DOMContentLoaded', checkHash);
 
   // Form submit
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
-    // Collect form data (ready for backend integration)
+    const btn = document.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
     const data = {
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       type: document.getElementById('type').value,
       message: document.getElementById('message').value,
     };
-    console.log('Support form submitted:', data);
-    document.getElementById('supportForm').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-    setTimeout(closeModal, 2500);
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/support_messages`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        document.getElementById('supportForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+        setTimeout(closeModal, 2500);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try again.');
+    }
   }
 </script>
 </body>
