@@ -904,13 +904,43 @@
 </div>
 
 <script>
-  // Waitlist
-  function submitWaitlist(e) {
+  // Waitlist — Supabase
+  const SUPABASE_URL = 'https://eesnvaoszsxruraspvhj.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlc252YW9zenN4cnVyYXNwdmhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2NjUxOTIsImV4cCI6MjA3NjI0MTE5Mn0.AvXUpdriKGMSaaC6fJl6DENYsNWePpntjLnaLKnaZR8';
+
+  async function submitWaitlist(e) {
     e.preventDefault();
     const email = document.getElementById('waitlistEmail').value;
-    console.log('Waitlist signup:', email);
-    document.getElementById('waitlistForm').style.display = 'none';
-    document.getElementById('waitlistSuccess').classList.add('show');
+    const btn = document.querySelector('.waitlist-btn');
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('waitlistSuccess').classList.add('show');
+      } else if (res.status === 409) {
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('waitlistSuccess').classList.add('show');
+      } else {
+        throw new Error('Failed to join waitlist');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Join Waitlist';
+      alert('Something went wrong. Please try again.');
+    }
   }
 
   // Modal — driven by #support hash
