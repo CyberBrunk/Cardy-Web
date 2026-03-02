@@ -286,6 +286,71 @@
       margin-bottom: 40px;
       font-weight: 400;
     }
+    /* ---- Waitlist ---- */
+    .waitlist {
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .waitlist-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cream-dim);
+      margin-bottom: 10px;
+    }
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+    }
+    .waitlist-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: rgba(255, 244, 244, 0.06);
+      border: 1px solid rgba(255, 244, 244, 0.12);
+      border-radius: 12px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .waitlist-input::placeholder {
+      color: rgba(255, 244, 244, 0.3);
+    }
+    .waitlist-input:focus {
+      border-color: rgba(180, 43, 25, 0.5);
+      background: rgba(255, 244, 244, 0.08);
+    }
+    .waitlist-btn {
+      padding: 14px 24px;
+      background: var(--red);
+      color: var(--cream);
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .waitlist-btn:hover { background: var(--red-light); }
+    .waitlist-btn:active { transform: scale(0.97); }
+    .waitlist-success {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid rgba(76, 175, 80, 0.2);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #81C784;
+    }
+    .waitlist-success.show {
+      display: flex;
+    }
+
     .hero-buttons {
       display: flex;
       gap: 16px;
@@ -647,6 +712,7 @@
         gap: 48px;
       }
       .hero-sub { margin-left: auto; margin-right: auto; }
+      .waitlist { margin-left: auto; margin-right: auto; }
       .hero-buttons { justify-content: center; }
       .hero-image { order: -1; }
       .hero-image img { max-width: 400px; }
@@ -667,6 +733,8 @@
       .cta-box { padding: 40px 28px; }
       .modal { padding: 28px 24px; }
       .footer-inner { flex-direction: column; text-align: center; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-btn { width: 100%; }
       .hero-buttons { flex-direction: column; align-items: center; }
       .store-btn { width: 100%; max-width: 280px; justify-content: center; }
     }
@@ -692,7 +760,7 @@
   </a>
   <ul class="nav-links">
     <li class="hide-mobile"><a href="#features">Features</a></li>
-    <li><a href="#" onclick="openModal(event)">Support</a></li>
+    <li><a href="#support">Support</a></li>
     <li><a href="#download" class="nav-cta">Download</a></li>
   </ul>
 </nav>
@@ -704,7 +772,15 @@
       <div class="hero-badge">Coming soon to the App Store</div>
       <h1>Your cards.<br/>Your <em>story</em>.</h1>
       <p class="hero-sub">Every birthday holds a secret hand of cards. Cardy reveals your daily readings, personality insights, and connections — drawn from an ancient system hidden in a standard deck.</p>
-      <div class="hero-buttons" id="download">
+      <div class="waitlist" id="download">
+        <p class="waitlist-label">Be the first to know when we launch</p>
+        <form class="waitlist-form" id="waitlistForm" onsubmit="submitWaitlist(event)">
+          <input type="email" class="waitlist-input" id="waitlistEmail" placeholder="Enter your email" required />
+          <button type="submit" class="waitlist-btn">Join Waitlist</button>
+        </form>
+        <div class="waitlist-success" id="waitlistSuccess">&#10003; You're on the list! We'll let you know when Cardy launches.</div>
+      </div>
+      <div class="hero-buttons">
         <a href="https://apps.apple.com/app/cardy" class="store-btn store-btn--apple" target="_blank" rel="noopener">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <div class="store-label">
@@ -777,7 +853,7 @@
       <span>&copy; 2025 Cardy</span>
     </div>
     <ul class="footer-links">
-      <li><a href="#" onclick="openModal(event)">Support</a></li>
+      <li><a href="#support">Support</a></li>
       <li><a href="https://apps.apple.com/app/cardy" target="_blank" rel="noopener">App Store</a></li>
     </ul>
   </div>
@@ -828,18 +904,32 @@
 </div>
 
 <script>
-  // Modal
-  function openModal(e) {
-    if (e) e.preventDefault();
+  // Waitlist
+  function submitWaitlist(e) {
+    e.preventDefault();
+    const email = document.getElementById('waitlistEmail').value;
+    console.log('Waitlist signup:', email);
+    document.getElementById('waitlistForm').style.display = 'none';
+    document.getElementById('waitlistSuccess').classList.add('show');
+  }
+
+  // Modal — driven by #support hash
+  function openModal() {
     document.getElementById('supportModal').classList.add('open');
     document.body.style.overflow = 'hidden';
     document.getElementById('supportForm').style.display = '';
     document.getElementById('formSuccess').classList.remove('show');
     document.getElementById('contactForm').reset();
+    if (location.hash !== '#support') {
+      history.pushState(null, '', '#support');
+    }
   }
   function closeModal() {
     document.getElementById('supportModal').classList.remove('open');
     document.body.style.overflow = '';
+    if (location.hash === '#support') {
+      history.pushState(null, '', location.pathname);
+    }
   }
   function closeModalOutside(e) {
     if (e.target === e.currentTarget) closeModal();
@@ -847,6 +937,14 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
   });
+  // Open modal on hash change or initial load
+  function checkHash() {
+    if (location.hash === '#support') {
+      openModal();
+    }
+  }
+  window.addEventListener('hashchange', checkHash);
+  window.addEventListener('DOMContentLoaded', checkHash);
 
   // Form submit
   function submitForm(e) {
