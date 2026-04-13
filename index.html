@@ -739,7 +739,7 @@
       .hero-sub { margin-left: auto; margin-right: auto; }
       .waitlist { margin-left: auto; margin-right: auto; }
       .hero-buttons { justify-content: center; }
-      .hero-image { order: -1; }
+      .hero-image { order: 1; }
       .hero-image img { max-width: 400px; }
       .features-grid {
         grid-template-columns: 1fr;
@@ -936,13 +936,15 @@
       <h2>Privacy Policy</h2>
       <button class="modal-close" onclick="closePrivacy()" aria-label="Close">&times;</button>
     </div>
-    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: February 20, 2026</p>
+    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: April 13, 2026</p>
     <div class="privacy-content">
       <p>Your privacy is important to us. This Privacy Policy explains how Cardy ("the App") collects, uses, and protects your information.</p>
 
       <h3>1. Information We Collect</h3>
       <p><strong>Account Information:</strong> When you sign up, we collect your name, email address, and birthday. Your birthday is used to calculate your card profile using our mathematical card calendar system.</p>
-      <p><strong>Check-In Data:</strong> If you use the check-in feature, we collect your mood selection, chosen topics, and any free-text you provide. This is used solely to generate your personalized reflection.</p>
+      <p><strong>Mood and Emotional Data:</strong> If you use the check-in feature, we collect your mood selection, chosen topics, and any free-text you provide. This data reflects your emotional state and is treated as sensitive information. It is used solely to generate your personalized reflection.</p>
+      <p><strong>Journal Entries:</strong> If you use the journaling feature, we collect the text you write. Journal entries are stored with your account and used only to display your personal journal history.</p>
+      <p><strong>Contacts:</strong> If you choose to import birthdays from your contacts, we access contact names and birthdays only. This data is used solely to calculate card profiles for your contacts and is not linked to your identity.</p>
       <p><strong>Usage Data:</strong> We collect anonymous usage data to improve the App, such as which features are used and general app performance metrics.</p>
 
       <h3>2. How We Use Your Information</h3>
@@ -950,36 +952,46 @@
       <ul>
         <li>Calculate and display your card profile</li>
         <li>Generate personalized daily card stories and reflections</li>
+        <li>Generate personalized AI reflections based on your mood, check-in data, and card profile</li>
         <li>Send you optional push notifications about your daily cards</li>
         <li>Improve the App and develop new features</li>
       </ul>
 
       <h3>3. AI-Generated Content</h3>
-      <p>Cardy uses AI to generate personalized reflections based on your card profile and check-in data. Your check-in text is sent to our AI provider (Anthropic) for processing. We do not use your data to train AI models. AI-generated content is for entertainment and personal exploration only.</p>
+      <p>Cardy uses AI (provided by Anthropic) to generate personalized reflections. To create these reflections, we send the following to Anthropic's servers for processing:</p>
+      <ul>
+        <li>Your name and birthday</li>
+        <li>Your card profile (birth cards and daily cards)</li>
+        <li>Your mood selection, chosen topics, and free-text from check-ins</li>
+      </ul>
+      <p>This data is sent securely via our servers and is not stored by Anthropic beyond the duration of the request. We do not use your data to train AI models. AI-generated content is for entertainment and personal exploration only.</p>
 
       <h3>4. Data Sharing</h3>
       <p>We do not sell your personal information. We share data only with:</p>
       <ul>
         <li>Supabase (database and authentication provider)</li>
-        <li>Anthropic (AI reflection generation)</li>
+        <li>Anthropic (AI reflection generation, as described in Section 3)</li>
         <li>RevenueCat (subscription management)</li>
         <li>Apple (App Store and Sign In with Apple)</li>
       </ul>
       <p>These providers process data solely to deliver their services and are bound by their own privacy policies.</p>
 
       <h3>5. Data Storage and Security</h3>
-      <p>Your data is stored securely using Supabase with row-level security policies. We use industry-standard encryption for data in transit and at rest.</p>
+      <p>Your data is stored securely using Supabase with row-level security policies. We use industry-standard encryption for data in transit and at rest. Check-in and journal data is retained for as long as your account is active. You may delete individual check-ins or journal entries at any time within the App.</p>
 
       <h3>6. Your Rights</h3>
       <p>You can:</p>
       <ul>
         <li>Access and update your profile information in the App settings</li>
-        <li>Delete your account and all associated data by contacting us</li>
+        <li>Delete individual check-ins and journal entries within the App</li>
+        <li>Delete your account and all associated data from the App settings</li>
         <li>Opt out of push notifications through your device settings</li>
+        <li>Request a copy of your data by contacting us</li>
       </ul>
+      <p>If you are a resident of California, you have additional rights under the CCPA, including the right to know what data we collect, to request deletion, and to opt out of the sale of personal information (we do not sell your data). If you are a resident of the EU/EEA, you have rights under GDPR including access, rectification, erasure, and data portability. To exercise these rights, contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
 
       <h3>7. Children's Privacy</h3>
-      <p>Cardy is not intended for children under 13. We do not knowingly collect information from children under 13.</p>
+      <p>Cardy is not intended for children under 13. We do not knowingly collect information from children under 13. If we learn we have collected data from a child under 13, we will delete it promptly.</p>
 
       <h3>8. Changes to This Policy</h3>
       <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the App.</p>
