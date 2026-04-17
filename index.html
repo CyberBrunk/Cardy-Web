@@ -881,6 +881,7 @@
     <ul class="footer-links">
       <li><a href="#support">Support</a></li>
       <li><a href="#privacy">Privacy Policy</a></li>
+      <li><a href="#terms">Terms of Service</a></li>
     </ul>
   </div>
 </footer>
@@ -998,6 +999,56 @@
 
       <h3>9. Contact</h3>
       <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div class="modal-overlay" id="termsModal" onclick="closeTermsOutside(event)">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width: 640px;">
+    <div class="modal-header">
+      <h2>Terms of Service</h2>
+      <button class="modal-close" onclick="closeTerms()" aria-label="Close">&times;</button>
+    </div>
+    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: February 20, 2026</p>
+    <div class="privacy-content">
+      <p>Welcome to Cardy. By using our app, you agree to these Terms of Service. Please read them carefully.</p>
+
+      <h3>1. Acceptance of Terms</h3>
+      <p>By downloading, installing, or using Cardy ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+
+      <h3>2. Description of Service</h3>
+      <p>Cardy is a personal exploration and entertainment app that uses a mathematical card calendar system to generate personalized card profiles, daily card stories, and reflections. Card meanings and reflections are for personal exploration and entertainment purposes only. They are not intended as professional, medical, psychological, or financial advice.</p>
+
+      <h3>3. Eligibility</h3>
+      <p>You must be at least 13 years old to use Cardy. If you are under 18, you must have parental or guardian consent.</p>
+
+      <h3>4. Account Registration</h3>
+      <p>You may create an account using your email address or Apple Sign In. You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.</p>
+
+      <h3>5. Subscriptions and Payments</h3>
+      <p>Cardy offers optional premium features through auto-renewable subscriptions. Subscriptions are billed through Apple's App Store. You can manage or cancel your subscription at any time through your Apple ID settings. Refunds are handled by Apple according to their refund policies.</p>
+
+      <h3>6. User Content</h3>
+      <p>Any text you provide during check-ins or journaling is your content. We use it solely to generate personalized reflections through our AI provider (Anthropic). Your content is not sold or used for AI training. You retain ownership of your content.</p>
+
+      <h3>7. Acceptable Use</h3>
+      <p>You agree not to misuse the App, including but not limited to: reverse engineering, attempting unauthorized access, or using the App for any unlawful purpose.</p>
+
+      <h3>8. Intellectual Property</h3>
+      <p>All content, design, and technology in Cardy are owned by or licensed to us. You may not copy, modify, or distribute any part of the App without our written permission.</p>
+
+      <h3>9. Disclaimer of Warranties</h3>
+      <p>The App is provided "as is" without warranties of any kind. Card profiles, daily stories, and AI-generated reflections are for entertainment and personal exploration only. We do not guarantee the accuracy or applicability of any content.</p>
+
+      <h3>10. Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the App.</p>
+
+      <h3>11. Changes to Terms</h3>
+      <p>We may update these Terms from time to time. Continued use of the App after changes constitutes acceptance of the updated Terms.</p>
+
+      <h3>12. Contact</h3>
+      <p>If you have questions about these Terms, please contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
     </div>
   </div>
 </div>
@@ -1147,9 +1198,27 @@
   function closePrivacyOutside(e) {
     if (e.target === e.currentTarget) closePrivacy();
   }
+  // Terms modal — driven by #terms hash
+  function openTerms() {
+    document.getElementById('termsModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (location.hash !== '#terms') {
+      history.pushState(null, '', '#terms');
+    }
+  }
+  function closeTerms() {
+    document.getElementById('termsModal').classList.remove('open');
+    document.body.style.overflow = '';
+    if (location.hash === '#terms') {
+      history.pushState(null, '', location.pathname);
+    }
+  }
+  function closeTermsOutside(e) {
+    if (e.target === e.currentTarget) closeTerms();
+  }
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { closeModal(); closePrivacy(); }
+    if (e.key === 'Escape') { closeModal(); closePrivacy(); closeTerms(); }
   });
   // Open modals on hash change or initial load
   function checkHash() {
@@ -1157,6 +1226,8 @@
       openModal();
     } else if (location.hash === '#privacy') {
       openPrivacy();
+    } else if (location.hash === '#terms') {
+      openTerms();
     }
   }
   window.addEventListener('hashchange', checkHash);
