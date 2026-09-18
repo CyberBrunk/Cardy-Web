@@ -53,10 +53,10 @@ Status: ✅ full copy written · ⚪ outline only (Step 2) · ⚠️ coming-soon
 ### Pillar 1 — Tools & Calculators (Action intent)
 | # | Keyword | Slug | Status |
 |---|---------|------|--------|
-| 2 | destiny cards calculator | `/destiny-cards-calculator` | ⚪ |
-| 3 | find my birth card | `/find-my-birth-card` | ⚪ |
-| 12 | cardology yearly spread | `/cardology-yearly-spread` | ⚪ ⚠️ coming-soon |
-| 20 | destiny cards relationship chart | `/destiny-cards-relationship-chart` | ⚪ |
+| 2 | destiny cards calculator | `/destiny-cards-calculator` | ✅ |
+| 3 | find my birth card | `/find-my-birth-card` | ✅ |
+| 12 | cardology yearly spread | `/cardology-yearly-spread` | ✅ ⚠️ coming-soon |
+| 20 | destiny cards relationship chart | `/destiny-cards-relationship-chart` | ✅ |
 
 ### Pillar 2 — Foundations & Beginner Education (Informational)
 | # | Keyword | Slug | Status |
@@ -80,8 +80,8 @@ Status: ✅ full copy written · ⚪ outline only (Step 2) · ⚠️ coming-soon
 ### Pillar 4 — Love & Compatibility (Exploratory)
 | # | Keyword | Slug | Status |
 |---|---------|------|--------|
-| 4 | cardology compatibility | `/cardology-compatibility` | ⚪ |
-| 9 | love cards compatibility | `/love-cards-compatibility` | ⚪ |
+| 4 | cardology compatibility | `/cardology-compatibility` | ✅ |
+| 9 | love cards compatibility | `/love-cards-compatibility` | ✅ |
 
 ### Pillar 5 — Advanced Cardology (Niche/Technical)
 | # | Keyword | Slug | Status |
