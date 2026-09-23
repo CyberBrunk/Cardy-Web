@@ -3,16 +3,16 @@ slug: /destiny-cards-relationship-chart
 pillar: 1 — Tools & Calculators
 target_keyword: destiny cards relationship chart
 intent: Action / Interactive (relationship / compatibility matrix)
-meta_title: "Destiny Cards Relationship Chart: Check Compatibility | Cardy"
-meta_description: Check your destiny cards relationship chart. Enter two birthdays to map the planetary connections between your cards and uncover your dynamic.
-semantic_terms: [cardology relationship chart, destiny card compatibility chart, love cards chart, planetary connections, karma connections, relationship reading]
+meta_title: "Destiny Cards Relationship Chart: Check Your Connection | Cardy"
+meta_description: Enter two birthdays to see how your destiny cards connect. Find your birth cards and the planetary link between them, free.
+semantic_terms: [cardology relationship chart, destiny card compatibility chart, love cards chart, planetary connections, karma connections]
 status: complete
 notes: Tease-and-gate rule applied. Reveals that a connection exists and its planetary type; gates full reading to unlock in Cardy.
 ---
 
-# Destiny Cards Relationship Chart: Map Your Connection
+# Destiny Cards Relationship Chart
 
-**A destiny cards relationship chart maps the mathematical connections between two people's birth cards to reveal the true nature of their bond.** In cardology, compatibility is not a vague feeling or a generic zodiac match — it is an exact geometric line drawn between two cards on the Grand Solar Spread. Whether you share a tender Venus attraction, a fiery Mars spark, or an undeniable past-life karmic contract, your cards reveal why you were drawn together and where you will be tested. Enter two birthdays below to see your connection type.
+**A destiny cards relationship chart shows how two people's cards are connected.** Enter both birthdays and the chart finds your birth cards and the planetary link between them: Venus for affection, Mars for chemistry, Saturn for lessons, and so on. The full reading unlocks in the Cardy app.
 
 <!-- RELATIONSHIP CHART WIDGET START -->
 <div class="relationship-calculator-widget" id="relationship-chart-tool">
@@ -77,8 +77,23 @@ notes: Tease-and-gate rule applied. Reveals that a connection exists and its pla
         </div>
         <div class="gate-action">
           <span class="lock-icon">🔒</span>
-          <p>Read your complete relationship story and daily compatibility inside Cardy.</p>
-          <a href="https://cardy.today" class="btn-unlock-reading">Unlock Full Relationship Reading in Cardy →</a>
+          <p>Read your complete relationship story, harmony score, and daily compatibility inside Cardy.</p>
+          <div class="hero-buttons" style="justify-content: center; margin-top: 14px;">
+            <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="store-btn store-btn--apple" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div class="store-label">
+                <small>Download on the</small>
+                <span>App Store</span>
+              </div>
+            </a>
+            <a href="https://app.cardy.today" class="store-btn store-btn--web" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
+              <div class="store-label">
+                <small>On Android? Use the</small>
+                <span>Web App</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -86,63 +101,38 @@ notes: Tease-and-gate rule applied. Reveals that a connection exists and its pla
 </div>
 <!-- RELATIONSHIP CHART WIDGET END -->
 
-> 🎯 **CTA:** See what connects you for free right here — then unlock your full relationship reading, daily compatibility stories, and karmic analysis in the Cardy app. [Download Cardy Free →]
+## How the chart works
 
-## How the destiny cards relationship chart works
+Each card has fixed positions in cardology's two spreads: the Earth Path, which covers everyday life, and the Heaven Path, which covers the deeper, spiritual side. When one person's card shows up among the other person's planetary cards, that planet names the connection.
 
-In cardology, every single card has fixed positions in two primary spreads:
-1. **The Life Spread (Earth Chart):** How your cards interact in the physical, day-to-day world.
-2. **The Spiritual Spread (Past Life Chart):** How your souls interacted across lifetimes.
+## Connection types
 
-When you compare two birth cards on these charts, they sit at specific mathematical intervals governed by the seven planetary lines: Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.
+| Connection | What it's like |
+|---|---|
+| **Moon** | Being together feels like home |
+| **Venus** | Warmth, affection, attraction |
+| **Mars** | Strong chemistry and some friction |
+| **Jupiter** | Generosity; you bring each other luck |
+| **Saturn** | A teacher and a student; built to last |
+| **Karma card** | One of you is the other's gift or lesson |
 
-If Person A's card is in Person B's Venus line, Person B feels an immediate romantic pull toward Person A. If the connection sits on a Saturn line, one partner acts as a teacher and grounding anchor for the other.
+*([What Are Karma Cards? →])*
 
-## The 6 primary connection types in a relationship chart
+## Three cards, not one
 
-When your cards connect, they typically fall into one of these six core dynamics:
-
-### 1. The Moon Connection (Home & Emotional Comfort)
-One of the most intimate bonds in the deck. When you share a Moon connection, being together feels like exhaling. There is an instinctive sense of safety, familiarity, and domestic ease.
-
-### 2. The Venus Connection (Romantic Attraction & Affection)
-The classic romantic spark. Venus connections bring warmth, physical attraction, shared aesthetic tastes, and an easy desire to please one another. The person receiving Venus energy feels adored and cherished.
-
-### 3. The Mars Connection (Passion, Drive & Friction)
-High energy and intense chemistry. Mars connections ignite physical passion and shared ambition. The upside is unstoppable momentum; the challenge is that small disagreements can quickly heat up into ego battles if both partners refuse to yield.
-
-### 4. The Jupiter Connection (Blessings & Mutual Uplift)
-The most benevolent link in cardology. Partners with a Jupiter connection bring each other luck, generosity, emotional expansion, and mutual forgiveness. You naturally want the best for each other.
-
-### 5. The Saturn Connection (The Karmic Teacher)
-A serious, enduring bond built on lessons and accountability. The Saturn person often acts as a mentor or authority figure, pushing the other to grow up and take responsibility. While demanding, Saturn connections frequently anchor long-term marriages.
-
-### 6. The Karma Card Connection (Soulmate Contracts)
-If your Birth Card matches the other person's **Blessing Card (Karma +)** or **Duty Card (Karma −)**, you have entered into a direct karmic contract. You will feel an instant, magnetic feeling of "I know you," accompanied by deep emotional debits and credits to balance.
-
-*(Deep dive into karmic dynamics: [What Are Karma Cards? →] · [Supporting Karma Card →] · [Challenging Karma Card →])*
-
-## The 3-card relationship comparison: Beyond the Birth Card
-
-Basic cardology charts stop at Card 1. But Cardy compares both people across **all three cards**:
-
-1. **Inner Child to Inner Child (Card 1):** Do your instinctual habits and raw temperaments harmonize or clash?
-2. **Chosen Purpose to Chosen Purpose (Card 2):** Are your life goals, career ambitions, and adult missions aligned?
-3. **Highest Self to Highest Self (Card 3):** What kind of power do you create when you unite at your highest expression?
-
-> 🎯 **CTA:** You don't have to guess why they make you feel that way. Enter your birthdays and explore your full compatibility in Cardy. [Check Your Relationship in Cardy →]
+Most charts compare one card each. Cardy compares all three: your instincts (Inner Child), your goals (Chosen Purpose), and what you become together (Highest Self).
 
 ## Destiny cards relationship chart FAQ
 
-**Can two people have multiple connections?**
-Yes. In fact, the strongest relationships often share connections across both the Life Spread and the Spiritual Spread, as well as connections between Card 1 (Inner Child) and Card 2 (Chosen Purpose).
+**Can two people have more than one connection?**
+Yes. Strong relationships often have several, across both spreads and across different cards.
 
-**What if our cards have a challenging or Saturn connection?**
-Challenging connections are not dealbreakers — they are where deep growth happens. Many couples with Saturn or Mars links stay together for decades because the relationship pushes both partners to evolve into their Highest Self.
+**Is a Saturn or Mars connection bad?**
+No. These links are where growth happens, and many long relationships have them.
 
-**Can two people with the same birth card be compatible?**
-Yes. Sharing the same birth card creates instant empathy and understanding ("you are looking in a mirror"). However, if both share the same blind spots, having differing Cards 2 and 3 provides vital balance.
+**Can two people with the same birth card get along?**
+Yes. It feels like looking in a mirror, and different second and third cards add balance.
 
-> 🎯 **CLOSING CTA:** Every relationship has a card dynamic. Reveal your connection type free above, then explore your full compatibility story in Cardy. **Play your cards right.** [Get Cardy →]
+> 🎯 **CLOSING CTA:** Every relationship has a card dynamic. See your full reading in Cardy.
 
 *Related: [Cardology Compatibility] · [Love Cards Compatibility] · [Find My Birth Card] · [Destiny Cards Calculator]*

@@ -4,15 +4,15 @@ pillar: 1 — Tools & Calculators
 target_keyword: find my birth card
 intent: Action (birth card lookup tool & chart)
 meta_title: "Find My Birth Card: Free Birthday Card Lookup | Cardy"
-meta_description: Find your birth card instantly with our free lookup tool. Discover your card's suit, rank, and meaning from your birthday, and explore your full chart.
-semantic_terms: [birth card lookup, what is my birth card, birthday card finder, destiny card lookup, solar value, cardology chart, Inner Child]
+meta_description: Find your birth card from your birthday in seconds, or work it out by hand with one simple formula. Then see what your card says about you.
+semantic_terms: [birth card lookup, what is my birth card, birthday card finder, destiny card lookup, solar value, Inner Child]
 status: complete
 notes: Fast lookup intent. Instant free reveal for Card 1 (Inner Child), teasing Cardy's 3-card system.
 ---
 
-# Find My Birth Card: Instant Birthday Card Lookup
+# Find My Birth Card
 
-**To find your birth card, you simply match your birth date to the solar calendar encoded in the 52-card deck.** Every day of the year connects to a specific card — an ancient coordinate system that reveals your core instincts, natural gifts, and relationship style. In the Cardy system, your birth card represents your **Inner Child**: the foundational self you were born as before the world told you who to be. Use the lookup tool below to find your birth card free in seconds.
+**Your birth card is the card your birthday maps to in the 52-card deck.** It describes your core nature: your instincts, natural gifts, and how you connect with people. In Cardy it's called your Inner Child card. Enter your birthday below to find yours free.
 
 <!-- BIRTH CARD LOOKUP WIDGET START -->
 <div class="lookup-widget" id="birth-card-finder">
@@ -60,95 +60,71 @@ notes: Fast lookup intent. Instant free reveal for Card 1 (Inner Child), teasing
         <h4 id="card-name-headline">Your Birth Card</h4>
         <p class="role-tag">Card 1 · The Inner Child</p>
         <p id="card-summary-text">Your birth card reveals your innate nature, how you connect with others, and the gifts you naturally express.</p>
+        <div class="hero-buttons" style="margin-top: 18px;">
+          <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="store-btn store-btn--apple" target="_blank" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-label">
+              <small>Download on the</small>
+              <span>App Store</span>
+            </div>
+          </a>
+          <a href="https://app.cardy.today" class="store-btn store-btn--web" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
+            <div class="store-label">
+              <small>On Android? Use the</small>
+              <span>Web App</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <!-- BIRTH CARD LOOKUP WIDGET END -->
 
-> 🎯 **CTA:** Found your birth card? That's just Card 1. Cardy calculates how your zodiac sign shapes your Chosen Purpose and Highest Self. [See All 3 Cards Free in the App →]
+## Work it out by hand
 
-## What is a birth card?
+Cardology uses one formula, called the solar value:
 
-Your **Birth Card** is the primary archetype of cardology. It is determined solely by the month and day you were born. Think of it like your astrological sun sign, but sharpened: because the 52 cards are distributed across 365 days, a single card covers only a handful of specific dates each year.
-
-In Cardy, your birth card is known as your **Inner Child card**:
-
-- It describes your raw, unconditioned temperament.
-- It governs your gut reactions, comfort zone, and instinctual desires.
-- It highlights natural talents that you never had to practice to master.
-
-## How to calculate your birth card by hand
-
-If you prefer doing the math yourself, cardology has an exact arithmetic formula based on **solar value**:
-
-$$\text{Solar Value} = 55 - (2 \times \text{Month} + \text{Day})$$
+**Solar value = 55 − (2 × month + day)**
 
 1. Multiply your birth month by 2.
-2. Add your birth day to that number.
-3. Subtract the total from **55**.
-4. If the number is zero or negative, add **52** to wrap around the deck.
+2. Add your birth day.
+3. Subtract the total from 55.
 
-The resulting number (1 through 52) corresponds to a card ordered by suit:
-- **1 to 13:** Ace through King of **Hearts ♥**
-- **14 to 26:** Ace through King of **Clubs ♣**
-- **27 to 39:** Ace through King of **Diamonds ♦**
-- **40 to 52:** Ace through King of **Spades ♠**
+Then find your number in the deck:
 
-*Example:* A birthday of **May 8** (Month 5, Day 8):
-- $(2 \times 5) + 8 = 18$
-- $55 - 18 = 37$
-- Value 37 sits in the Diamonds suit (27 + 10) = **10 of Diamonds ♦**
+| Number | Cards |
+|---|---|
+| **1–13** | Ace to King of Hearts ♥ |
+| **14–26** | Ace to King of Clubs ♣ |
+| **27–39** | Ace to King of Diamonds ♦ |
+| **40–52** | Ace to King of Spades ♠ |
 
-*(Want the full mathematical breakdown? [How to Read Destiny Cards →])*
+**Example, May 8:** 2 × 5 + 8 = 18, and 55 − 18 = 37. The 37th card is the 11th Diamond: the **Jack of Diamonds**.
 
-## What if your birthday is December 31?
+December 31 is the one exception. It gives 0, which is the **Joker**.
 
-December 31 is the 365th day of the year. When you plug December 31 into the formula ($55 - (24 + 31) = 0$), you get 0 — which belongs to the **Joker**.
+## What your card tells you
 
-The Joker is not bound by a single suit or rank. People born on New Year's Eve are independent chameleons, capable of taking on the traits of any card in the deck at will.
+- **Suit** is where your energy goes: ♥ love, ♣ mind, ♦ values, ♠ work and growth.
+- **Rank** is how mature that energy is, from a new start (Ace) to mastery (King).
 
-## What your birth card reveals
+Read your card's full profile on the [Birth Card Meanings →] page.
 
-Once you find your birth card, you can immediately decode its two key components:
-
-### 1. Your Suit (Life Domain)
-- **♥ Hearts:** Emotional sensitivity, artistic expression, romance, and relational loyalty.
-- **♣ Clubs:** Analytical thinking, communication, storytelling, teaching, and mental curiosity.
-- **♦ Diamonds:** Resource management, evaluating worth, financial acumen, and personal values.
-- **♠ Spades:** Spiritual resilience, professional mastery, discipline, and endurance.
-
-### 2. Your Rank (Soul Maturity)
-- **Aces:** Driven by new starts, self-reliance, and fierce independence.
-- **Twos to Fives:** Relationship-building, creativity, wanderlust, and finding stability.
-- **Sixes to Nines:** Karmic lessons, responsibility, transformation, and closing old chapters.
-- **Tens:** Full manifestation, public recognition, and abundant energy.
-- **Jacks, Queens, Kings:** Court leaders who bring youthfulness (Jack), intuition (Queen), or master authority (King) to their suit.
-
-*(Browse every card in the deck: [Birth Card Meanings →] · [Destiny Cards Meaning →])*
-
-## Beyond your birth card: The 3-card portrait
-
-Finding your birth card is step one. But stopping at one card is like reading only your Sun sign and ignoring your Moon and Rising signs.
-
-Cardy builds a complete **three-card portrait** from your birthday:
-1. **Card 1 — Inner Child:** Your foundational Birth Card (revealed free above).
-2. **Card 2 — Chosen Purpose:** Your birth card shifted through your **zodiac sign's ruling planet**. This shows the adult path you consciously choose to walk.
-3. **Card 3 — Highest Self:** The harmonic combination of Cards 1 and 2, revealing your ultimate potential.
-
-> 🎯 **CTA:** You've got your Birth Card. Now let Cardy show you where your astrology takes it. [Get Your Free Birth Card Reading in Cardy →]
+> 🎯 **CTA:** Your birth card is Card 1. Cardy shows how your zodiac sign turns it into Cards 2 and 3. [Get Cardy →]
 
 ## Find my birth card FAQ
 
-**Can two people share the same birth card?**
-Yes. Several birthdays throughout the year share the same birth card because the formula loops across the 365-day calendar. However, if they have different zodiac signs, their **Chosen Purpose (Card 2)** and **Highest Self (Card 3)** will be completely different.
+**Can two people share a birth card?**
+Yes. Several dates share each card. If their zodiac signs differ, their other two cards will too.
 
-**What is the difference between my birth card and my destiny card?**
-The terms are often used interchangeably. "Birth Card" refers specifically to your primary natal card (Card 1). "Destiny Cards" refers to the broader cardology system, including your karma cards, yearly spreads, and secondary cards.
+**Is a birth card the same as a destiny card?**
+Mostly. "Birth card" means your first card; "Destiny Cards" is the name of the whole system.
 
-**What if I was born in a leap year on February 29?**
-Leap Day (February 29) is calculated as $(2 \times 2) + 29 = 33 \rightarrow 55 - 33 = 22$, which maps to the **9 of Clubs ♣**.
+**What if I was born on February 29?**
+2 × 2 + 29 = 33, and 55 − 33 = 22: the 9 of Clubs.
 
-> 🎯 **CLOSING CTA:** Every birthday carries a card code. Find your Birth Card free right now, and unlock your Chosen Purpose and Highest Self in Cardy. **Play your cards right.** [Get Cardy →]
+> 🎯 **CLOSING CTA:** Your birth card is free above. See your other two cards in Cardy.
 
 *Related: [Destiny Cards Calculator] · [Birth Card Meanings] · [What Is Cardology?] · [Cardology vs Astrology]*

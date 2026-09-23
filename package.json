@@ -1,0 +1,13 @@
+{
+  "name": "cardy-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-pages.mjs",
+    "serve": "npx -y serve ."
+  },
+  "keywords": ["cardology", "destiny-cards", "birth-card", "astrology"],
+  "author": "Cardy",
+  "license": "UNLICENSED"
+}

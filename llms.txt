@@ -1,0 +1,42 @@
+# Cardy
+
+> Cardy is a Cardology and Destiny Cards app that turns your birthday into three personal cards. Cardology reads an ordinary 52-card deck as an ancient mathematical system: your birth date maps to a Birth Card, your zodiac sign's ruling planet shapes a second card, and the two combine into a third. Cardy delivers daily card readings, personality insights, and relationship compatibility — free to start, on iOS and the web.
+
+## Key facts
+
+- **What it is:** Cardology / Destiny Cards app (also called the science of the cards, or playing card astrology).
+- **The three cards:** Card 1 — Inner Child (your Birth Card, from your birth date); Card 2 — Chosen Purpose (Card 1 shifted by your zodiac sign's ruling planet); Card 3 — Highest Self (Cards 1 and 2 combined).
+- **How cardology relates to astrology:** it does not compete with astrology — it incorporates your zodiac sign into Card 2, and adds a birth-date layer, so two people with the same sun sign but different birthdays get different cards.
+- **Karma cards:** a separate, deeper layer — a supporting (Blessing) card and a challenging (Duty) card tied to your Birth Card.
+- **Platforms:** iOS app and web app. Free to download; your Birth Card is calculated free.
+- **App Store:** https://apps.apple.com/us/app/cardy-reflections/id6757249840
+- **Web app:** https://app.cardy.today
+
+## Guides — Foundations
+
+- [What Is Cardology?](https://cardy.today/what-is-cardology): The ancient math hidden in a standard deck, and the three cards it gives you.
+- [How to Read Destiny Cards](https://cardy.today/how-to-read-destiny-cards): Beginner's step-by-step for finding and reading your cards.
+- [The 52 Cards of Destiny](https://cardy.today/52-cards-of-destiny): How the deck maps onto the calendar of your life.
+- [Playing Card Astrology](https://cardy.today/playing-card-astrology): Origins of the 52-card system and how it relates to cardology and tarot.
+- [Cardology vs Astrology](https://cardy.today/cardology-vs-astrology): Side-by-side comparison; how cardology builds on your zodiac sign.
+- [Robert Lee Camp & Destiny Cards](https://cardy.today/robert-lee-camp-destiny-cards): The author who systematized modern cardology.
+
+## Guides — Card Meanings & Karma Cards
+
+- [Destiny Cards Meanings](https://cardy.today/destiny-cards-meaning): All 52 card meanings, explained by suit and rank.
+- [Birth Card Meanings](https://cardy.today/birth-card-meanings): What your Birth Card reveals about your personality and path.
+- [What Are Karma Cards?](https://cardy.today/what-are-karma-cards): Your two hidden cards — a gift and a lesson.
+- [Challenging Karma Card](https://cardy.today/challenging-karma-card): The Duty card and how to work its lesson.
+- [Supporting Karma Card](https://cardy.today/supporting-karma-card): The Blessing card and how to leverage its gift.
+
+## Tools
+
+- [Destiny Cards Calculator](https://cardy.today/destiny-cards-calculator): Reveal your Birth Card from your birthday.
+- [Find My Birth Card](https://cardy.today/find-my-birth-card): Instant birth card lookup.
+- [Destiny Cards Relationship Chart](https://cardy.today/destiny-cards-relationship-chart): Map the connection between two people's cards.
+- [Cardology Yearly Spread](https://cardy.today/cardology-yearly-spread): The age-based yearly spread (coming soon in the app).
+
+## Relationships
+
+- [Cardology Compatibility](https://cardy.today/cardology-compatibility): How two people's cards connect.
+- [Love Cards Compatibility](https://cardy.today/love-cards-compatibility): Romantic connection analysis.

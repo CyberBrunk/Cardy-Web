@@ -3,16 +3,16 @@ slug: /destiny-cards-calculator
 pillar: 1 — Tools & Calculators
 target_keyword: destiny cards calculator
 intent: Action (interactive calculator / card lookup)
-meta_title: "Destiny Cards Calculator: Calculate Your 3 Cards | Cardy"
-meta_description: Calculate your personal destiny cards with our free online calculator. Enter your birthday to reveal your Birth Card instantly, free on Cardy.
-semantic_terms: [destiny card calculator, birth card calculator, calculate destiny card, cardology calculator, Inner Child, Chosen Purpose, Highest Self, birthday lookup]
+meta_title: "Destiny Cards Calculator: Find Your 3 Cards | Cardy"
+meta_description: Enter your birthday to calculate your destiny cards. See your Birth Card free, and learn how your zodiac sign shapes your other two cards.
+semantic_terms: [destiny card calculator, birth card calculator, calculate destiny card, cardology calculator, Inner Child, Chosen Purpose, Highest Self]
 status: complete
 notes: Tease-and-gate rule applied. Reveals Card 1 (Inner Child) live; Cards 2 & 3 shown face-down to unlock in Cardy.
 ---
 
-# Destiny Cards Calculator: Calculate Your 3 Cards
+# Destiny Cards Calculator
 
-**A destiny cards calculator turns your birthday into a personal card reading by running your birth date through an ancient mathematical calendar.** Instead of a generic horoscope, the calculator uses the exact 52-card system encoded into every standard deck of playing cards. Where traditional systems hand you a single card or sign, Cardy calculates **three connected cards** — starting with your foundational Birth Card and weaving in your astrological ruling planet. Use the calculator below to reveal your first card instantly and free.
+**Enter your birthday to calculate your destiny cards.** Cardology maps your birth date to a Birth Card, then calculates two more cards from it. The calculator shows your first card free; Cards 2 and 3 unlock in the Cardy app.
 
 <!-- CALCULATOR WIDGET START -->
 <div class="calculator-container" id="destiny-calculator">
@@ -73,70 +73,63 @@ notes: Tease-and-gate rule applied. Reveals Card 1 (Inner Child) live; Cards 2 &
       </div>
     </div>
   </div>
+
+  <div class="calculator-unlock-banner">
+    <div class="unlock-banner-text">
+      <span class="lock-pill">🔒 Cards 2 & 3 Locked</span>
+      <h4>Ready to see your full 3-card portrait?</h4>
+      <p>Your zodiac sign shifts Card 2 (Chosen Purpose) and synthesizes into Card 3 (Highest Self). Available in the Cardy app.</p>
+    </div>
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="store-btn store-btn--apple" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-label">
+          <small>Download on the</small>
+          <span>App Store</span>
+        </div>
+      </a>
+      <a href="https://app.cardy.today" class="store-btn store-btn--web" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
+        <div class="store-label">
+          <small>On Android? Use the</small>
+          <span>Web App</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 <!-- CALCULATOR WIDGET END -->
 
-> 🎯 **CTA:** Get your foundational Birth Card right here for free — then see how your zodiac sign shapes Cards 2 & 3 inside Cardy. [Download Cardy Free →]
+## What the calculator gives you
 
-## How the destiny cards calculator works
+| Card | What it shows | How it's found | Where |
+|---|---|---|---|
+| **Inner Child** | Your core nature | Your birth date | Free, above |
+| **Chosen Purpose** | Where you're headed | Card 1, shifted by your zodiac sign's ruling planet | In the app |
+| **Highest Self** | Who you're growing into | Cards 1 and 2 combined | In the app |
 
-Cardology operates as a solar calendar disguised as a deck of cards. The deck contains:
+## How it works
 
-- **52 cards** matching the **52 weeks** of the year
-- **4 suits** corresponding to the **4 seasons** (Hearts for Spring, Clubs for Summer, Diamonds for Autumn, Spades for Winter)
-- **13 cards per suit** mirroring the **13 lunar cycles**
-- Every card rank added together (Aces = 1 through Kings = 13) equals **364**, plus the **Joker** for the 365th day of the year
+The deck works as a calendar: 52 cards for 52 weeks, 4 suits for 4 seasons, and 13 cards per suit for 13 lunar cycles. Every date maps to one card, so there's no shuffling or guessing. Want to do it by hand? The formula is on the [Find My Birth Card →] page.
 
-Because every single calendar date maps to a precise coordinate on this solar grid, our calculator runs your month and day through this deterministic formula. There is no guessing, shuffling, or subjective interpretation — your birthday is an exact coordinate.
+## Reading your result
 
-## What the calculator reveals: The 3-card system
+- **Suit:** ♥ love, ♣ mind, ♦ values, ♠ work and growth
+- **Rank:** Aces and low numbers are fresh starts, 6 to 9 are change and responsibility, and 10s and face cards are mastery.
 
-Unlike basic lookup tools that return only one card, Cardy calculates your complete three-card blueprint:
-
-### Card 1 — Inner Child (Your Birth Card)
-Your baseline nature. Calculated directly from your birth date, your Inner Child card represents your core temperament, emotional instincts, and fundamental gifts. It is completely free to reveal right on this page.
-
-### Card 2 — Chosen Purpose (Your Astrological Shift)
-Where your astrological identity joins the cards. Cardy takes your Birth Card's position on the life spread and shifts it by your **zodiac sign's ruling planet**. This reveals your adult calling, career drive, and chosen mission.
-
-### Card 3 — Highest Self (Your Synthesis)
-The harmonic blend of Card 1 and Card 2. This card represents your highest potential — what you become when your inner nature and conscious purpose align in balance.
-
-*(Read more: [What Is Cardology? →] · [Cardology vs Astrology →])*
-
-## How to interpret your calculator results
-
-Once your Birth Card is revealed, focus on two foundational elements:
-
-1. **The Suit:**
-   - **♥ Hearts:** Governs love, relationships, emotional clarity, and family.
-   - **♣ Clubs:** Governs intellect, curiosity, ideas, and communication.
-   - **♦ Diamonds:** Governs value, financial instinct, self-worth, and material security.
-   - **♠ Spades:** Governs life mastery, deep transformation, career, and resilience.
-
-2. **The Rank:**
-   - **Aces & Early Numbers (2–5):** Fresh initiative, curiosity, creation, and laying groundwork.
-   - **Mid Numbers (6–9):** Stability, karmic balance, adjustment, and bringing cycles to completion.
-   - **10s & Court Cards (Jack, Queen, King):** Public authority, leadership, emotional maturity, and mastery.
-
-*(Explore the full deck: [Destiny Cards Meaning →] · [Birth Card Meanings →])*
-
-> 🎯 **CTA:** Ready to go deeper than just one card? Cardy unlocks your full 3-card portrait, your karma cards, and daily audio readings. [Reveal Your Full Spread in Cardy →]
+Read your card's full profile on the [Birth Card Meanings →] page.
 
 ## Destiny cards calculator FAQ
 
-**Do I need my exact birth time to calculate my destiny cards?**
-No. Cardology is mathematically tied to your birth date (month and day). You do not need a birth certificate time or birth city to calculate your cards accurately.
+**Do I need my birth time?**
+No. Only your birth month and day.
 
-**Why does Cardy calculate three cards instead of just one?**
-A single card gives you a snapshot, but humans are multi-dimensional. Cardy uses your birth date for your foundation (Inner Child), incorporates your astrological sign's ruler for your direction (Chosen Purpose), and blends them into your Highest Self.
-
-**Is the calculator free?**
-Yes. Calculating and viewing your primary Birth Card (Inner Child) is completely free on the web. Unlocking Cards 2 & 3, karma cards, and full narrated daily stories happens inside the Cardy app.
+**Is it free?**
+Your Birth Card is free here. Cards 2 and 3, your karma cards, and daily readings are in the app.
 
 **What if I was born on December 31?**
-December 31 is the 365th day of the year, ruled by the Joker. In cardology, the Joker is the cosmic wildcard that embodies all cards at once.
+Your card is the Joker, the deck's wildcard.
 
-> 🎯 **CLOSING CTA:** Your birthday is a coordinate in an ancient mathematical system. Calculate your Birth Card free right now, then reveal your complete three-card story. **Play your cards right.** [Get Cardy →]
+> 🎯 **CLOSING CTA:** Your Birth Card is free above. See all three of your cards in Cardy.
 
 *Related: [Find My Birth Card] · [What Is Cardology?] · [How to Read Destiny Cards] · [Cardology vs Astrology]*

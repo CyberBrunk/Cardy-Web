@@ -39,6 +39,17 @@ The app onboarding shows the **Birth Card free** and gates the full 3-card revea
 
 **CTA copy rule:** every CTA promises the **Birth Card free**; everything else is the in-app unlock. Never promise "all 3 cards free" on web.
 
+### 5. Writing style (applied to all pages, 2026-09-23)
+- **Length:** 400–550 words per guide. `birth-card-meanings` is the exception: it's the 52-card directory.
+- **Open with the answer:** bold first sentence, and the whole definition in under 60 words.
+- **Tables over prose** for comparisons, suits, periods, and connection types.
+- **Don't re-explain the 3-card system** on every page. One line, then link to `/what-is-cardology`.
+- **CTAs:** one mid-page `> 🎯 **CTA:**` with a mapped link, plus the `> 🎯 **CLOSING CTA:**` line. The closing box already renders "Play your cards right." and store buttons, so the closing text is one plain sentence with no link.
+- **FAQ:** three questions, one or two sentences each.
+- **Plain words.** Avoid the phrases that had piled up: "ancient mathematical system encoded in a deck," "junk drawer," "brick by brick," "cosmic," "solar grid."
+- **No LaTeX.** The build doesn't render math; write formulas in plain text.
+- **Tool pages:** keep the `<!-- … WIDGET START/END -->` blocks intact; the widget has its own buttons, so skip the mid-page CTA right after it.
+
 ### 4. Calculator behavior (for the Pillar 1 tool pages, when built)
 - Reveal Card 1 (Inner Child) live.
 - Cards 2 & 3 shown face-down / blurred → "reveal free in the app" download CTA.

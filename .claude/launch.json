@@ -4,8 +4,9 @@
     {
       "name": "cardy-web",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "3000", "/Users/brendanbrown/Cursor Studio B/Cardy-Web"],
-      "port": 3000
+      "runtimeArgs": ["serve", "/Users/brendanbrown/Cursor Studio B/Cardy-Web"],
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }
