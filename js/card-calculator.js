@@ -346,6 +346,7 @@
       symbol: suit.symbol,
       color: suit.color,
       solarValue: solarVal,
+      img: `/assets/cards/${suit.name.toLowerCase()}-${rank.toLowerCase()}.webp`,
       archetype: profile.archetype,
       slug: profile.slug,
       desc: profile.desc,
@@ -521,7 +522,9 @@
           }
 
           card1Preview.innerHTML = `
-            <div class="revealed-card-badge" style="color: ${card.color}">${card.symbol}</div>
+            ${card.img
+              ? `<img class="card-thumb" src="${card.img}" alt="${card.name}" />`
+              : `<div class="revealed-card-badge" style="color: ${card.color}">${card.symbol}</div>`}
             <span class="card-title" style="color: ${card.color}">${card.name}</span>
             <span class="card-badge free-badge">Card 1 · Revealed</span>
             <p class="card-subtext">${card.summary}</p>
@@ -553,7 +556,8 @@
             return;
           }
 
-          revealedFace.innerHTML = `
+          revealedFace.classList.toggle('has-art', !!card.img);
+          revealedFace.innerHTML = card.img ? `<img class="card-art" src="${card.img}" alt="${card.name}" />` : `
             <div class="card-corner top-left" style="color: ${card.color}">
               <span class="card-val">${card.rank}</span>
               <span class="card-icon">${card.symbol}</span>

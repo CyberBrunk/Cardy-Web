@@ -654,6 +654,26 @@
         inset 0 0 24px rgba(180, 43, 25, 0.4),
         0 22px 42px rgba(0, 0, 0, 0.55);
     }
+    /* Real card art from the app (assets/cards, 400x592) */
+    .stage-card-face, .card-static-back { height: auto; aspect-ratio: 400 / 592; }
+    .card-face-active.has-art { padding: 0; background: transparent; border: none; box-shadow: none; }
+    .card-face-active.has-art > :not(.card-art):not(.card-hover-banner) { display: none; }
+    .card-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+    .card-static-back {
+      position: relative;
+      background: url('/assets/cards/back.webp') center / cover no-repeat;
+      border: none;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    }
+    .card-static-back::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(11, 14, 26, 0.5);
+    }
+    .card-static-back > * { position: relative; }
+
     .lock-medallion {
       width: 48px;
       height: 48px;
@@ -1182,7 +1202,6 @@
       .hero-image img { max-width: 400px; }
       .reveal-section { padding: 80px 24px; }
       .cards-stage { gap: 16px; }
-      .stage-card-face, .card-static-back { height: 210px; }
       .card-center-suit { font-size: 44px; }
       .features-grid {
         grid-template-columns: 1fr;
@@ -1219,7 +1238,7 @@
       .reveal-divider { display: none; }
       .reveal-btn { width: 100%; justify-content: center; }
       .cards-stage { gap: 8px; }
-      .stage-card-face, .card-static-back { height: 165px; border-radius: 12px; }
+      .stage-card-face, .card-static-back { border-radius: 12px; }
       .card-face-active { padding: 10px; }
       .card-corner .card-rank { font-size: 14px; }
       .card-corner .card-suit { font-size: 11px; }
@@ -1366,6 +1385,7 @@
           </div>
           <!-- Calculated card face -->
           <div class="card-face-active" id="card1Active" style="display: none;">
+            <img class="card-art" id="card1Art" alt="" hidden />
             <div class="card-corner top-left">
               <span class="card-rank" id="card1CornerRank">Q</span>
               <span class="card-suit" id="card1CornerSuit">♥</span>
@@ -1802,6 +1822,14 @@
     const card1Title = document.getElementById('card1Title');
     const card1DescLink = document.getElementById('card1DescLink');
 
+    const card1Art = document.getElementById('card1Art');
+    function setCardArt(src, alt) {
+      if (!card1Art || !card1Active) return;
+      card1Art.hidden = !src;
+      card1Active.classList.toggle('has-art', !!src);
+      if (src) { card1Art.src = src; card1Art.alt = alt; }
+    }
+
     const unlockBox = document.getElementById('heroCalcUnlock');
     const headline = document.getElementById('unlockHeadlineText');
     const desc = document.getElementById('unlockDesc');
@@ -2129,6 +2157,7 @@
         if (suitA) { suitA.textContent = '🃏'; suitA.style.color = '#C92A1D'; }
         if (suitB) { suitB.textContent = '🃏'; suitB.style.color = '#C92A1D'; }
         if (centerSuit) { centerSuit.textContent = '🃏'; centerSuit.style.color = '#C92A1D'; }
+        setCardArt(null);
         if (headline) headline.innerHTML = `You are <strong>${fullName}</strong> — ${profile.archetype}!`;
         if (desc) {
           desc.innerHTML = `
@@ -2157,6 +2186,7 @@
         if (suitA) { suitA.textContent = suit.symbol; suitA.style.color = suit.color; }
         if (suitB) { suitB.textContent = suit.symbol; suitB.style.color = suit.color; }
         if (centerSuit) { centerSuit.textContent = suit.symbol; centerSuit.style.color = suit.color; }
+        setCardArt(`/assets/cards/${suit.name.toLowerCase()}-${(rankNames[rIdx] || String(rIdx)).toLowerCase()}.webp`, fullName);
 
         if (headline) {
           headline.innerHTML = `You are a <strong>${fullName}</strong> — ${profile.archetype}!`;

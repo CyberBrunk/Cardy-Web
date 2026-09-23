@@ -801,7 +801,33 @@ async function build() {
   fs.writeFileSync(path.join(rootDir, 'robots.txt'), robotsTxt, 'utf-8');
   console.log('  ✓ Generated robots.txt');
 
+  exportSite(processedPages);
+
   console.log('✨ Build complete!');
+}
+
+// Vercel serves the `public/` output directory once package.json has a build script,
+// so copy the finished site there. Allowlisted so build tooling and drafts never ship.
+const STATIC_ENTRIES = [
+  'index.html', 'cardy-hero.png', 'icon@3x.png',
+  'robots.txt', 'sitemap.xml', 'llms.txt', 'css', 'js', 'assets'
+];
+
+function exportSite(pages) {
+  const publicDir = path.join(rootDir, 'public');
+  fs.rmSync(publicDir, { recursive: true, force: true });
+  fs.mkdirSync(publicDir);
+
+  const pageDirs = pages.map(p => p.meta.slug.replace(/^\/+/, ''));
+  for (const entry of [...STATIC_ENTRIES, ...pageDirs]) {
+    const src = path.join(rootDir, entry);
+    if (!fs.existsSync(src)) {
+      console.warn(`  ! Missing ${entry}, not exported`);
+      continue;
+    }
+    fs.cpSync(src, path.join(publicDir, entry), { recursive: true });
+  }
+  console.log(`  ✓ Exported site to public/ (${STATIC_ENTRIES.length + pageDirs.length} entries)`);
 }
 
 build().catch(err => {
