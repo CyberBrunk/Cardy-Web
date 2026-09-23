@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["V5VLP695M2.com.channel22.cardy"],
+        "components": [
+          { "/": "/card", "comment": "Shared card readings open the full app when it's installed" },
+          { "/": "/card/", "comment": "Same page with a trailing slash" }
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": ["V5VLP695M2.com.channel22.cardy.Clip"]
+  }
+}

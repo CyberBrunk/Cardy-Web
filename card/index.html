@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Cardy reading</title>
+  <meta name="description" content="Someone shared their cards with you on Cardy. See the reading, then find your own three cards free." />
+  <!-- Shared readings are personal and parameterized: keep them out of search results. -->
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://cardy.today/card" />
+
+  <!-- Safari on iPhone shows the App Clip card for this page. -->
+  <meta name="apple-itunes-app" content="app-id=6757249840, app-clip-bundle-id=com.channel22.cardy.Clip, app-clip-display=card" />
+
+  <meta property="og:title" content="A Cardy reading" />
+  <meta property="og:description" content="Someone shared their cards with you. Tap to see the reading." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cardy.today/card" />
+  <meta property="og:image" content="https://cardy.today/icon@3x.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" type="image/png" href="/icon@3x.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red: #B42B19;
+      --red-light: #D4382A;
+      --cream: #FFF4F4;
+      --cream-dim: rgba(255, 244, 244, 0.72);
+      --dark: #0B0E1A;
+      --font-display: 'Abril Fatface', serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+    html, body { min-height: 100%; }
+    body {
+      font-family: var(--font-body);
+      color: var(--cream);
+      background: linear-gradient(180deg, #2E0D0F 0%, #121218 55%, var(--dark) 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px 0;
+    }
+    header a { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; }
+    header img { width: 34px; height: 34px; border-radius: 9px; }
+    header span { font-family: var(--font-display); font-size: 20px; }
+
+    main {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 36px 16px 56px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: rgba(255, 244, 244, 0.65);
+      border: 1px solid rgba(255, 244, 244, 0.22);
+      border-radius: 999px;
+      padding: 8px 18px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 8vw, 44px);
+      line-height: 1.1;
+      margin: 24px 0 28px;
+      overflow-wrap: anywhere;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .card { flex: 0 1 132px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .card img, .card .card-fallback {
+      width: 100%;
+      aspect-ratio: 400 / 592;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+    }
+    .card .card-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFBF8;
+      color: #C92A1D;
+      font-size: 42px;
+    }
+    .role {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: rgba(255, 244, 244, 0.6);
+    }
+    .synthesis {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255, 244, 244, 0.8);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .btn {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--cream); color: #111; }
+    .btn-secondary { border: 1px solid rgba(255, 244, 244, 0.25); color: var(--cream); }
+    .invite {
+      margin-top: 28px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--cream-dim);
+    }
+    .invite strong { color: var(--cream); letter-spacing: 1px; }
+    .find-own { margin-top: 20px; font-size: 14px; }
+    .find-own a { color: #FF8A80; font-weight: 600; text-decoration: none; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <img src="/icon@3x.png" alt="" />
+      <span>Cardy</span>
+    </a>
+  </header>
+
+  <main>
+    <span class="badge" id="badge">A Cardy reading</span>
+    <h1 id="title">Someone shared their cards with you</h1>
+    <div class="cards" id="cards" hidden></div>
+    <p class="synthesis" id="synthesis" hidden></p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">Get your own 3 cards</a>
+      <a class="btn btn-secondary" href="https://app.cardy.today" target="_blank" rel="noopener">On Android? Use the web app</a>
+    </div>
+
+    <p class="invite" id="invite" hidden>
+      Invite code: <strong id="invite-code"></strong><br />
+      Enter it in Cardy under Settings → Have an invite code?
+    </p>
+
+    <p class="find-own"><a href="/#reveal">Or find your Birth Card free →</a></p>
+  </main>
+
+  <script>
+    // Renders a shared reading from the link. Format is defined in the iOS app's
+    // Shared/CardyShareLink.swift:
+    //   /card?v=1&title=…&sub=…&cards=Clubs-2,Clubs-King,Spades-2&roles=…&bday=1&ref=CODE
+    // Every value is set with textContent, never innerHTML.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
+      var RANKS = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+
+      function value(name, max) {
+        var raw = (params.get(name) || '').trim();
+        return raw ? raw.slice(0, max) : '';
+      }
+      function list(name) {
+        return value(name, 300).split(',').map(function (s) { return s.trim(); }).filter(Boolean).slice(0, 3);
+      }
+
+      var title = value('title', 80);
+      if (!title) return; // Not a shared reading: keep the generic page.
+
+      var isBirthday = params.get('bday') === '1';
+      document.getElementById('badge').textContent = isBirthday ? 'Birthday reading' : 'A Cardy reading';
+      document.getElementById('title').textContent = title;
+      document.title = title + ' · Cardy';
+
+      var cards = list('cards');
+      var roles = list('roles');
+      var row = document.getElementById('cards');
+      cards.forEach(function (cardId, index) {
+        var cell = document.createElement('div');
+        cell.className = 'card';
+
+        var parts = cardId.split('-');
+        var isKnown = parts.length === 2 && SUITS.indexOf(parts[0]) !== -1 && RANKS.indexOf(parts[1]) !== -1;
+        if (isKnown) {
+          var img = document.createElement('img');
+          img.src = '/assets/cards/' + parts[0].toLowerCase() + '-' + parts[1].toLowerCase() + '.webp';
+          img.alt = parts[1] + ' of ' + parts[0];
+          cell.appendChild(img);
+        } else {
+          // The Joker (December 31) has no card art.
+          var fallback = document.createElement('div');
+          fallback.className = 'card-fallback';
+          fallback.textContent = '🃏';
+          fallback.setAttribute('role', 'img');
+          fallback.setAttribute('aria-label', 'The Joker');
+          cell.appendChild(fallback);
+        }
+
+        if (roles[index]) {
+          var role = document.createElement('span');
+          role.className = 'role';
+          role.textContent = roles[index];
+          cell.appendChild(role);
+        }
+        row.appendChild(cell);
+      });
+      row.hidden = cards.length === 0;
+
+      var synthesis = value('sub', 240);
+      if (synthesis) {
+        var el = document.getElementById('synthesis');
+        el.textContent = synthesis;
+        el.hidden = false;
+      }
+
+      var ref = value('ref', 32);
+      if (/^[A-Za-z0-9_-]+$/.test(ref)) {
+        document.getElementById('invite-code').textContent = ref;
+        document.getElementById('invite').hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

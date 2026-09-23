@@ -810,7 +810,9 @@ async function build() {
 // so copy the finished site there. Allowlisted so build tooling and drafts never ship.
 const STATIC_ENTRIES = [
   'index.html', 'cardy-hero.png', 'icon@3x.png',
-  'robots.txt', 'sitemap.xml', 'llms.txt', 'css', 'js', 'assets'
+  'robots.txt', 'sitemap.xml', 'llms.txt', 'css', 'js', 'assets',
+  // App Clip: Apple's association file and the shared-reading page links point to.
+  '.well-known', 'card'
 ];
 
 function exportSite(pages) {
