@@ -997,7 +997,8 @@
     }
     .footer-links {
       display: flex;
-      gap: 28px;
+      flex-wrap: wrap;
+      gap: 12px 28px;
       list-style: none;
     }
     .footer-links a {
@@ -1256,6 +1257,7 @@
       .cta-box { padding: 40px 28px; }
       .modal { padding: 28px 24px; }
       .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; gap: 10px 20px; }
       .hero-buttons { flex-direction: column; align-items: center; }
       .store-btn { width: 100%; max-width: 280px; justify-content: center; }
     }
@@ -1329,9 +1331,9 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">Now on the App Store</div>
-      <h1>Your cards.<br/>Your <em>story</em>.</h1>
-      <p class="hero-sub">Your birthday maps to three cards in an ordinary 52-card deck. Enter it to see your first card, free.</p>
+      <div class="hero-badge">Your cards. Your story.</div>
+      <h1>Know <em>why</em> you are the way you are</h1>
+      <p class="hero-sub">Your birthday maps to three cards: who you are, where you're headed, and who you're becoming. See your first one free.</p>
   <!-- Sleek Birthday Input Bar -->
   <div class="reveal-bar">
     <div class="reveal-bar-inputs">
@@ -1365,7 +1367,7 @@
 <!-- Your three cards (filled in by the hero calculator) -->
 <section class="reveal-section" id="reveal">
   <div class="reveal-inner">
-    <h2 class="section-title reveal-title">Your three cards</h2>
+    <h2 class="section-title reveal-title">See what your birthday says about you</h2>
     <p class="reveal-sub">Card 1 is free. Cards 2 and 3 unlock in the app.</p>
 
     <!-- The 3 Cards Stage -->
@@ -1472,13 +1474,13 @@
 <section class="features" id="how">
   <div class="features-inner">
     <div class="section-label">How it works</div>
-    <h2 class="section-title">One birthday. Three cards.</h2>
+    <h2 class="section-title">Why your cards are more personal than your sign</h2>
     <ol class="steps">
       <li><span class="step-num">1</span><h3>Your birth date</h3><p>Maps to your Inner Child card: your core nature.</p></li>
       <li><span class="step-num">2</span><h3>Your zodiac sign</h3><p>Shifts that card into your Chosen Purpose: where you're headed.</p></li>
       <li><span class="step-num">3</span><h3>The two combined</h3><p>Become your Highest Self: who you're growing into.</p></li>
     </ol>
-    <p class="steps-note">Same sun sign, different birthday? Different cards. <a href="/cardology-vs-astrology">Cardology vs astrology →</a></p>
+    <p class="steps-note">Same sign as your best friend? You'll still get different cards. <a href="/cardology-vs-astrology">Cardology vs astrology →</a></p>
   </div>
 </section>
 
@@ -1486,21 +1488,21 @@
 <section class="features features--app" id="features">
   <div class="features-inner">
     <div class="section-label">Inside the app</div>
-    <h2 class="section-title">A reading for every day</h2>
+    <h2 class="section-title">A few quiet minutes to start your day</h2>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">&#x2660;</div>
-        <h3>Daily card stories</h3>
+        <h3>Start the day with a clear head</h3>
         <p>Each day has its own card. Listen to or read its story, then check in with how you feel.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#x2665;</div>
-        <h3>All three of your cards</h3>
-        <p>Your Inner Child, Chosen Purpose, and Highest Self, plus your two karma cards.</p>
+        <h3>Finally make sense of your patterns</h3>
+        <p>Your Inner Child, Chosen Purpose, and Highest Self show what drives you. Two karma cards show your gifts and your lessons.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#x2663;</div>
-        <h3>Connections</h3>
+        <h3>See why you click (or clash) with the people you love</h3>
         <p>Add friends, family, or a partner and see how your cards fit together.</p>
       </div>
     </div>
@@ -1511,9 +1513,9 @@
 <section class="features learn-section" id="library">
   <div class="features-inner">
     <div class="section-label">Learn</div>
-    <h2 class="section-title">New to cardology?</h2>
+    <h2 class="section-title">Get the basics in two minutes</h2>
     <div class="learn-grid">
-      <a class="learn-link" href="/what-is-cardology"><strong>What is cardology?</strong><span>The basics in two minutes</span></a>
+      <a class="learn-link" href="/what-is-cardology"><strong>What is cardology?</strong><span>Start here</span></a>
       <a class="learn-link" href="/cardology-vs-astrology"><strong>Cardology vs astrology</strong><span>How the two fit together</span></a>
       <a class="learn-link" href="/how-to-read-destiny-cards"><strong>How to read your cards</strong><span>A beginner's walkthrough</span></a>
       <a class="learn-link" href="/birth-card-meanings"><strong>Birth card meanings</strong><span>All 52 cards and the Joker</span></a>
@@ -1526,7 +1528,7 @@
 <!-- CTA -->
 <section class="cta-band" id="cta">
   <div class="cta-box">
-    <h2>Start with your Birth Card</h2>
+    <h2>See your first card free, in seconds</h2>
     <p>Free to download. Your first card is already waiting.</p>
     <div class="hero-buttons">
       <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="store-btn store-btn--apple" target="_blank" rel="noopener">
