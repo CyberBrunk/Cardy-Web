@@ -14,6 +14,8 @@
   <meta name="twitter:title" content="Cardy: Play your cards right" />
   <meta name="twitter:description" content="Discover your 3 cards and what they reveal about you. Daily readings, personality insights, and compatibility — all based on your birthday." />
   <link rel="icon" type="image/png" href="icon@3x.png" />
+  <meta name="apple-itunes-app" content="app-id=6757249840" />
+  <link rel="preload" as="image" href="assets/cardy-hero-520.webp" imagesrcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" imagesizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -237,35 +239,10 @@
       gap: 60px;
       align-items: center;
     }
-    .hero-text {
-      animation: fadeUp 0.8s ease-out both;
-    }
+    @keyframes fadeIn { from { opacity: 0.001; } to { opacity: 1; } }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(180, 43, 25, 0.15);
-      border: 1px solid rgba(180, 43, 25, 0.3);
-      border-radius: 999px;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #FF8A80;
-      margin-bottom: 28px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .hero-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #FF8A80;
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
     }
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; }
@@ -332,7 +309,7 @@
     .hero-image {
       display: flex;
       justify-content: center;
-      animation: fadeUp 0.8s 0.2s ease-out both;
+      animation: fadeIn 0.4s ease-out both;
     }
     .hero-image img {
       width: 100%;
@@ -971,6 +948,33 @@
       opacity: 0.85;
     }
 
+    /* ---- Hero proof row + validation ---- */
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 16px;
+      margin-top: 18px;
+    }
+    .hero-proof .katie-byline { margin-top: 0; }
+    .hero-rating {
+      font-size: 14px;
+      color: var(--cream-dim);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .hero-rating:hover { color: var(--cream); }
+    .reveal-hint {
+      font-size: 14px;
+      color: #FF8A80;
+      margin: -8px 0 14px;
+    }
+    .reveal-select.is-invalid { color: #FF8A80; }
+    .reveal-bar.is-invalid {
+      border-color: rgba(255, 138, 128, 0.7);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 138, 128, 0.18);
+    }
+
     /* ---- Trust: Katie byline (hero) ---- */
     .hero-trust a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255, 244, 244, 0.35); }
     .hero-trust a:hover { color: var(--cream); }
@@ -1501,6 +1505,8 @@
         gap: 48px;
       }
       .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-proof { justify-content: center; }
+      .reveal-hint { margin-top: -8px; }
       .hero-buttons { justify-content: center; }
       .steps { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .hero-image { order: 1; }
@@ -1570,6 +1576,8 @@
       .footer-links { justify-content: center; gap: 10px 20px; }
       .hero-buttons { flex-direction: column; align-items: center; }
       .store-btn { width: 100%; max-width: 280px; justify-content: center; }
+      .gradient-orb--2, .gradient-orb--4, .gradient-orb--6 { display: none; }
+      .gradient-orb { animation: none !important; filter: blur(60px); }
       .katie-byline { font-size: 13px; }
       .katie-card { padding: 32px 20px; border-radius: 22px; }
       .katie-photo { max-width: 220px; }
@@ -1585,7 +1593,30 @@
       .example-card { padding: 24px 20px; }
       .result-story blockquote { font-size: 14px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .gradient-orb, .hero-image, .reveal-result-box { animation: none !important; }
+    }
   </style>
+
+  <!-- Analytics: PostHog (same project as the iOS app) + Vercel custom events -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag onFeatureFlags identify alias people.set people.set_once set_config get_distinct_id".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_AkvPJMCxPSt5mxPBuuWasEU63eiUtHhACUMvAorEqegF', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: false,
+      disable_session_recording: true
+    });
+    posthog.register({ environment: 'web', page: 'home' });
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    // One call fans out to PostHog and Vercel Analytics. Never pass birthdays or other PII.
+    window.cardyTrack = function (name, props) {
+      try { posthog.capture(name, props || {}); } catch (e) {}
+      try { window.va('event', { name: name, data: props || {} }); } catch (e) {}
+    };
+  </script>
 
   <!-- Structured Data — entity + app recognition for AI systems -->
   <script type="application/ld+json">
@@ -1664,7 +1695,6 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">Your cards. Your story.</div>
       <h1>Know <em>why</em> you are the way you are</h1>
       <p class="hero-sub">Your birthday maps to three cards: who you are, where you're headed, and who you're becoming. See your first one free.</p>
   <!-- Sleek Birthday Input Bar -->
@@ -1682,21 +1712,24 @@
         <option value="" disabled selected>Select Day</option>
       </select>
       <button type="button" id="heroCalcBtn" class="reveal-btn">
-        <span>Reveal My Cards</span>
+        <span>See My Birth Card · Free</span>
         <span class="btn-sparkle">✦</span>
       </button>
     </div>
   </div>
 
+      <p class="reveal-hint" id="revealHint" role="alert" hidden>Pick your birth month and day to see your card.</p>
       <p class="hero-alt" id="download">Or get the app: <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web App (Android)</a></p>
-      <p class="hero-trust"><a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?see-all=reviews" target="_blank" rel="noopener"><span class="trust-stars">★★★★★</span> 5-star rating on the App Store</a> · No birth time needed</p>
-      <a class="katie-byline" href="#katie">
-        <img class="katie-mono" src="/assets/katie/katie-avatar.webp" alt="" width="36" height="36" />
-        <span>Built on <strong>15+ years of readings</strong> by Katie, the Card Lady</span>
-      </a>
+      <div class="hero-proof">
+        <a class="katie-byline" href="#katie" data-track="katie_byline">
+          <img class="katie-mono" src="/assets/katie/katie-avatar.webp" alt="" width="36" height="36" />
+          <span>Built on <strong>15+ years of readings</strong> by Katie, the Card Lady</span>
+        </a>
+        <a class="hero-rating" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?see-all=reviews" target="_blank" rel="noopener" data-store="app_store_reviews" data-placement="hero_rating"><span class="trust-stars">★★★★★</span> on the App Store</a>
+      </div>
     </div>
     <div class="hero-image">
-      <img src="cardy-hero.png" alt="Cardy app showing daily card readings and friend profiles" />
+      <img src="assets/cardy-hero-520.webp" srcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" sizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" width="520" height="667" fetchpriority="high" decoding="async" alt="Cardy app showing daily card readings and friend profiles" />
     </div>
   </div>
 </section>
@@ -2075,6 +2108,7 @@
       <p><strong>Journal Entries:</strong> If you use the journaling feature, we collect the text you write. Journal entries are stored with your account and used only to display your personal journal history.</p>
       <p><strong>Contacts:</strong> If you choose to import birthdays from your contacts, we access contact names and birthdays only. This data is used solely to calculate card profiles for your contacts and is not linked to your identity.</p>
       <p><strong>Usage Data:</strong> We collect anonymous usage data to improve the App, such as which features are used and general app performance metrics.</p>
+      <p><strong>Website Analytics:</strong> On cardy.today we record anonymous usage, such as pages viewed, which sections you scroll to, which buttons you click, and the birth card the calculator shows you. We do not record the birthday you enter, and we do not record your screen or keystrokes.</p>
 
       <h3>2. How We Use Your Information</h3>
       <p>We use your information to:</p>
@@ -2103,6 +2137,8 @@
         <li>RevenueCat (subscription management)</li>
         <li>Apple (App Store and Sign In with Apple)</li>
         <li>Meta / Facebook (advertising measurement and app install attribution)</li>
+        <li>PostHog (product analytics for the App and this website)</li>
+        <li>Vercel (website hosting and page analytics)</li>
       </ul>
       <p>These providers process data solely to deliver their services and are bound by their own privacy policies.</p>
       <p>To measure how well our advertising performs, we use the Meta SDK, which shares a limited set of app activity with Meta, such as app installs and events like completing sign-up or starting a subscription, along with a device identifier. We do not enable Meta's advertising identifier (IDFA) and we do not track you across other apps or websites. This measurement is performed in aggregate through Apple's SKAdNetwork, and we never ask you to opt in to tracking. You can learn how Meta uses this data in the <a href="https://www.facebook.com/privacy/policy" style="color: var(--red-light);">Meta Privacy Policy</a>.</p>
@@ -2304,6 +2340,24 @@
     }
 
     mSelect.addEventListener('change', populateDays);
+
+    const revealBar = mSelect.closest('.reveal-bar');
+    const revealHint = document.getElementById('revealHint');
+    function clearInvalid() {
+      mSelect.classList.remove('is-invalid');
+      dSelect.classList.remove('is-invalid');
+      if (revealBar) revealBar.classList.remove('is-invalid');
+      if (revealHint) revealHint.hidden = true;
+    }
+    let birthdayStarted = false;
+    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', () => {
+      if (mSelect.value && dSelect.value) clearInvalid();
+      if (!birthdayStarted) {
+        birthdayStarted = true;
+        window.cardyTrack('web_birthday_started', { field: sel === mSelect ? 'month' : 'day' });
+      }
+    }));
+    let revealCount = 0;
 
     const suits = [
       { name: 'Hearts', symbol: '♥', color: '#C92A1D', anchor: 'hearts' },
@@ -2689,10 +2743,26 @@
       const m = parseInt(mSelect.value, 10);
       const d = parseInt(dSelect.value, 10);
       if (!m || !d) {
-        alert('Please select both your birth month and day.');
+        const missing = !m ? mSelect : dSelect;
+        mSelect.classList.toggle('is-invalid', !m);
+        dSelect.classList.toggle('is-invalid', !d);
+        if (revealBar) revealBar.classList.add('is-invalid');
+        if (revealHint) revealHint.hidden = false;
+        missing.focus();
+        window.cardyTrack('web_reveal_invalid', { missing: !m && !d ? 'both' : (!m ? 'month' : 'day') });
         return;
       }
+      clearInvalid();
       applyCardData(m, d);
+      revealCount += 1;
+      const cardName = card1Title ? card1Title.textContent : '';
+      window.cardyTrack('web_card_revealed', {
+        card: cardName,
+        suit: cardName === 'The Joker' ? 'Joker' : (cardName.split(' of ')[1] || ''),
+        story_shown: storyBox ? !storyBox.hidden : false,
+        reveal_count: revealCount
+      });
+      try { posthog.register({ birth_card: cardName }); } catch (e) {}
       document.getElementById('reveal').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -2830,11 +2900,81 @@
 </script>
 
 <!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () {
-    (window.vaq = window.vaq || []).push(arguments);
-  };
-</script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+<!-- Conversion tracking: clicks, section views, scroll depth -->
+<script>
+  (function initTracking() {
+    const track = window.cardyTrack || function () {};
+    const SECTION_NAMES = { top: 'hero', reveal: 'reveal', how: 'how_it_works', katie: 'meet_katie', features: 'inside_app', stories: 'stories', examples: 'examples', library: 'learn', cta: 'final_cta' };
+
+    function placementOf(el) {
+      if (el.dataset.placement) return el.dataset.placement;
+      if (el.closest('nav')) return 'nav';
+      if (el.closest('footer')) return 'footer';
+      if (el.closest('#heroCalcUnlock')) return 'reveal_result';
+      const sec = el.closest('section[id]');
+      return sec ? (SECTION_NAMES[sec.id] || sec.id) : 'other';
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      const placement = placementOf(link);
+
+      if (href.includes('apps.apple.com')) {
+        track('web_store_clicked', { store: link.dataset.store || 'app_store', placement: placement, birth_card_known: !!document.getElementById('heroCalcUnlock')?.offsetParent });
+      } else if (href.includes('app.cardy.today')) {
+        // Hand the source to the web app so its own analytics can attribute the visit.
+        try {
+          const url = new URL(link.href);
+          url.searchParams.set('utm_source', 'cardy.today');
+          url.searchParams.set('utm_medium', 'homepage');
+          url.searchParams.set('utm_campaign', placement);
+          link.href = url.toString();
+        } catch (err) {}
+        track('web_store_clicked', { store: 'web_app', placement: placement });
+      } else if (link.dataset.track) {
+        track('web_' + link.dataset.track + '_clicked', { placement: placement });
+      } else if (link.closest('#card1Link, #card1DescLink, #unlockDesc')) {
+        track('web_card_profile_clicked', { placement: placement, href: href });
+      } else if (href.startsWith('/') || href.startsWith('#')) {
+        track('web_internal_link_clicked', { placement: placement, href: href });
+      }
+    }, { capture: true });
+
+    // Which sections people actually reach (fires once each)
+    if ('IntersectionObserver' in window) {
+      const seen = new Set();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (!entry.isIntersecting || seen.has(id)) return;
+          seen.add(id);
+          track('web_section_viewed', { section: SECTION_NAMES[id] || id });
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+      Object.keys(SECTION_NAMES).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && id !== 'top') io.observe(el);
+      });
+    }
+
+    // Scroll depth milestones
+    const marks = [25, 50, 75, 100];
+    let hit = 0;
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (max <= 0) return;
+      const pct = (scrollY / max) * 100;
+      while (hit < marks.length && pct >= marks[hit] - 1) {
+        track('web_scroll_depth', { percent: marks[hit] });
+        hit += 1;
+      }
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>
