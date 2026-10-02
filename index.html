@@ -367,34 +367,6 @@
       flex-direction: column;
       align-items: stretch;
     }
-    .stage-card-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--cream-dim);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .card-pill {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-    .card-pill.free {
-      background: rgba(46, 204, 113, 0.15);
-      color: #2ECC71;
-      border: 1px solid rgba(46, 204, 113, 0.35);
-    }
-    .card-pill.lock {
-      background: rgba(255, 244, 244, 0.08);
-      color: #FF8A80;
-      border: 1px solid rgba(180, 43, 25, 0.3);
-    }
 
     /* Card 1: Direct Revealed Card Face (Clickable Link to Description) */
     .stage-card-face {
@@ -415,8 +387,7 @@
     }
     .card-face-unselected {
       height: 100%;
-      background: linear-gradient(145deg, #181E35 0%, #0D101F 100%);
-      border: 1.5px dashed rgba(255, 244, 244, 0.22);
+      background: url('/assets/cards/back.webp') center / cover no-repeat;
       border-radius: 16px;
       display: flex;
       flex-direction: column;
@@ -425,20 +396,6 @@
       padding: 16px;
       text-align: center;
       gap: 8px;
-    }
-    .unselected-icon {
-      font-size: 26px;
-      color: #FF8A80;
-      animation: pulse-dot 2.5s infinite ease-in-out;
-    }
-    .unselected-text {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--cream);
-    }
-    .unselected-sub {
-      font-size: 11px;
-      color: var(--cream-dim);
     }
     .card-face-active {
       height: 100%;
@@ -511,21 +468,6 @@
     .stage-card-face:hover .card-center-suit {
       transform: scale(1.08);
     }
-    .card-read-desc-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #FF8A80;
-      text-decoration: none;
-      margin-top: 6px;
-      transition: gap 0.2s, color 0.2s;
-    }
-    .card-read-desc-btn:hover {
-      color: var(--cream);
-      gap: 7px;
-    }
     .result-inline-link {
       color: #FF8A80;
       font-weight: 700;
@@ -588,8 +530,8 @@
     .card-static-back > * { position: relative; }
 
     .lock-medallion {
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: radial-gradient(circle, #252C4B 0%, #0F1222 100%);
       border: 1.5px solid rgba(220, 180, 110, 0.65);
@@ -604,18 +546,8 @@
       transform: scale(1.12);
       box-shadow: 0 0 26px rgba(220, 180, 110, 0.55);
     }
-    .card-back-sub {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #E8C17A;
-      background: rgba(0, 0, 0, 0.45);
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(220, 180, 110, 0.3);
-    }
 
+    .stage-card-title:empty { display: none; }
     /* Meta text below cards */
     .stage-card-info {
       margin-top: 12px;
@@ -1570,7 +1502,6 @@
       .card-center-suit { font-size: 32px; }
       .lock-medallion, .card-back-icon { width: 36px; height: 36px; }
       .lock-medallion svg { width: 16px; height: 16px; }
-      .card-back-sub, .card-back-text { font-size: 9px; padding: 2px 6px; }
       .stage-card-title { font-size: 11px; }
       .reveal-result-box { padding: 20px 16px; }
       .result-headline { font-size: 18px; }
@@ -1759,18 +1690,10 @@
     <div class="cards-stage">
       <!-- Card 1: Inner Child (Revealed Direct & Links to Description) -->
       <div class="stage-card-wrap">
-        <div class="stage-card-label">
-          <span>Card 1</span>
-          <span class="card-pill free">Free</span>
-        </div>
         <a href="/birth-card-meanings" id="card1Link" class="stage-card-face" title="Read birth card description">
           <img class="card-flip-back" id="card1Back" src="/assets/cards/back.webp" alt="" hidden />
           <!-- Unselected state -->
-          <div class="card-face-unselected" id="card1Unselected">
-            <div class="unselected-icon">✦</div>
-            <div class="unselected-text">Your Birth Card</div>
-            <span class="unselected-sub">Select birthday</span>
-          </div>
+          <div class="card-face-unselected" id="card1Unselected" role="img" aria-label="Your birth card, face down"></div>
           <!-- Calculated card face -->
           <div class="card-face-active" id="card1Active" style="display: none;">
             <img class="card-art" id="card1Art" alt="" hidden />
@@ -1792,47 +1715,31 @@
         </a>
         <div class="stage-card-info">
           <div class="stage-card-role">Inner Child</div>
-          <div class="stage-card-title" id="card1Title">Select Birthday</div>
-          <a href="/birth-card-meanings" id="card1DescLink" class="card-read-desc-btn" style="display: none;">
-            <span>Read description</span>
-            <span>→</span>
-          </a>
+          <div class="stage-card-title" id="card1Title"></div>
         </div>
       </div>
 
       <!-- Card 2: Chosen Purpose (Face Down) -->
       <div class="stage-card-wrap locked">
-        <div class="stage-card-label">
-          <span>Card 2</span>
-          <span class="card-pill lock">🔒 App</span>
-        </div>
         <div class="card-static-back">
           <div class="lock-medallion">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           </div>
-          <span class="card-back-sub">Zodiac Shift</span>
         </div>
         <div class="stage-card-info">
           <div class="stage-card-role">Chosen Purpose</div>
-          <div class="stage-card-title">From your zodiac sign</div>
         </div>
       </div>
 
       <!-- Card 3: Highest Self (Face Down) -->
       <div class="stage-card-wrap locked">
-        <div class="stage-card-label">
-          <span>Card 3</span>
-          <span class="card-pill lock">🔒 App</span>
-        </div>
         <div class="card-static-back">
           <div class="lock-medallion">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           </div>
-          <span class="card-back-sub">The Synthesis</span>
         </div>
         <div class="stage-card-info">
           <div class="stage-card-role">Highest Self</div>
-          <div class="stage-card-title">Cards 1 + 2 combined</div>
         </div>
       </div>
     </div>
