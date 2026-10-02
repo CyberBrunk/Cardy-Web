@@ -6,6 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const pagesDir = path.join(rootDir, 'seo-content', 'pages');
+const partialsDir = path.join(rootDir, 'seo-content', 'partials');
+const readPartial = (name) => fs.readFileSync(path.join(partialsDir, name), 'utf-8');
 
 const DOMAIN = 'https://cardy.today';
 const APP_STORE_URL = 'https://apps.apple.com/us/app/cardy-reflections/id6757249840';
@@ -433,6 +435,9 @@ function buildHtmlPage(meta, contentHtml, faqs) {
   // Check if interactive widget script is needed
   const cleanSlugForWidget = (meta.slug || '').replace(/^\/+/, '');
   const hasInteractiveWidget = ['destiny-cards-calculator', 'find-my-birth-card', 'destiny-cards-relationship-chart'].includes(cleanSlugForWidget);
+  // Free compatibility preview (first cards, first compatibility card, one planet)
+  const hasCompatPreview = cleanSlugForWidget === 'cardology-compatibility';
+  const analyticsHead = readPartial('analytics-head.html').replace('{{PAGE}}', cleanSlugForWidget);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -462,6 +467,8 @@ function buildHtmlPage(meta, contentHtml, faqs) {
 
   <!-- Shared & Page Styles -->
   <link rel="stylesheet" href="/css/article.css" />
+  ${hasCompatPreview ? '<link rel="stylesheet" href="/css/compat-preview.css" />' : ''}
+  ${analyticsHead}
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -543,7 +550,7 @@ function buildHtmlPage(meta, contentHtml, faqs) {
     }
     .footer-left { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--cream-dim); }
     .footer-left img { width: 28px; height: 28px; border-radius: 6px; }
-    .footer-links { display: flex; gap: 24px; list-style: none; font-size: 14px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; font-size: 14px; }
     .footer-links a { color: var(--cream-dim); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--cream); }
     @media (max-width: 768px) {
@@ -564,8 +571,6 @@ ${JSON.stringify(breadcrumbsSchema, null, 2)}
   <!-- Ambient background -->
   <div class="gradient-bg">
     <div class="linen-texture" id="linenTexture"></div>
-    <div class="gradient-orb gradient-orb--1"></div>
-    <div class="gradient-orb gradient-orb--2"></div>
   </div>
 
   <!-- Navigation -->
@@ -602,7 +607,7 @@ ${JSON.stringify(breadcrumbsSchema, null, 2)}
         <span class="pillar-badge">${pillarLabel(pillar)}</span>
         <h1>${title.split('|')[0].trim()}</h1>
       </header>
-
+${hasCompatPreview ? '\n      ' + readPartial('compatibility-preview.html') : ''}
       <!-- Main Body -->
       <div class="article-content">
         ${contentHtml}
@@ -689,6 +694,7 @@ ${JSON.stringify(breadcrumbsSchema, null, 2)}
   </script>
 
   ${hasInteractiveWidget ? '<script src="/js/card-calculator.js"></script>' : ''}
+  ${hasCompatPreview ? '<script src="/js/compatibility-preview.js"></script>' : ''}
 
   <!-- Vercel Web Analytics -->
   <script>
