@@ -1157,6 +1157,43 @@
     .example-card dd { font-size: 15px; line-height: 1.6; color: var(--cream-dim); }
     .example-card dd.example-q { color: var(--cream); font-style: italic; }
 
+    /* ---- Hand-drawn charts strip ---- */
+    .charts-strip {
+      max-width: 960px;
+      margin: 28px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .charts-strip figure {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 244, 244, 0.08);
+      background: var(--dark-card);
+    }
+    .charts-strip img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+    .charts-quote {
+      max-width: 760px;
+      margin: 32px auto 0;
+      text-align: center;
+    }
+    .charts-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.4;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .charts-quote figcaption { font-size: 14px; color: var(--cream-dim); }
+
     /* ---- Stories ---- */
     .stories-section { padding-top: 40px; }
     .stories-sub {
@@ -1484,6 +1521,7 @@
       .katie-copy .section-title { text-align: center; }
       .stories-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
       .examples-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .charts-strip { gap: 12px; }
     }
     @media (max-width: 600px) {
       .hero { padding: 100px 20px 60px; min-height: auto; }
@@ -1806,6 +1844,14 @@
       </ul>
     </div>
   </div>
+  <div class="charts-strip">
+    <figure><img src="/assets/katie/charts-spread.webp" alt="Three of Katie's hand-drawn card charts on teal, red, and pink paper" width="640" height="706" loading="lazy" /></figure>
+    <figure><img src="/assets/katie/chart-closeup.webp" alt="Close-up of a hand-lettered chart showing a client's cards, planets, and meanings" width="640" height="460" loading="lazy" /></figure>
+  </div>
+  <figure class="charts-quote">
+    <blockquote>From hand-drawn readings to bringing Cardy to the masses: this has been my dream since I devoted my life to the cards.</blockquote>
+    <figcaption>Katie, with a few of her hand-drawn client charts</figcaption>
+  </figure>
 </section>
 
 <!-- Inside the app -->
