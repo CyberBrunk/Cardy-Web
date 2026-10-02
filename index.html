@@ -515,7 +515,6 @@
       padding: 14px 16px;
       color: #151828;
       position: relative;
-      animation: fadeIn 0.4s ease;
     }
     .card-hover-banner {
       position: absolute;
@@ -773,7 +772,81 @@
 
 
     /* ---- Hero extras ---- */
-    .hero-text .reveal-bar { margin-bottom: 20px; }
+    .hero-text .reveal-wrap { margin-bottom: 20px; }
+
+    /* ---- Hero deck: three card backs resting behind the birthday bar ---- */
+    .reveal-wrap {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+    .hero-deck {
+      position: absolute;
+      right: 44px;
+      top: -38px;
+      width: 96px;
+      height: 72px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero-deck span {
+      position: absolute;
+      left: 25px;
+      bottom: 0;
+      width: 46px;
+      height: 68px;
+      border-radius: 6px;
+      background: url('/assets/cards/back.webp') center / cover no-repeat;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+      transform-origin: 50% 100%;
+      transform: rotate(var(--r)) translateY(var(--y, 0px));
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      animation: deckRise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d) backwards;
+    }
+    .hero-deck span:nth-child(1) { --r: -18deg; --d: 0.35s; left: 8px; }
+    .hero-deck span:nth-child(2) { --r: -3deg; --d: 0.45s; left: 25px; }
+    .hero-deck span:nth-child(3) { --r: 13deg; --d: 0.55s; left: 42px; }
+    .hero-deck.lift-1 span:nth-child(3) { --y: -10px; }
+    .hero-deck.lift-2 span:nth-child(3) { --y: -20px; }
+    .hero-deck.lift-2 span:nth-child(2) { --y: -6px; }
+    .hero-deck.dealt span:nth-child(3) {
+      transform: rotate(28deg) translate(30px, -110px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.4s ease-in;
+    }
+    .hero-deck.dealt-reset span:nth-child(3) { transition: none; }
+    @keyframes deckRise {
+      from { transform: rotate(0deg) translateY(64px); opacity: 0; }
+    }
+
+    /* ---- Reveal flip ---- */
+    .card-flip-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      z-index: 2;
+    }
+    .stage-card-face::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(105deg, transparent 30%, rgba(255, 226, 160, 0.0) 38%, rgba(255, 226, 160, 0.55) 50%, rgba(255, 255, 255, 0.0) 62%, transparent 70%);
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    .stage-card-face.is-shimmering::after {
+      animation: cardShimmer 0.9s ease-out;
+    }
+    @keyframes cardShimmer {
+      0% { transform: translateX(-120%); opacity: 1; }
+      100% { transform: translateX(120%); opacity: 1; }
+    }
     .hero-alt {
       font-size: 15px;
       color: var(--cream-dim);
@@ -1535,6 +1608,8 @@
       .hero-image img { max-width: 300px; }
       .store-btn { padding: 12px 20px; font-size: 14px; }
       .reveal-section { padding: 60px 16px; }
+      .reveal-wrap { display: block; }
+      .hero-deck { right: 24px; top: -30px; transform: scale(0.85); transform-origin: 50% 100%; }
       .reveal-bar {
         border-radius: 16px;
         padding: 12px 14px;
@@ -1594,7 +1669,8 @@
       .result-story blockquote { font-size: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .gradient-orb, .hero-image, .reveal-result-box { animation: none !important; }
+      .gradient-orb, .hero-image, .reveal-result-box, .hero-deck span { animation: none !important; }
+      .hero-deck span { transition: none !important; }
     }
   </style>
 
@@ -1697,7 +1773,9 @@
     <div class="hero-text">
       <h1>Know <em>why</em> you are the way you are</h1>
       <p class="hero-sub">Your birthday maps to three cards: who you are, where you're headed, and who you're becoming. See your first one free.</p>
-  <!-- Sleek Birthday Input Bar -->
+  <!-- Sleek Birthday Input Bar, with a small deck resting behind it -->
+  <div class="reveal-wrap">
+  <div class="hero-deck" id="heroDeck" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="reveal-bar">
     <div class="reveal-bar-inputs">
       <select id="heroMonth" class="reveal-select" aria-label="Birth Month">
@@ -1716,6 +1794,7 @@
         <span class="btn-sparkle">✦</span>
       </button>
     </div>
+  </div>
   </div>
 
       <p class="reveal-hint" id="revealHint" role="alert" hidden>Pick your birth month and day to see your card.</p>
@@ -1749,6 +1828,7 @@
           <span class="card-pill free">Free</span>
         </div>
         <a href="/birth-card-meanings" id="card1Link" class="stage-card-face" title="Read birth card description">
+          <img class="card-flip-back" id="card1Back" src="/assets/cards/back.webp" alt="" hidden />
           <!-- Unselected state -->
           <div class="card-face-unselected" id="card1Unselected">
             <div class="unselected-icon">✦</div>
@@ -2736,7 +2816,6 @@
         card1DescLink.style.display = 'inline-flex';
       }
       showStory(m === 12 && d === 31 ? 'Joker' : fullName.split(' of ')[1]);
-      if (unlockBox) unlockBox.style.display = 'block';
     }
 
     function revealCards() {
@@ -2753,17 +2832,134 @@
         return;
       }
       clearInvalid();
+      const run = ++revealRun;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const section = document.getElementById('reveal');
+      const needsScroll = Math.abs(section.getBoundingClientRect().top - 72) > 12;
+
+      stopRevealAnimations();
+      dealFromDeck(reduce);
+      section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+
+      if (reduce) {
+        applyCardData(m, d);
+        finishReveal(false);
+        return;
+      }
+      waitForScroll(needsScroll).then(() => {
+        if (run === revealRun) playFlip(m, d, run);
+      });
+    }
+
+    // ---- Reveal choreography: land, lift, flip, shimmer, tease, then the result ----
+    let revealRun = 0;
+    const card1Back = document.getElementById('card1Back');
+    const lockedBacks = Array.from(document.querySelectorAll('.stage-card-wrap.locked .card-static-back'));
+    const P = 'perspective(900px) ';
+
+    function animate(el, frames, duration, easing, delay) {
+      const a = el.animate(frames, { duration: duration, easing: easing || 'ease', delay: delay || 0, fill: 'forwards' });
+      return a.finished.catch(() => {});
+    }
+    function stopRevealAnimations() {
+      [card1Link].concat(lockedBacks).forEach((el) => el && el.getAnimations().forEach((a) => a.cancel()));
+      if (card1Link) card1Link.classList.remove('is-shimmering');
+    }
+    function waitForScroll(needsScroll) {
+      return new Promise((resolve) => {
+        if (!needsScroll) return resolve();
+        let done = false;
+        const finish = () => { if (done) return; done = true; window.removeEventListener('scrollend', finish); resolve(); };
+        if ('onscrollend' in window) window.addEventListener('scrollend', finish);
+        setTimeout(finish, 600);
+      });
+    }
+
+    async function playFlip(m, d, run) {
+      const face = card1Link;
+      const stale = () => run !== revealRun;
+      if (unlockBox) unlockBox.style.display = 'none';
+
+      // The dealt card lands face down in the Card 1 slot
+      if (card1Unselected) card1Unselected.style.display = 'none';
+      if (card1Back) card1Back.hidden = false;
+      await animate(face, [
+        { transform: P + 'translateY(-56px) rotate(-10deg) scale(1.1)', opacity: 0 },
+        { transform: P + 'translateY(0) rotate(0) scale(1)', opacity: 1 }
+      ], 360, 'cubic-bezier(0.2, 0.8, 0.2, 1)');
+      if (stale()) return;
+
+      // Lift, then turn over to the halfway point
+      await animate(face, [
+        { transform: P + 'translateY(0) scale(1)' },
+        { transform: P + 'translateY(-10px) scale(1.04)' }
+      ], 130, 'ease-out');
+      if (stale()) return;
+      await animate(face, [
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(0deg)' },
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(90deg)' }
+      ], 220, 'ease-in');
+      if (stale()) return;
+
+      // Edge-on: swap the back for the real face, then finish the turn with a small overshoot
       applyCardData(m, d);
+      if (card1Back) card1Back.hidden = true;
+      await animate(face, [
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(-90deg)' },
+        { transform: P + 'translateY(0) scale(1) rotateY(0deg)' }
+      ], 500, 'cubic-bezier(0.34, 1.56, 0.64, 1)');
+      if (stale()) return;
+      face.getAnimations().forEach((a) => a.cancel()); // hand transform back to CSS hover
+
+      // Gold shimmer across the face, and cards 2 and 3 lean in as if about to turn
+      face.classList.add('is-shimmering');
+      setTimeout(() => face.classList.remove('is-shimmering'), 950);
+      lockedBacks.forEach((el, i) => {
+        animate(el, [
+          { transform: P + 'translateY(0) rotateY(0deg)' },
+          { transform: P + 'translateY(-12px) rotateY(-28deg) rotate(-2deg)', offset: 0.45 },
+          { transform: P + 'translateY(0) rotateY(0deg)' }
+        ], 720, 'ease-in-out', 120 + i * 110).then(() => el.getAnimations().forEach((a) => a.cancel()));
+      });
+
+      await new Promise((r) => setTimeout(r, 280));
+      if (stale()) return;
+      finishReveal(true);
+    }
+
+    function finishReveal(animated) {
+      if (card1Back) card1Back.hidden = true;
+      if (unlockBox) unlockBox.style.display = 'block';
       revealCount += 1;
       const cardName = card1Title ? card1Title.textContent : '';
       window.cardyTrack('web_card_revealed', {
         card: cardName,
         suit: cardName === 'The Joker' ? 'Joker' : (cardName.split(' of ')[1] || ''),
         story_shown: storyBox ? !storyBox.hidden : false,
-        reveal_count: revealCount
+        reveal_count: revealCount,
+        animated: animated
       });
       try { posthog.register({ birth_card: cardName }); } catch (e) {}
-      document.getElementById('reveal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ---- Hero deck: reacts to the birthday inputs, deals its top card on reveal ----
+    const heroDeck = document.getElementById('heroDeck');
+    function syncDeck() {
+      if (!heroDeck) return;
+      heroDeck.classList.toggle('lift-1', !!mSelect.value && !dSelect.value);
+      heroDeck.classList.toggle('lift-2', !!mSelect.value && !!dSelect.value);
+    }
+    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', syncDeck));
+    function dealFromDeck(reduce) {
+      if (!heroDeck || reduce) return;
+      heroDeck.classList.add('dealt');
+      // Quietly put the card back once the hero is off screen, ready for another reveal
+      setTimeout(() => {
+        heroDeck.classList.add('dealt-reset');
+        heroDeck.classList.remove('dealt');
+        void heroDeck.offsetWidth;
+        heroDeck.classList.remove('dealt-reset');
+      }, 1600);
     }
 
     btn.addEventListener('click', revealCards);
