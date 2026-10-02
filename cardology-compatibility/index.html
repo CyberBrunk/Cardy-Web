@@ -38,7 +38,7 @@
       autocapture: false,
       disable_session_recording: true
     });
-    posthog.register({ environment: 'web', page: 'compatibility' });
+    posthog.register({ environment: 'web', page: 'cardology-compatibility' });
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     // One call fans out to PostHog and Vercel Analytics. Never pass birthdays, names, or other PII.
     window.cardyTrack = function (name, props) {
@@ -46,6 +46,7 @@
       try { window.va('event', { name: name, data: props || {} }); } catch (e) {}
     };
   </script>
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -177,7 +178,7 @@
     "@id": "https://cardy.today/cardology-compatibility"
   },
   "datePublished": "2026-09-18",
-  "dateModified": "2026-09-23",
+  "dateModified": "2026-10-02",
   "author": {
     "@type": "Organization",
     "name": "Cardy",
@@ -448,12 +449,12 @@
   </script>
 
   
+  <script src="/js/compatibility-preview.js"></script>
 
   <!-- Vercel Web Analytics -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-  <script src="/js/compatibility-preview.js"></script>
 </body>
 </html>
