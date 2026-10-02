@@ -148,6 +148,39 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* ---- Hero tag styled as a small playing card ---- */
+    .hero-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--dark);
+      box-shadow:
+        inset 0 0 0 3px var(--cream),
+        inset 0 0 0 4px rgba(180, 43, 25, 0.45),
+        0 10px 24px rgba(0, 0, 0, 0.45);
+      transform: rotate(-2deg);
+    }
+    .tag-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .tag-index {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 13px;
+      line-height: 1;
+      color: var(--red);
+    }
+    .tag-index span { font-size: 11px; margin-top: 1px; }
+    .tag-index--flip { transform: rotate(180deg); color: var(--dark); }
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
@@ -1566,6 +1599,12 @@
       .example-card { padding: 24px 20px; }
       .result-story blockquote { font-size: 14px; }
     }
+    @media (max-width: 360px) {
+      .hero-card-tag { margin-bottom: 14px; padding: 5px 10px; gap: 9px; }
+      .tag-text { font-size: 14px; }
+      .hero h1 { margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 28px; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hero-image, .reveal-result-box, .hero-deck span { animation: none !important; }
       .hero-deck span { transition: none !important; }
@@ -1663,6 +1702,11 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-text">
+      <div class="hero-card-tag">
+        <span class="tag-index" aria-hidden="true">A<span>♥</span></span>
+        <span class="tag-text">Your cards. Your story.</span>
+        <span class="tag-index tag-index--flip" aria-hidden="true">A<span>♠</span></span>
+      </div>
       <h1>Know <em>why</em> you are the way you are</h1>
       <p class="hero-sub">Your birthday maps to three cards: your Inner Child, your Chosen Purpose, and your Highest Self. They meet you wherever you are. See your first one free.</p>
   <!-- Sleek Birthday Input Bar, with a small deck resting behind it -->
