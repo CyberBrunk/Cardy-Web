@@ -14,6 +14,8 @@
   <meta name="twitter:title" content="Cardy: Play your cards right" />
   <meta name="twitter:description" content="Discover your 3 cards and what they reveal about you. Daily readings, personality insights, and compatibility — all based on your birthday." />
   <link rel="icon" type="image/png" href="icon@3x.png" />
+  <meta name="apple-itunes-app" content="app-id=6757249840" />
+  <link rel="preload" as="image" href="assets/cardy-hero-520.webp" imagesrcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" imagesizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -52,7 +54,10 @@
       pointer-events: none;
       overflow: hidden;
       /* 5-stop gradient matching app: c1 → q1 → mid → q2 → c2 */
-      background: linear-gradient(135deg, #0B0E17 0%, #0F121D 25%, #131723 50%, #181B28 75%, #1C1F2E 100%);
+      background:
+        radial-gradient(ellipse 55% 45% at 8% 6%, rgba(140, 35, 25, 0.16), transparent 70%),
+        radial-gradient(ellipse 50% 40% at 92% 85%, rgba(26, 58, 92, 0.16), transparent 70%),
+        linear-gradient(135deg, #0B0E17 0%, #0F121D 25%, #131723 50%, #181B28 75%, #1C1F2E 100%);
     }
     /* Linen weave texture overlay — generated via canvas to match app */
     .linen-texture {
@@ -60,105 +65,6 @@
       inset: 0;
       pointer-events: none;
     }
-    .gradient-orb {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      will-change: transform, opacity;
-    }
-    /* Blob 1 — top-left, warm red */
-    .gradient-orb--1 {
-      width: 600px;
-      height: 600px;
-      top: -5%;
-      left: -5%;
-      background: radial-gradient(circle, rgba(140, 35, 25, 0.5) 0%, rgba(90, 20, 50, 0.2) 50%, transparent 70%);
-      filter: blur(80px);
-      opacity: 0.45;
-      animation: blob1 18s ease-in-out infinite alternate;
-    }
-    /* Blob 2 — upper-center, muted plum */
-    .gradient-orb--2 {
-      width: 550px;
-      height: 550px;
-      top: 10%;
-      left: 40%;
-      background: radial-gradient(circle, rgba(60, 30, 70, 0.5) 0%, rgba(30, 20, 50, 0.2) 50%, transparent 70%);
-      filter: blur(90px);
-      opacity: 0.4;
-      animation: blob2 22s ease-in-out infinite alternate;
-    }
-    /* Blob 3 — center, deep rose */
-    .gradient-orb--3 {
-      width: 650px;
-      height: 650px;
-      top: 35%;
-      left: 25%;
-      background: radial-gradient(circle, rgba(120, 30, 30, 0.45) 0%, rgba(45, 27, 78, 0.2) 50%, transparent 70%);
-      filter: blur(100px);
-      opacity: 0.38;
-      animation: blob3 20s ease-in-out infinite alternate;
-    }
-    /* Blob 4 — center-left, accent violet */
-    .gradient-orb--4 {
-      width: 500px;
-      height: 500px;
-      top: 45%;
-      left: 5%;
-      background: radial-gradient(circle, rgba(80, 40, 100, 0.4) 0%, rgba(20, 15, 40, 0.15) 50%, transparent 70%);
-      filter: blur(85px);
-      opacity: 0.35;
-      animation: blob4 24s ease-in-out infinite alternate;
-    }
-    /* Blob 5 — lower-right, slate blue */
-    .gradient-orb--5 {
-      width: 580px;
-      height: 580px;
-      top: 60%;
-      right: 5%;
-      background: radial-gradient(circle, rgba(26, 58, 92, 0.5) 0%, rgba(40, 30, 70, 0.2) 50%, transparent 70%);
-      filter: blur(90px);
-      opacity: 0.4;
-      animation: blob5 19s ease-in-out infinite alternate;
-    }
-    /* Blob 6 — bottom-right, dark indigo */
-    .gradient-orb--6 {
-      width: 700px;
-      height: 700px;
-      bottom: -10%;
-      right: -5%;
-      background: radial-gradient(circle, rgba(28, 31, 46, 0.6) 0%, rgba(11, 14, 23, 0.3) 50%, transparent 70%);
-      filter: blur(100px);
-      opacity: 0.5;
-      animation: blob6 21s ease-in-out infinite alternate;
-    }
-    @keyframes blob1 {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(35px, 25px); }
-    }
-    @keyframes blob2 {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-30px, 20px); }
-    }
-    @keyframes blob3 {
-      0% { transform: translate(0, 0); opacity: 0.38; }
-      50% { opacity: 0.5; }
-      100% { transform: translate(25px, -30px); opacity: 0.35; }
-    }
-    @keyframes blob4 {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-20px, -25px); }
-    }
-    @keyframes blob5 {
-      0% { transform: translate(0, 0); opacity: 0.4; }
-      50% { opacity: 0.5; }
-      100% { transform: translate(30px, -20px); opacity: 0.35; }
-    }
-    @keyframes blob6 {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-35px, 15px); }
-    }
-
     /* ---- Nav ---- */
     nav {
       position: fixed;
@@ -237,36 +143,44 @@
       gap: 60px;
       align-items: center;
     }
-    .hero-text {
-      animation: fadeUp 0.8s ease-out both;
-    }
+    @keyframes fadeIn { from { opacity: 0.001; } to { opacity: 1; } }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero-badge {
+    /* ---- Hero tag styled as a small playing card ---- */
+    .hero-card-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(180, 43, 25, 0.15);
-      border: 1px solid rgba(180, 43, 25, 0.3);
-      border-radius: 999px;
-      padding: 6px 16px;
+      gap: 12px;
+      margin-bottom: 26px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--dark);
+      box-shadow:
+        inset 0 0 0 3px var(--cream),
+        inset 0 0 0 4px rgba(180, 43, 25, 0.45),
+        0 10px 24px rgba(0, 0, 0, 0.45);
+      transform: rotate(-2deg);
+    }
+    .tag-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .tag-index {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: var(--font-display);
       font-size: 13px;
-      font-weight: 600;
-      color: #FF8A80;
-      margin-bottom: 28px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      line-height: 1;
+      color: var(--red);
     }
-    .hero-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #FF8A80;
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
+    .tag-index span { font-size: 11px; margin-top: 1px; }
+    .tag-index--flip { transform: rotate(180deg); color: var(--dark); }
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
@@ -332,7 +246,7 @@
     .hero-image {
       display: flex;
       justify-content: center;
-      animation: fadeUp 0.8s 0.2s ease-out both;
+      animation: fadeIn 0.4s ease-out both;
     }
     .hero-image img {
       width: 100%;
@@ -538,7 +452,6 @@
       padding: 14px 16px;
       color: #151828;
       position: relative;
-      animation: fadeIn 0.4s ease;
     }
     .card-hover-banner {
       position: absolute;
@@ -686,15 +599,10 @@
       justify-content: center;
       color: #E8C17A;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: lockPulse 3s infinite ease-in-out;
     }
     .stage-card-wrap.locked:hover .lock-medallion {
       transform: scale(1.12);
       box-shadow: 0 0 26px rgba(220, 180, 110, 0.55);
-    }
-    @keyframes lockPulse {
-      0%, 100% { box-shadow: 0 0 16px rgba(220, 180, 110, 0.25); }
-      50% { box-shadow: 0 0 24px rgba(220, 180, 110, 0.45); }
     }
     .card-back-sub {
       font-size: 11px;
@@ -796,7 +704,82 @@
 
 
     /* ---- Hero extras ---- */
-    .hero-text .reveal-bar { margin-bottom: 20px; }
+    .hero-text .reveal-wrap { margin-bottom: 20px; }
+    .hero-text .reveal-bar { margin-bottom: 0; }
+
+    /* ---- Hero deck: three card backs resting behind the birthday bar ---- */
+    .reveal-wrap {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+    .hero-deck {
+      position: absolute;
+      right: 44px;
+      top: -38px;
+      width: 96px;
+      height: 72px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero-deck span {
+      position: absolute;
+      left: 25px;
+      bottom: 0;
+      width: 46px;
+      height: 68px;
+      border-radius: 6px;
+      background: url('/assets/cards/back.webp') center / cover no-repeat;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+      transform-origin: 50% 100%;
+      transform: rotate(var(--r)) translateY(var(--y, 0px));
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      animation: deckRise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d) backwards;
+    }
+    .hero-deck span:nth-child(1) { --r: -18deg; --d: 0.35s; left: 8px; }
+    .hero-deck span:nth-child(2) { --r: -3deg; --d: 0.45s; left: 25px; }
+    .hero-deck span:nth-child(3) { --r: 13deg; --d: 0.55s; left: 42px; }
+    .hero-deck.lift-1 span:nth-child(3) { --y: -10px; }
+    .hero-deck.lift-2 span:nth-child(3) { --y: -20px; }
+    .hero-deck.lift-2 span:nth-child(2) { --y: -6px; }
+    .hero-deck.dealt span:nth-child(3) {
+      transform: rotate(28deg) translate(30px, -110px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.4s ease-in;
+    }
+    .hero-deck.dealt-reset span:nth-child(3) { transition: none; }
+    @keyframes deckRise {
+      from { transform: rotate(0deg) translateY(64px); opacity: 0; }
+    }
+
+    /* ---- Reveal flip ---- */
+    .card-flip-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      z-index: 2;
+    }
+    .stage-card-face::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(105deg, transparent 30%, rgba(255, 226, 160, 0.0) 38%, rgba(255, 226, 160, 0.55) 50%, rgba(255, 255, 255, 0.0) 62%, transparent 70%);
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    .stage-card-face.is-shimmering::after {
+      animation: cardShimmer 0.9s ease-out;
+    }
+    @keyframes cardShimmer {
+      0% { transform: translateX(-120%); opacity: 1; }
+      100% { transform: translateX(120%); opacity: 1; }
+    }
     .hero-alt {
       font-size: 15px;
       color: var(--cream-dim);
@@ -964,6 +947,337 @@
       line-height: 1.6;
     }
     .cta-box .hero-buttons { justify-content: center; }
+    .cta-reassure {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--cream-dim);
+      opacity: 0.85;
+    }
+
+    /* ---- Hero proof row + validation ---- */
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 16px;
+      margin-top: 18px;
+    }
+    .hero-proof .katie-byline { margin-top: 0; }
+    .hero-rating {
+      font-size: 14px;
+      color: var(--cream-dim);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .hero-rating:hover { color: var(--cream); }
+    .reveal-hint {
+      font-size: 14px;
+      color: #FF8A80;
+      margin: -8px 0 14px;
+    }
+    .reveal-select.is-invalid { color: #FF8A80; }
+    .reveal-bar.is-invalid {
+      border-color: rgba(255, 138, 128, 0.7);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 138, 128, 0.18);
+    }
+
+    /* ---- Trust: Katie byline (hero) ---- */
+    .hero-trust a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255, 244, 244, 0.35); }
+    .hero-trust a:hover { color: var(--cream); }
+    .katie-byline {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 8px 16px 8px 8px;
+      border-radius: 999px;
+      background: rgba(19, 23, 41, 0.65);
+      border: 1px solid rgba(255, 244, 244, 0.08);
+      text-decoration: none;
+      color: var(--cream-dim);
+      font-size: 14px;
+      line-height: 1.35;
+      text-align: left;
+      transition: border-color 0.2s;
+    }
+    .katie-byline:hover { border-color: rgba(180, 43, 25, 0.4); }
+    .katie-byline strong { color: var(--cream); font-weight: 600; }
+    .katie-mono {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      color: var(--red);
+      font-family: var(--font-display);
+      font-size: 18px;
+      box-shadow: 0 0 0 2px rgba(180, 43, 25, 0.5);
+    }
+
+    /* ---- Trust: client quote in the reveal result ---- */
+    .result-story {
+      margin: 0 auto 20px;
+      max-width: 520px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: rgba(11, 14, 26, 0.45);
+      border-left: 3px solid var(--red-light);
+      text-align: left;
+    }
+    .result-story blockquote {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--cream);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .result-story figcaption { font-size: 13px; color: var(--cream-dim); }
+    .result-reassure {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--cream-dim);
+    }
+
+    /* ---- Meet Katie ---- */
+    .katie-section { padding-top: 40px; }
+    .katie-card {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--dark-surface), var(--dark-card));
+      border: 1px solid rgba(255, 244, 244, 0.08);
+      border-radius: 28px;
+      padding: 48px;
+    }
+    .katie-photo {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 244, 244, 0.08);
+    }
+    img.katie-mono { object-fit: cover; padding: 0; }
+    .katie-copy .section-label,
+    .katie-copy .section-title { text-align: left; }
+    .katie-copy .section-title { margin-bottom: 20px; }
+    .katie-copy p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--cream-dim);
+      margin-bottom: 14px;
+    }
+    .katie-copy p.katie-mission { color: var(--cream); font-weight: 500; }
+    .katie-sign {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--red-light);
+      margin-top: 4px;
+    }
+    .katie-proof {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .katie-proof li {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(11, 14, 26, 0.5);
+      border: 1px solid rgba(255, 244, 244, 0.06);
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--cream-dim);
+    }
+    .katie-proof strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+
+    /* ---- Founder eyewitness note ---- */
+    .founder-note {
+      max-width: 820px;
+      margin: 0 auto 32px;
+      padding: 32px 36px;
+      border-radius: 22px;
+      background: rgba(11, 14, 26, 0.55);
+      border: 1px solid rgba(255, 244, 244, 0.1);
+      text-align: center;
+    }
+    .founder-note blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.45;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+    .founder-note figcaption { font-size: 14px; color: var(--cream-dim); }
+
+    /* ---- Example readings ---- */
+    .examples-section { padding-top: 40px; }
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .example-card {
+      position: relative;
+      background: linear-gradient(135deg, var(--dark-surface), var(--dark-card));
+      border: 1px dashed rgba(255, 244, 244, 0.16);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .example-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 244, 244, 0.18);
+    }
+    .example-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .example-head h3 { font-family: var(--font-display); font-size: 20px; color: var(--cream); font-weight: 400; }
+    .example-card dl { display: grid; gap: 12px; }
+    .example-card dt {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #FF8A80;
+    }
+    .example-card dd { font-size: 15px; line-height: 1.6; color: var(--cream-dim); }
+    .example-card dd.example-q { color: var(--cream); font-style: italic; }
+
+    /* ---- Hand-drawn charts strip ---- */
+    .charts-strip {
+      max-width: 960px;
+      margin: 28px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .charts-strip figure {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 244, 244, 0.08);
+      background: var(--dark-card);
+    }
+    .charts-strip img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+    .charts-quote {
+      max-width: 760px;
+      margin: 32px auto 0;
+      text-align: center;
+    }
+    .charts-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.4;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .charts-quote figcaption { font-size: 14px; color: var(--cream-dim); }
+
+    /* ---- Stories ---- */
+    .stories-section { padding-top: 40px; }
+    .stories-sub {
+      text-align: center;
+      color: var(--cream-dim);
+      font-size: 16px;
+      max-width: 560px;
+      margin: -44px auto 48px;
+      line-height: 1.6;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      background: linear-gradient(135deg, var(--dark-surface), var(--dark-card));
+      border: 1px solid rgba(255, 244, 244, 0.06);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .story-card--lead {
+      background: linear-gradient(135deg, rgba(180, 43, 25, 0.16), var(--dark-card));
+      border-color: rgba(180, 43, 25, 0.25);
+    }
+    .story-card blockquote {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--cream);
+    }
+    .story-card--lead blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2vw, 24px);
+      line-height: 1.4;
+    }
+    .story-card blockquote::before {
+      content: '“';
+      display: block;
+      font-family: var(--font-display);
+      font-size: 48px;
+      line-height: 0.6;
+      color: var(--red-light);
+      margin-bottom: 12px;
+    }
+    .story-meta { display: flex; align-items: center; gap: 12px; }
+    .story-chip {
+      flex-shrink: 0;
+      width: 38px;
+      height: 52px;
+      border-radius: 7px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 15px;
+      line-height: 1.05;
+      text-align: center;
+    }
+    .story-chip.red { color: var(--red); }
+    .story-chip.black { color: var(--dark); }
+    .story-meta strong { display: block; color: var(--cream); font-size: 15px; }
+    .story-meta span { color: var(--cream-dim); font-size: 13px; letter-spacing: 0.3px; }
+    .stories-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--cream-dim);
+      opacity: 0.8;
+    }
 
     /* ---- Footer ---- */
     footer {
@@ -1197,6 +1511,8 @@
         gap: 48px;
       }
       .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-proof { justify-content: center; }
+      .reveal-hint { margin-top: -8px; }
       .hero-buttons { justify-content: center; }
       .steps { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .hero-image { order: 1; }
@@ -1209,9 +1525,15 @@
         max-width: 480px;
         margin: 0 auto;
       }
-      nav { padding: 14px 20px; }
+      nav { padding: 14px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(11, 14, 26, 0.94); }
       .nav-links { gap: 20px; }
       .nav-links .hide-mobile { display: none; }
+      .katie-card { grid-template-columns: 1fr; gap: 36px; padding: 40px 32px; }
+      .katie-copy .section-label,
+      .katie-copy .section-title { text-align: center; }
+      .stories-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .examples-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .charts-strip { gap: 12px; }
     }
     @media (max-width: 600px) {
       .hero { padding: 100px 20px 60px; min-height: auto; }
@@ -1219,6 +1541,8 @@
       .hero-image img { max-width: 300px; }
       .store-btn { padding: 12px 20px; font-size: 14px; }
       .reveal-section { padding: 60px 16px; }
+      .reveal-wrap { display: block; }
+      .hero-deck { right: 24px; top: -30px; transform: scale(0.85); transform-origin: 50% 100%; }
       .reveal-bar {
         border-radius: 16px;
         padding: 12px 14px;
@@ -1260,8 +1584,52 @@
       .footer-links { justify-content: center; gap: 10px 20px; }
       .hero-buttons { flex-direction: column; align-items: center; }
       .store-btn { width: 100%; max-width: 280px; justify-content: center; }
+      .katie-byline { font-size: 13px; }
+      .katie-card { padding: 32px 20px; border-radius: 22px; }
+      .katie-photo { max-width: 220px; }
+      .katie-copy p { font-size: 16px; }
+      .katie-proof { grid-template-columns: 1fr; }
+      .katie-proof li { display: flex; align-items: baseline; gap: 10px; text-align: left; }
+      .katie-proof strong { display: inline; font-size: 20px; margin: 0; }
+      .stories-sub { margin: -44px auto 32px; font-size: 15px; }
+      .story-card { padding: 24px 20px; }
+      .story-card blockquote { font-size: 16px; }
+      .result-story { padding: 14px 16px; }
+      .founder-note { padding: 24px 20px; }
+      .example-card { padding: 24px 20px; }
+      .result-story blockquote { font-size: 14px; }
+    }
+    @media (max-width: 360px) {
+      .hero-card-tag { margin-bottom: 14px; padding: 5px 10px; gap: 9px; }
+      .tag-text { font-size: 14px; }
+      .hero h1 { margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-image, .reveal-result-box, .hero-deck span { animation: none !important; }
+      .hero-deck span { transition: none !important; }
     }
   </style>
+
+  <!-- Analytics: PostHog (same project as the iOS app) + Vercel custom events -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag onFeatureFlags identify alias people.set people.set_once set_config get_distinct_id".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_AkvPJMCxPSt5mxPBuuWasEU63eiUtHhACUMvAorEqegF', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: false,
+      disable_session_recording: true
+    });
+    posthog.register({ environment: 'web', page: 'home' });
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    // One call fans out to PostHog and Vercel Analytics. Never pass birthdays or other PII.
+    window.cardyTrack = function (name, props) {
+      try { posthog.capture(name, props || {}); } catch (e) {}
+      try { window.va('event', { name: name, data: props || {} }); } catch (e) {}
+    };
+  </script>
 
   <!-- Structured Data — entity + app recognition for AI systems -->
   <script type="application/ld+json">
@@ -1295,6 +1663,15 @@
         "publisher": { "@id": "https://cardy.today/#organization" },
         "description": "Discover your 3 cards and what they reveal about you. Daily readings, personality insights, and compatibility — all based on your birthday.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://cardy.today/#katie",
+        "name": "Katie",
+        "alternateName": "Katie the Card Lady",
+        "jobTitle": "Card reader",
+        "image": "https://cardy.today/assets/katie/katie-portrait.webp",
+        "worksFor": { "@id": "https://cardy.today/#organization" }
       }
     ]
   }
@@ -1305,18 +1682,12 @@
 <!-- Animated gradient background -->
 <div class="gradient-bg" aria-hidden="true">
   <div class="linen-texture" id="linenTexture"></div>
-  <div class="gradient-orb gradient-orb--1"></div>
-  <div class="gradient-orb gradient-orb--2"></div>
-  <div class="gradient-orb gradient-orb--3"></div>
-  <div class="gradient-orb gradient-orb--4"></div>
-  <div class="gradient-orb gradient-orb--5"></div>
-  <div class="gradient-orb gradient-orb--6"></div>
 </div>
 
 <!-- Nav -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="icon@3x.png" alt="Cardy" />
+    <img src="assets/icon-80.webp" alt="Cardy" width="40" height="40" />
     <span>Cardy</span>
   </a>
   <ul class="nav-links">
@@ -1331,10 +1702,16 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">Your cards. Your story.</div>
+      <div class="hero-card-tag">
+        <span class="tag-index" aria-hidden="true">A<span>♥</span></span>
+        <span class="tag-text">Your cards. Your story.</span>
+        <span class="tag-index tag-index--flip" aria-hidden="true">A<span>♠</span></span>
+      </div>
       <h1>Know <em>why</em> you are the way you are</h1>
-      <p class="hero-sub">Your birthday maps to three cards: who you are, where you're headed, and who you're becoming. See your first one free.</p>
-  <!-- Sleek Birthday Input Bar -->
+      <p class="hero-sub">Your birthday maps to three cards: your Inner Child, your Chosen Purpose, and your Highest Self. They meet you wherever you are.</p>
+  <!-- Sleek Birthday Input Bar, with a small deck resting behind it -->
+  <div class="reveal-wrap">
+  <div class="hero-deck" id="heroDeck" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="reveal-bar">
     <div class="reveal-bar-inputs">
       <select id="heroMonth" class="reveal-select" aria-label="Birth Month">
@@ -1349,17 +1726,25 @@
         <option value="" disabled selected>Select Day</option>
       </select>
       <button type="button" id="heroCalcBtn" class="reveal-btn">
-        <span>Reveal My Cards</span>
+        <span>See My Birth Card · Free</span>
         <span class="btn-sparkle">✦</span>
       </button>
     </div>
   </div>
+  </div>
 
+      <p class="reveal-hint" id="revealHint" role="alert" hidden>Pick your birth month and day to see your card.</p>
       <p class="hero-alt" id="download">Or get the app: <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web App (Android)</a></p>
-      <p class="hero-trust"><span class="trust-stars">★★★★★</span> 5-star rating on the App Store · No birth time needed</p>
+      <div class="hero-proof">
+        <a class="katie-byline" href="#katie" data-track="katie_byline">
+          <img class="katie-mono" src="/assets/katie/katie-avatar.webp" alt="" width="36" height="36" />
+          <span>Built on <strong>15+ years of readings</strong> by Katie, the Card Lady</span>
+        </a>
+        <a class="hero-rating" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?see-all=reviews" target="_blank" rel="noopener" data-store="app_store_reviews" data-placement="hero_rating"><span class="trust-stars">★★★★★</span> on the App Store</a>
+      </div>
     </div>
     <div class="hero-image">
-      <img src="cardy-hero.png" alt="Cardy app showing daily card readings and friend profiles" />
+      <img src="assets/cardy-hero-520.webp" srcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" sizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" width="520" height="667" fetchpriority="high" decoding="async" alt="Cardy app showing daily card readings and friend profiles" />
     </div>
   </div>
 </section>
@@ -1379,6 +1764,7 @@
           <span class="card-pill free">Free</span>
         </div>
         <a href="/birth-card-meanings" id="card1Link" class="stage-card-face" title="Read birth card description">
+          <img class="card-flip-back" id="card1Back" src="/assets/cards/back.webp" alt="" hidden />
           <!-- Unselected state -->
           <div class="card-face-unselected" id="card1Unselected">
             <div class="unselected-icon">✦</div>
@@ -1457,6 +1843,10 @@
         <div class="result-headline" id="unlockHeadlineText">You are a <strong>Queen of Hearts</strong>!</div>
         <p class="result-sub" id="unlockDesc"></p>
       </div>
+      <figure class="result-story" id="resultStory" hidden>
+        <blockquote id="resultStoryQuote"></blockquote>
+        <figcaption id="resultStoryCite"></figcaption>
+      </figure>
       <div class="result-cta-row">
         <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="btn-unlock-app" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1466,6 +1856,7 @@
           <span>Web App (Android) →</span>
         </a>
       </div>
+      <p class="result-reassure">Free to download</p>
     </div>
   </div>
 </section>
@@ -1477,11 +1868,39 @@
     <h2 class="section-title">Why your cards are more personal than your sign</h2>
     <ol class="steps">
       <li><span class="step-num">1</span><h3>Your birth date</h3><p>Maps to your Inner Child card: your core nature.</p></li>
-      <li><span class="step-num">2</span><h3>Your zodiac sign</h3><p>Shifts that card into your Chosen Purpose: where you're headed.</p></li>
-      <li><span class="step-num">3</span><h3>The two combined</h3><p>Become your Highest Self: who you're growing into.</p></li>
+      <li><span class="step-num">2</span><h3>Your zodiac sign</h3><p>Shifts that card into your Chosen Purpose: what you're here to do.</p></li>
+      <li><span class="step-num">3</span><h3>The two combined</h3><p>Combine into your Highest Self: you at your fullest.</p></li>
     </ol>
     <p class="steps-note">Same sign as your best friend? You'll still get different cards. <a href="/cardology-vs-astrology">Cardology vs astrology →</a></p>
   </div>
+</section>
+
+<!-- Meet Katie -->
+<section class="features katie-section" id="katie">
+  <div class="katie-card">
+    <img class="katie-photo" src="/assets/katie/katie-portrait.webp" alt="Katie, the Card Lady, at her reading table with a notebook and an oversized Ace of Spades" width="800" height="1000" loading="lazy" />
+    <div class="katie-copy">
+      <div class="section-label">The reader behind Cardy</div>
+      <h2 class="section-title">Meet Katie, the Card Lady</h2>
+      <p>Cards have been part of my practice for more than 15 years. In that time I've read for thousands of people, and most of my clients come back a few times a year, usually when something hard is happening in their relationships, family, or career.</p>
+      <p class="katie-mission">This is what I'm here to do: help you see your strengths clearly, and how much you're needed. I want you to leave feeling seen, held, and validated.</p>
+      <p>Cardy is built on the same method I use in my sessions, so your daily readings come from your actual cards, not a one-size-fits-all horoscope.</p>
+      <div class="katie-sign">— Katie</div>
+      <ul class="katie-proof">
+        <li><strong>15+</strong> years reading cards</li>
+        <li><strong>1,000s</strong> of people read for</li>
+        <li><strong>Most</strong> clients come back a few times a year</li>
+      </ul>
+    </div>
+  </div>
+  <div class="charts-strip">
+    <figure><img src="/assets/katie/charts-spread.webp" alt="Three of Katie's hand-drawn card charts on teal, red, and pink paper" width="640" height="706" loading="lazy" /></figure>
+    <figure><img src="/assets/katie/chart-closeup.webp" alt="Close-up of a hand-lettered chart showing a client's cards, planets, and meanings" width="640" height="460" loading="lazy" /></figure>
+  </div>
+  <figure class="charts-quote">
+    <blockquote>From hand-drawn readings to bringing Cardy to the masses: this has been my dream since I devoted my life to the cards.</blockquote>
+    <figcaption>Katie, with a few of her hand-drawn client charts</figcaption>
+  </figure>
 </section>
 
 <!-- Inside the app -->
@@ -1509,6 +1928,81 @@
   </div>
 </section>
 
+<!-- Stories -->
+<section class="features stories-section" id="stories">
+  <div class="features-inner">
+    <div class="section-label">In their words</div>
+    <h2 class="section-title">What changes after a reading</h2>
+    <p class="stories-sub">Katie's clients come back for the hard moments: relationships, family, big decisions.</p>
+    <figure class="founder-note">
+      <blockquote>I watched Katie read for strangers at Burning Man. At least four people cried, because she showed them something about themselves they hadn't realized.</blockquote>
+      <figcaption>Cardy's founder, who was there</figcaption>
+    </figure>
+    <div class="stories-grid">
+      <figure class="story-card story-card--lead">
+        <blockquote>Katie has made connection charts for me, my ex, my whole family, and my now wife. It's helped me make big decisions.</blockquote>
+        <figcaption class="story-meta">
+          <div class="story-chip red" aria-hidden="true">8<br>♦</div>
+          <div><strong>Maggie</strong><span>Eight of Diamonds</span></div>
+        </figcaption>
+      </figure>
+      <figure class="story-card">
+        <blockquote>I feel like I'm approaching the world differently after your reading.</blockquote>
+        <figcaption class="story-meta">
+          <div class="story-chip red" aria-hidden="true">J<br>🃏</div>
+          <div><strong>A client</strong><span>The Joker</span></div>
+        </figcaption>
+      </figure>
+      <figure class="story-card">
+        <blockquote>Wonderful, helpful, and so treasured. A map for our lifetimes.</blockquote>
+        <figcaption class="story-meta">
+          <div class="story-chip black" aria-hidden="true">7<br>♠</div>
+          <div><strong>Steph</strong><span>Seven of Spades</span></div>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="stories-note">From clients of Katie's one-on-one readings.</p>
+  </div>
+</section>
+
+<!-- Example readings (illustrative, not client accounts) -->
+<section class="features examples-section" id="examples">
+  <div class="features-inner">
+    <div class="section-label">What a reading can show you</div>
+    <h2 class="section-title">The thing you couldn't see from inside it</h2>
+    <div class="examples-grid">
+      <article class="example-card">
+        <span class="example-tag">Example</span>
+        <div class="example-head"><div class="story-chip red" aria-hidden="true">Q<br>♥</div><h3>Queen of Hearts</h3></div>
+        <dl>
+          <dt>The situation</dt><dd>Everyone leans on you, and you're running on empty.</dd>
+          <dt>What the card points to</dt><dd>A natural nurturer. Your lifelong lesson is giving yourself the care you give everyone else.</dd>
+          <dt>The question it leaves</dt><dd class="example-q">"When did I last ask for help?"</dd>
+        </dl>
+      </article>
+      <article class="example-card">
+        <span class="example-tag">Example</span>
+        <div class="example-head"><div class="story-chip red" aria-hidden="true">A<br>♥</div><h3>Ace of Hearts</h3></div>
+        <dl>
+          <dt>The situation</dt><dd>Another relationship that started fast and ended the same way.</dd>
+          <dt>What the card points to</dt><dd>A restless heart that chases validation. The lesson is self-love first, so you stop trading your peace for attention.</dd>
+          <dt>The question it leaves</dt><dd class="example-q">"What am I hoping this person proves about me?"</dd>
+        </dl>
+      </article>
+      <article class="example-card">
+        <span class="example-tag">Example</span>
+        <div class="example-head"><div class="story-chip black" aria-hidden="true">7<br>♣</div><h3>7 of Clubs</h3></div>
+        <dl>
+          <dt>The situation</dt><dd>A career move you've rehearsed a hundred times and never made.</dd>
+          <dt>What the card points to</dt><dd>A visionary mind that defaults to worst-case thinking. Pointed at faith instead of fear, it becomes your greatest asset.</dd>
+          <dt>The question it leaves</dt><dd class="example-q">"What would I do if I assumed it works out?"</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="stories-note">Illustrative examples based on each card's meaning, not client accounts.</p>
+  </div>
+</section>
+
 <!-- Learn -->
 <section class="features learn-section" id="library">
   <div class="features-inner">
@@ -1528,8 +2022,8 @@
 <!-- CTA -->
 <section class="cta-band" id="cta">
   <div class="cta-box">
-    <h2>See your first card free, in seconds</h2>
-    <p>Free to download. Your first card is already waiting.</p>
+    <h2>Get the reading Katie's clients come back for</h2>
+    <p>Your three cards, a daily reading, and how you fit with the people you love. Free to download.</p>
     <div class="hero-buttons">
       <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="store-btn store-btn--apple" target="_blank" rel="noopener">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1546,6 +2040,7 @@
         </div>
       </a>
     </div>
+    <p class="cta-reassure">Your first card is free</p>
   </div>
 </section>
 
@@ -1553,7 +2048,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="icon@3x.png" alt="Cardy" />
+      <img src="assets/icon-80.webp" alt="Cardy" width="32" height="32" loading="lazy" />
       <span>&copy; <span id="copyrightYear">2026</span> Cardy</span>
     </div>
     <ul class="footer-links">
@@ -1629,6 +2124,7 @@
       <p><strong>Journal Entries:</strong> If you use the journaling feature, we collect the text you write. Journal entries are stored with your account and used only to display your personal journal history.</p>
       <p><strong>Contacts:</strong> If you choose to import birthdays from your contacts, we access contact names and birthdays only. This data is used solely to calculate card profiles for your contacts and is not linked to your identity.</p>
       <p><strong>Usage Data:</strong> We collect anonymous usage data to improve the App, such as which features are used and general app performance metrics.</p>
+      <p><strong>Website Analytics:</strong> On cardy.today we record anonymous usage, such as pages viewed, which sections you scroll to, which buttons you click, and the birth card the calculator shows you. We do not record the birthday you enter, and we do not record your screen or keystrokes.</p>
 
       <h3>2. How We Use Your Information</h3>
       <p>We use your information to:</p>
@@ -1657,6 +2153,8 @@
         <li>RevenueCat (subscription management)</li>
         <li>Apple (App Store and Sign In with Apple)</li>
         <li>Meta / Facebook (advertising measurement and app install attribution)</li>
+        <li>PostHog (product analytics for the App and this website)</li>
+        <li>Vercel (website hosting and page analytics)</li>
       </ul>
       <p>These providers process data solely to deliver their services and are bound by their own privacy policies.</p>
       <p>To measure how well our advertising performs, we use the Meta SDK, which shares a limited set of app activity with Meta, such as app installs and events like completing sign-up or starting a subscription, along with a device identifier. We do not enable Meta's advertising identifier (IDFA) and we do not track you across other apps or websites. This measurement is performed in aggregate through Apple's SKAdNetwork, and we never ask you to opt in to tracking. You can learn how Meta uses this data in the <a href="https://www.facebook.com/privacy/policy" style="color: var(--red-light);">Meta Privacy Policy</a>.</p>
@@ -1858,6 +2356,24 @@
     }
 
     mSelect.addEventListener('change', populateDays);
+
+    const revealBar = mSelect.closest('.reveal-bar');
+    const revealHint = document.getElementById('revealHint');
+    function clearInvalid() {
+      mSelect.classList.remove('is-invalid');
+      dSelect.classList.remove('is-invalid');
+      if (revealBar) revealBar.classList.remove('is-invalid');
+      if (revealHint) revealHint.hidden = true;
+    }
+    let birthdayStarted = false;
+    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', () => {
+      if (mSelect.value && dSelect.value) clearInvalid();
+      if (!birthdayStarted) {
+        birthdayStarted = true;
+        window.cardyTrack('web_birthday_started', { field: sel === mSelect ? 'month' : 'day' });
+      }
+    }));
+    let revealCount = 0;
 
     const suits = [
       { name: 'Hearts', symbol: '♥', color: '#C92A1D', anchor: 'hearts' },
@@ -2145,6 +2661,28 @@
       }
     };
 
+    // Real client quotes from Katie's practice, matched to the visitor's suit.
+    const STORIES = {
+      maggie: { quote: 'Katie has made connection charts for me, my ex, my whole family, and my now wife. It\u2019s helped me make big decisions.', name: 'Maggie', card: 'Eight of Diamonds', suit: 'Diamonds' },
+      steph: { quote: 'Wonderful, helpful, and so treasured. A map for our lifetimes.', name: 'Steph', card: 'Seven of Spades', suit: 'Spades' },
+      joker: { quote: 'I feel like I\u2019m approaching the world differently after your reading.', name: 'A client', card: 'The Joker', suit: 'Joker' }
+    };
+    const STORY_BY_SUIT = { Hearts: 'maggie', Diamonds: 'maggie', Spades: 'steph', Clubs: 'joker', Joker: 'joker' };
+    const storyBox = document.getElementById('resultStory');
+    const storyQuote = document.getElementById('resultStoryQuote');
+    const storyCite = document.getElementById('resultStoryCite');
+
+    function showStory(suitName) {
+      const story = STORIES[STORY_BY_SUIT[suitName]];
+      if (!storyBox || !story) return;
+      const kin = story.suit === suitName
+        ? (suitName === 'Joker' ? 'a fellow Joker' : `a fellow ${suitName} card`)
+        : 'one of Katie\u2019s clients';
+      storyQuote.textContent = `\u201C${story.quote}\u201D`;
+      storyCite.textContent = `${story.name}, ${story.card} \u00B7 ${kin}`;
+      storyBox.hidden = false;
+    }
+
     function applyCardData(m, d) {
       let fullName = '';
       let targetUrl = '/birth-card-meanings';
@@ -2213,18 +2751,151 @@
         card1DescLink.href = targetUrl;
         card1DescLink.style.display = 'inline-flex';
       }
-      if (unlockBox) unlockBox.style.display = 'block';
+      showStory(m === 12 && d === 31 ? 'Joker' : fullName.split(' of ')[1]);
     }
 
     function revealCards() {
       const m = parseInt(mSelect.value, 10);
       const d = parseInt(dSelect.value, 10);
       if (!m || !d) {
-        alert('Please select both your birth month and day.');
+        const missing = !m ? mSelect : dSelect;
+        mSelect.classList.toggle('is-invalid', !m);
+        dSelect.classList.toggle('is-invalid', !d);
+        if (revealBar) revealBar.classList.add('is-invalid');
+        if (revealHint) revealHint.hidden = false;
+        missing.focus();
+        window.cardyTrack('web_reveal_invalid', { missing: !m && !d ? 'both' : (!m ? 'month' : 'day') });
         return;
       }
+      clearInvalid();
+      const run = ++revealRun;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const section = document.getElementById('reveal');
+      const needsScroll = Math.abs(section.getBoundingClientRect().top - 72) > 12;
+
+      stopRevealAnimations();
+      dealFromDeck(reduce);
+      section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+
+      if (reduce) {
+        applyCardData(m, d);
+        finishReveal(false);
+        return;
+      }
+      waitForScroll(needsScroll).then(() => {
+        if (run === revealRun) playFlip(m, d, run);
+      });
+    }
+
+    // ---- Reveal choreography: land, lift, flip, shimmer, tease, then the result ----
+    let revealRun = 0;
+    const card1Back = document.getElementById('card1Back');
+    const lockedBacks = Array.from(document.querySelectorAll('.stage-card-wrap.locked .card-static-back'));
+    const P = 'perspective(900px) ';
+
+    function animate(el, frames, duration, easing, delay) {
+      const a = el.animate(frames, { duration: duration, easing: easing || 'ease', delay: delay || 0, fill: 'forwards' });
+      return a.finished.catch(() => {});
+    }
+    function stopRevealAnimations() {
+      [card1Link].concat(lockedBacks).forEach((el) => el && el.getAnimations().forEach((a) => a.cancel()));
+      if (card1Link) card1Link.classList.remove('is-shimmering');
+    }
+    function waitForScroll(needsScroll) {
+      return new Promise((resolve) => {
+        if (!needsScroll) return resolve();
+        let done = false;
+        const finish = () => { if (done) return; done = true; window.removeEventListener('scrollend', finish); resolve(); };
+        if ('onscrollend' in window) window.addEventListener('scrollend', finish);
+        setTimeout(finish, 600);
+      });
+    }
+
+    async function playFlip(m, d, run) {
+      const face = card1Link;
+      const stale = () => run !== revealRun;
+      if (unlockBox) unlockBox.style.display = 'none';
+
+      // The dealt card lands face down in the Card 1 slot
+      if (card1Unselected) card1Unselected.style.display = 'none';
+      if (card1Back) card1Back.hidden = false;
+      await animate(face, [
+        { transform: P + 'translateY(-56px) rotate(-10deg) scale(1.1)', opacity: 0 },
+        { transform: P + 'translateY(0) rotate(0) scale(1)', opacity: 1 }
+      ], 360, 'cubic-bezier(0.2, 0.8, 0.2, 1)');
+      if (stale()) return;
+
+      // Lift, then turn over to the halfway point
+      await animate(face, [
+        { transform: P + 'translateY(0) scale(1)' },
+        { transform: P + 'translateY(-10px) scale(1.04)' }
+      ], 130, 'ease-out');
+      if (stale()) return;
+      await animate(face, [
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(0deg)' },
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(90deg)' }
+      ], 220, 'ease-in');
+      if (stale()) return;
+
+      // Edge-on: swap the back for the real face, then finish the turn with a small overshoot
       applyCardData(m, d);
-      document.getElementById('reveal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (card1Back) card1Back.hidden = true;
+      await animate(face, [
+        { transform: P + 'translateY(-10px) scale(1.04) rotateY(-90deg)' },
+        { transform: P + 'translateY(0) scale(1) rotateY(0deg)' }
+      ], 500, 'cubic-bezier(0.34, 1.56, 0.64, 1)');
+      if (stale()) return;
+      face.getAnimations().forEach((a) => a.cancel()); // hand transform back to CSS hover
+
+      // Gold shimmer across the face, and cards 2 and 3 lean in as if about to turn
+      face.classList.add('is-shimmering');
+      setTimeout(() => face.classList.remove('is-shimmering'), 950);
+      lockedBacks.forEach((el, i) => {
+        animate(el, [
+          { transform: P + 'translateY(0) rotateY(0deg)' },
+          { transform: P + 'translateY(-12px) rotateY(-28deg) rotate(-2deg)', offset: 0.45 },
+          { transform: P + 'translateY(0) rotateY(0deg)' }
+        ], 720, 'ease-in-out', 120 + i * 110).then(() => el.getAnimations().forEach((a) => a.cancel()));
+      });
+
+      await new Promise((r) => setTimeout(r, 280));
+      if (stale()) return;
+      finishReveal(true);
+    }
+
+    function finishReveal(animated) {
+      if (card1Back) card1Back.hidden = true;
+      if (unlockBox) unlockBox.style.display = 'block';
+      revealCount += 1;
+      const cardName = card1Title ? card1Title.textContent : '';
+      window.cardyTrack('web_card_revealed', {
+        card: cardName,
+        suit: cardName === 'The Joker' ? 'Joker' : (cardName.split(' of ')[1] || ''),
+        story_shown: storyBox ? !storyBox.hidden : false,
+        reveal_count: revealCount,
+        animated: animated
+      });
+      try { posthog.register({ birth_card: cardName }); } catch (e) {}
+    }
+
+    // ---- Hero deck: reacts to the birthday inputs, deals its top card on reveal ----
+    const heroDeck = document.getElementById('heroDeck');
+    function syncDeck() {
+      if (!heroDeck) return;
+      heroDeck.classList.toggle('lift-1', !!mSelect.value && !dSelect.value);
+      heroDeck.classList.toggle('lift-2', !!mSelect.value && !!dSelect.value);
+    }
+    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', syncDeck));
+    function dealFromDeck(reduce) {
+      if (!heroDeck || reduce) return;
+      heroDeck.classList.add('dealt');
+      // Quietly put the card back once the hero is off screen, ready for another reveal
+      setTimeout(() => {
+        heroDeck.classList.add('dealt-reset');
+        heroDeck.classList.remove('dealt');
+        void heroDeck.offsetWidth;
+        heroDeck.classList.remove('dealt-reset');
+      }, 1600);
     }
 
     btn.addEventListener('click', revealCards);
@@ -2361,11 +3032,81 @@
 </script>
 
 <!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () {
-    (window.vaq = window.vaq || []).push(arguments);
-  };
-</script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+<!-- Conversion tracking: clicks, section views, scroll depth -->
+<script>
+  (function initTracking() {
+    const track = window.cardyTrack || function () {};
+    const SECTION_NAMES = { top: 'hero', reveal: 'reveal', how: 'how_it_works', katie: 'meet_katie', features: 'inside_app', stories: 'stories', examples: 'examples', library: 'learn', cta: 'final_cta' };
+
+    function placementOf(el) {
+      if (el.dataset.placement) return el.dataset.placement;
+      if (el.closest('nav')) return 'nav';
+      if (el.closest('footer')) return 'footer';
+      if (el.closest('#heroCalcUnlock')) return 'reveal_result';
+      const sec = el.closest('section[id]');
+      return sec ? (SECTION_NAMES[sec.id] || sec.id) : 'other';
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      const placement = placementOf(link);
+
+      if (href.includes('apps.apple.com')) {
+        track('web_store_clicked', { store: link.dataset.store || 'app_store', placement: placement, birth_card_known: !!document.getElementById('heroCalcUnlock')?.offsetParent });
+      } else if (href.includes('app.cardy.today')) {
+        // Hand the source to the web app so its own analytics can attribute the visit.
+        try {
+          const url = new URL(link.href);
+          url.searchParams.set('utm_source', 'cardy.today');
+          url.searchParams.set('utm_medium', 'homepage');
+          url.searchParams.set('utm_campaign', placement);
+          link.href = url.toString();
+        } catch (err) {}
+        track('web_store_clicked', { store: 'web_app', placement: placement });
+      } else if (link.dataset.track) {
+        track('web_' + link.dataset.track + '_clicked', { placement: placement });
+      } else if (link.closest('#card1Link, #card1DescLink, #unlockDesc')) {
+        track('web_card_profile_clicked', { placement: placement, href: href });
+      } else if (href.startsWith('/') || href.startsWith('#')) {
+        track('web_internal_link_clicked', { placement: placement, href: href });
+      }
+    }, { capture: true });
+
+    // Which sections people actually reach (fires once each)
+    if ('IntersectionObserver' in window) {
+      const seen = new Set();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (!entry.isIntersecting || seen.has(id)) return;
+          seen.add(id);
+          track('web_section_viewed', { section: SECTION_NAMES[id] || id });
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+      Object.keys(SECTION_NAMES).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && id !== 'top') io.observe(el);
+      });
+    }
+
+    // Scroll depth milestones
+    const marks = [25, 50, 75, 100];
+    let hit = 0;
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (max <= 0) return;
+      const pct = (scrollY / max) * 100;
+      while (hit < marks.length && pct >= marks[hit] - 1) {
+        track('web_scroll_depth', { percent: marks[hit] });
+        hit += 1;
+      }
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>
