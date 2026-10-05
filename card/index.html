@@ -153,12 +153,13 @@
 
     <div class="actions">
       <a class="btn btn-primary" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">Get your own 3 cards</a>
-      <a class="btn btn-secondary" href="https://app.cardy.today" target="_blank" rel="noopener">On Android? Use the web app</a>
+      <a class="btn btn-secondary" id="web-app" href="https://app.cardy.today/onboarding" target="_blank" rel="noopener">On Android or a computer? Use the web app</a>
     </div>
 
     <p class="invite" id="invite" hidden>
       Invite code: <strong id="invite-code"></strong><br />
-      Enter it in Cardy under Settings → Have an invite code?
+      Enter it in Cardy under Settings → Have an invite code?<br />
+      On the web app it's applied for you when you sign up.
     </p>
 
     <p class="find-own"><a href="/#reveal">Or find your Birth Card free →</a></p>
@@ -235,6 +236,14 @@
       if (/^[A-Za-z0-9_-]+$/.test(ref)) {
         document.getElementById('invite-code').textContent = ref;
         document.getElementById('invite').hidden = false;
+      }
+
+      // Carry the sharer's code (and the birthday gift) into the web app, which
+      // redeems it after sign-up. Same rules as the app: 4-12 letters/digits.
+      if (/^[A-Za-z0-9]{4,12}$/.test(ref)) {
+        var webParams = new URLSearchParams({ ref: ref.toUpperCase() });
+        if (isBirthday) webParams.set('bday', '1');
+        document.getElementById('web-app').href = 'https://app.cardy.today/onboarding?' + webParams.toString();
       }
     })();
   </script>
