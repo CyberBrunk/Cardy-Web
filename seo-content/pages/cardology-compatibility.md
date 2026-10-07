@@ -1,5 +1,6 @@
 ---
 slug: /cardology-compatibility
+date_modified: 2026-10-02
 pillar: 4 — Love & Compatibility
 target_keyword: cardology compatibility
 intent: Exploratory / System Deep-Dive

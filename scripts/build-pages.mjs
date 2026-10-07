@@ -16,7 +16,34 @@ const WEB_APP_URL = 'https://app.cardy.today';
 // Dates for Article schema freshness signals (AI systems favor dated, recently-updated content).
 // Override per-page with `date_published` / `date_modified` frontmatter (YYYY-MM-DD).
 const DEFAULT_PUBLISHED = '2026-09-18';
-const BUILD_DATE = new Date().toISOString().slice(0, 10);
+// Last real content edit. Bump this (or a page's `date_modified`) when copy changes:
+// stamping every page with the build date tells Google the whole site changes daily,
+// so it learns to ignore our sitemap <lastmod> and dateModified.
+const DEFAULT_MODIFIED = '2026-09-23';
+const HOME_MODIFIED = '2026-10-02';
+const modifiedDate = (meta) => meta.date_modified || DEFAULT_MODIFIED;
+
+// Every guide, linked from every page's footer so no page depends on a single
+// inbound link to get discovered. Order: tools, foundations, meanings, compatibility.
+const GUIDE_LINKS = [
+  ['/destiny-cards-calculator', 'Destiny Cards Calculator'],
+  ['/find-my-birth-card', 'Find My Birth Card'],
+  ['/cardology-yearly-spread', 'Yearly Spread'],
+  ['/destiny-cards-relationship-chart', 'Relationship Chart'],
+  ['/what-is-cardology', 'What Is Cardology?'],
+  ['/how-to-read-destiny-cards', 'How to Read Destiny Cards'],
+  ['/52-cards-of-destiny', 'The 52 Cards of Destiny'],
+  ['/playing-card-astrology', 'Playing Card Astrology'],
+  ['/cardology-vs-astrology', 'Cardology vs Astrology'],
+  ['/robert-lee-camp-destiny-cards', 'Robert Lee Camp'],
+  ['/destiny-cards-meaning', 'Destiny Card Meanings'],
+  ['/birth-card-meanings', 'Birth Card Meanings'],
+  ['/what-are-karma-cards', 'What Are Karma Cards?'],
+  ['/supporting-karma-card', 'Supporting Karma Card'],
+  ['/challenging-karma-card', 'Challenging Karma Card'],
+  ['/cardology-compatibility', 'Cardology Compatibility'],
+  ['/love-cards-compatibility', 'Love Cards Compatibility'],
+];
 
 // Known internal link mapping
 const SLUG_MAP = {
@@ -421,7 +448,7 @@ function buildHtmlPage(meta, contentHtml, faqs) {
     'image': `${DOMAIN}/icon@3x.png`,
     'mainEntityOfPage': { '@type': 'WebPage', '@id': canonicalUrl },
     'datePublished': meta.date_published || DEFAULT_PUBLISHED,
-    'dateModified': meta.date_modified || BUILD_DATE,
+    'dateModified': modifiedDate(meta),
     'author': { '@type': 'Organization', 'name': 'Cardy', 'url': DOMAIN },
     'publisher': {
       '@type': 'Organization',
@@ -553,6 +580,14 @@ function buildHtmlPage(meta, contentHtml, faqs) {
     .footer-links { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; font-size: 14px; }
     .footer-links a { color: var(--cream-dim); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--cream); }
+    .footer-guides {
+      max-width: 1000px; margin: 32px auto 0; padding-top: 24px;
+      border-top: 1px solid rgba(255, 244, 244, 0.06); font-size: 13px;
+    }
+    .footer-guides strong { display: block; margin-bottom: 12px; color: var(--cream); font-weight: 600; }
+    .footer-guides ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; }
+    .footer-guides a { color: var(--cream-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-guides a:hover { color: var(--cream); }
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
@@ -629,6 +664,12 @@ ${hasCompatPreview ? '\n      ' + readPartial('compatibility-preview.html') : ''
         <li><a href="/#support">Support</a></li>
         <li><a href="/#privacy">Privacy</a></li>
         <li><a href="/#terms">Terms</a></li>
+      </ul>
+    </div>
+    <div class="footer-guides">
+      <strong>Guides</strong>
+      <ul>
+${GUIDE_LINKS.filter(([href]) => href !== meta.slug).map(([href, label]) => `        <li><a href="${href}">${label}</a></li>`).join('\n')}
       </ul>
     </div>
   </footer>
@@ -711,7 +752,7 @@ function generateSitemap(pages) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${DOMAIN}/</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${HOME_MODIFIED}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>`;
@@ -722,7 +763,7 @@ function generateSitemap(pages) {
     xml += `
   <url>
     <loc>${DOMAIN}${page.meta.slug}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${modifiedDate(page.meta)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${priority}</priority>
   </url>`;

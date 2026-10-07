@@ -1,5 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.cardy.today" }],
+      "destination": "https://cardy.today/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
