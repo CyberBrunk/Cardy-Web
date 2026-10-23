@@ -99,8 +99,10 @@
       display: block;
       margin: 8px 0 10px;
       font-family: var(--font-display);
-      font-size: 40px;
-      letter-spacing: 4px;
+      /* 12-character codes still fit on a phone */
+      font-size: clamp(26px, 8.5vw, 40px);
+      letter-spacing: 3px;
+      overflow-wrap: anywhere;
       color: var(--gold);
     }
     .copy {
