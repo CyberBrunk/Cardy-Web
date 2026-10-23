@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're invited to Cardy</title>
+  <meta name="description" content="You've been invited to Cardy. Find your three birth cards and start your daily card reflection." />
+  <!-- Invite pages are per creator and per code: keep them out of search results. -->
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Safari on iPhone shows the App Clip card, which carries the code into the app. -->
+  <meta name="apple-itunes-app" content="app-id=6757249840, app-clip-bundle-id=com.channel22.cardy.Clip, app-clip-display=card" />
+
+  <meta property="og:title" content="You're invited to Cardy" />
+  <meta property="og:description" content="Find your three birth cards and see what they say about you." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cardy.today/icon@3x.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" type="image/png" href="/icon@3x.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --red: #B42B19;
+      --gold: #F5C563;
+      --link-gold: #F5C77E;
+      --cream: #FFF4F4;
+      --cream-dim: rgba(255, 244, 244, 0.72);
+      --dark: #0B0E1A;
+      --font-display: 'Abril Fatface', serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+    html, body { min-height: 100%; }
+    body {
+      font-family: var(--font-body);
+      color: var(--cream);
+      background: linear-gradient(180deg, #1C1F2E 0%, #121218 55%, var(--dark) 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { display: flex; justify-content: center; padding: 20px 16px 0; }
+    header a { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; }
+    header img { width: 34px; height: 34px; border-radius: 9px; }
+    header span { font-family: var(--font-display); font-size: 20px; }
+
+    main { max-width: 520px; margin: 0 auto; padding: 40px 16px 56px; text-align: center; }
+
+    .avatar {
+      width: 96px; height: 96px; margin: 0 auto;
+      border-radius: 50%;
+      border: 2px solid rgba(245, 197, 99, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      font-family: var(--font-display); font-size: 42px; color: #fff;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(30px, 8vw, 42px);
+      line-height: 1.1;
+      margin: 22px 0 10px;
+      overflow-wrap: anywhere;
+    }
+    .message { font-size: 17px; line-height: 1.55; color: var(--cream-dim); max-width: 420px; margin: 0 auto; }
+
+    .offer {
+      list-style: none;
+      margin: 26px auto 0;
+      max-width: 380px;
+      display: flex; flex-direction: column; gap: 10px;
+      text-align: left;
+    }
+    .offer li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 15px; font-weight: 600;
+    }
+    .offer li::before { content: "✦"; color: var(--gold); font-size: 14px; }
+
+    .code-box {
+      margin: 30px auto 0;
+      max-width: 380px;
+      padding: 18px 16px;
+      border-radius: 18px;
+      border: 1.5px dashed rgba(245, 197, 99, 0.7);
+      background: rgba(245, 197, 99, 0.06);
+    }
+    .code-label { font-size: 13px; color: var(--cream-dim); }
+    .code {
+      display: block;
+      margin: 8px 0 10px;
+      font-family: var(--font-display);
+      font-size: 40px;
+      letter-spacing: 4px;
+      color: var(--gold);
+    }
+    .copy {
+      font-family: var(--font-body);
+      font-size: 14px; font-weight: 600;
+      color: var(--link-gold);
+      background: none; border: 0; cursor: pointer;
+    }
+
+    .actions { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .btn {
+      display: block; width: 100%; max-width: 340px;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font-size: 17px; font-weight: 600;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-secondary { border: 1px solid rgba(255, 244, 244, 0.25); color: var(--cream); }
+    .fine { margin-top: 22px; font-size: 13px; line-height: 1.6; color: rgba(255, 244, 244, 0.55); }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <img src="/icon@3x.png" alt="" />
+      <span>Cardy</span>
+    </a>
+  </header>
+
+  <main>
+    <div class="avatar" id="avatar" aria-hidden="true">✦</div>
+    <h1 id="headline">You're invited to Cardy</h1>
+    <p class="message" id="message">Find your three birth cards and start a daily card reflection.</p>
+
+    <ul class="offer" id="offer" hidden></ul>
+
+    <div class="code-box" id="code-box" hidden>
+      <span class="code-label">Use this code when you sign up</span>
+      <strong class="code" id="code"></strong>
+      <button class="copy" id="copy" type="button">Copy code</button>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" id="app-store" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">Get Cardy on the App Store</a>
+      <a class="btn btn-secondary" id="web-app" href="https://app.cardy.today/onboarding" target="_blank" rel="noopener">On Android or a computer? Use the web app</a>
+    </div>
+
+    <p class="fine" id="fine" hidden>
+      In the app, tap <strong>Have a referral code?</strong> on the sign-up screen and enter the code.
+      On the web app it's applied for you.
+    </p>
+  </main>
+
+  <script>
+    // Creator and friend invites: cardy.today/c/CODE (or /c/?code=CODE).
+    // Details come from the public lookup-referral-code function; every value is
+    // set with textContent, never innerHTML. Code rules match the iOS app's
+    // CardyShareLink.normalizedReferralCode: 4-12 letters or digits.
+    (function () {
+      var fromPath = (window.location.pathname.split('/')[2] || '').trim();
+      var fromQuery = new URLSearchParams(window.location.search).get('code') || '';
+      var code = (fromPath || fromQuery).toUpperCase();
+      if (!/^[A-Z0-9]{4,12}$/.test(code)) return;
+
+      document.getElementById('code').textContent = code;
+      document.getElementById('code-box').hidden = false;
+      document.getElementById('fine').hidden = false;
+      document.getElementById('web-app').href =
+        'https://app.cardy.today/onboarding?' + new URLSearchParams({ ref: code }).toString();
+
+      document.getElementById('copy').addEventListener('click', function () {
+        var button = this;
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(code).then(function () {
+          button.textContent = 'Copied';
+          setTimeout(function () { button.textContent = 'Copy code'; }, 1800);
+        });
+      });
+
+      fetch('https://eesnvaoszsxruraspvhj.supabase.co/functions/v1/lookup-referral-code?code=' + encodeURIComponent(code))
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (info) {
+          if (!info || info.type !== 'creator') return;
+          var name = info.display_name || '';
+
+          var avatar = document.getElementById('avatar');
+          if (info.image_url && /^https:\/\//.test(info.image_url)) {
+            var img = document.createElement('img');
+            img.src = info.image_url;
+            img.alt = name;
+            avatar.textContent = '';
+            avatar.appendChild(img);
+          } else if (name) {
+            avatar.textContent = name.charAt(0).toUpperCase();
+          }
+
+          var headline = info.headline || (name + ' invited you to Cardy');
+          document.getElementById('headline').textContent = headline;
+          document.title = headline;
+          if (info.message) document.getElementById('message').textContent = info.message;
+
+          var offer = info.offer || {};
+          var items = [];
+          if (offer.free_premium) items.push(offer.free_premium + ' of Cardy free');
+          if (offer.compatibility_credits > 0) {
+            items.push(offer.compatibility_credits + ' free compatibility reading' + (offer.compatibility_credits === 1 ? '' : 's'));
+          }
+          if (offer.auto_connect && name) items.push('Your compatibility with ' + name + ', unlocked');
+          if (items.length) {
+            var list = document.getElementById('offer');
+            items.forEach(function (text) {
+              var li = document.createElement('li');
+              li.textContent = text;
+              list.appendChild(li);
+            });
+            list.hidden = false;
+          }
+        })
+        .catch(function () { /* keep the generic invite */ });
+    })();
+  </script>
+</body>
+</html>

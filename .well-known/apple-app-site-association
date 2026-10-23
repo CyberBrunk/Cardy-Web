@@ -2,15 +2,29 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["V5VLP695M2.com.channel22.cardy"],
+        "appIDs": [
+          "V5VLP695M2.com.channel22.cardy"
+        ],
         "components": [
-          { "/": "/card", "comment": "Shared card readings open the full app when it's installed" },
-          { "/": "/card/", "comment": "Same page with a trailing slash" }
+          {
+            "/": "/card",
+            "comment": "Shared card readings open the full app when it's installed"
+          },
+          {
+            "/": "/card/",
+            "comment": "Same page with a trailing slash"
+          },
+          {
+            "/": "/c/*",
+            "comment": "Creator and friend invite links open the app when it's installed"
+          }
         ]
       }
     ]
   },
   "appclips": {
-    "apps": ["V5VLP695M2.com.channel22.cardy.Clip"]
+    "apps": [
+      "V5VLP695M2.com.channel22.cardy.Clip"
+    ]
   }
 }
