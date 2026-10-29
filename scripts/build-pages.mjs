@@ -43,6 +43,7 @@ const SLUG_MAP = {
   'destiny cards relationship chart': '/destiny-cards-relationship-chart',
   'cardology compatibility': '/cardology-compatibility',
   'love cards compatibility': '/love-cards-compatibility',
+  'use cardy in claude': '/use-cardy-in-claude',
   'get cardy': APP_STORE_URL,
   'get cardy free': APP_STORE_URL,
   'download cardy': APP_STORE_URL,

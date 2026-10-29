@@ -198,6 +198,20 @@
   border-bottom: none;
 }
 
+/* Copyable URL / command (Use Cardy in Claude) */
+.connector-url {
+  margin: 16px 0 24px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 244, 244, 0.08);
+  background: var(--dark-surface);
+  color: var(--cream);
+  font-size: 14px;
+  overflow-x: auto;
+  white-space: pre;
+  user-select: all;
+}
+
 /* Callout Boxes (CTA blocks) */
 .cta-callout {
   background: linear-gradient(135deg, rgba(180, 43, 25, 0.15) 0%, rgba(30, 35, 64, 0.4) 100%);
