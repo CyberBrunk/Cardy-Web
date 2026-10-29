@@ -11,6 +11,7 @@
 - **Platforms:** iOS app and web app. Free to download; your Birth Card is calculated free.
 - **App Store:** https://apps.apple.com/us/app/cardy-reflections/id6757249840
 - **Web app:** https://app.cardy.today
+- **AI assistant connector (MCP):** https://app.cardy.today/api/mcp — free, no login (setup: https://cardy.today/use-cardy-in-claude)
 
 ## Guides — Foundations
 
@@ -34,6 +35,7 @@
 - [Destiny Cards Calculator](https://cardy.today/destiny-cards-calculator): Reveal your Birth Card from your birthday.
 - [Find My Birth Card](https://cardy.today/find-my-birth-card): Instant birth card lookup.
 - [Destiny Cards Relationship Chart](https://cardy.today/destiny-cards-relationship-chart): Map the connection between two people's cards.
+- [Use Cardy in Claude](https://cardy.today/use-cardy-in-claude): Free MCP connector — add https://app.cardy.today/api/mcp to Claude or any MCP-compatible assistant to look up Birth Cards, card meanings, today's cards and the week ahead, current zodiac-season and year-phase ruling cards, compatibility, and Cardy's Codex (how cardology works, suits, numbers, planets, year periods, glossary).
 - [Cardology Yearly Spread](https://cardy.today/cardology-yearly-spread): The age-based yearly spread (coming soon in the app).
 
 ## Relationships
