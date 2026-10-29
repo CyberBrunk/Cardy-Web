@@ -2291,6 +2291,24 @@
     const ranks = ['', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     const rankNames = ['', 'Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
 
+    // Start loading the birth card's art as soon as a full birthday is picked,
+    // so the flip to its face doesn't wait on the download.
+    const preloaded = new Set();
+    function preloadBirthCard() {
+      const m = parseInt(mSelect.value, 10);
+      const d = parseInt(dSelect.value, 10);
+      if (!m || !d || (m === 12 && d === 31)) return;
+      let val = 55 - (2 * m + d);
+      if (val <= 0) val += 52;
+      const suit = suits[Math.floor((val - 1) / 13)] || suits[0];
+      const rIdx = ((val - 1) % 13) + 1;
+      const src = `/assets/cards/${suit.name.toLowerCase()}-${(rankNames[rIdx] || String(rIdx)).toLowerCase()}.webp`;
+      if (preloaded.has(src)) return;
+      preloaded.add(src);
+      new Image().src = src;
+    }
+    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', preloadBirthCard));
+
     const CARD_PROFILES = {
       // Hearts
       'Ace of Hearts': {
