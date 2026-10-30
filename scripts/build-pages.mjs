@@ -327,9 +327,15 @@ function markdownToHtml(md) {
   return { html: out.join('\n'), faqs };
 }
 
+// "| a | | b |" → ["a", "", "b"]: drop only the outer pipes, so empty cells
+// (like a blank top-left header over the row labels) keep their column.
+function tableCells(row) {
+  return row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
+}
+
 function renderTable(rows) {
   if (rows.length < 2) return '';
-  const headerCols = rows[0].split('|').map(c => c.trim()).filter(Boolean);
+  const headerCols = tableCells(rows[0]);
   const bodyRows = rows.slice(2);
 
   let html = '<div class="table-wrap"><table class="article-table"><thead><tr>';
@@ -339,8 +345,8 @@ function renderTable(rows) {
   html += '</tr></thead><tbody>';
 
   for (const row of bodyRows) {
-    const cols = row.split('|').map(c => c.trim()).filter(Boolean);
-    if (!cols.length) continue;
+    const cols = tableCells(row);
+    if (cols.every(c => !c)) continue;
     html += '<tr>';
     for (const c of cols) {
       html += `<td>${formatInline(c)}</td>`;
