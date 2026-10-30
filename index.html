@@ -1832,7 +1832,7 @@
   <div class="linen-texture" id="linenTexture"></div>
 </div>
 
-<!-- App banner: App Store on iPhone (hidden in Safari, which shows Apple's own banner), web sign-up elsewhere -->
+<!-- App banner: always the App Store; hidden in iPhone Safari, which shows Apple's own banner -->
 <div class="app-banner" id="appBanner" hidden>
   <img src="assets/icon-80.webp" alt="" width="36" height="36" class="app-banner-icon" />
   <div class="app-banner-text">
@@ -1859,8 +1859,8 @@
   </ul>
 </nav>
 <script>
-  // iPhone visitors get the App Store; everyone else signs up in the web app
-  // (the app is iPhone-only), where an iPhone prompt follows onboarding.
+  // The nav button sends non-iPhone visitors to sign up in the web app (the app
+  // is iPhone-only); the top banner always points at the App Store.
   (function initGetCardy() {
     const ua = navigator.userAgent;
     const iphone = /iPhone|iPad|iPod/.test(ua);
@@ -1881,12 +1881,6 @@
     try { dismissedAt = Number(localStorage.getItem(KEY)) || 0; } catch (e) {}
     if (iosSafari || Date.now() - dismissedAt < 14 * 864e5) return;
 
-    if (!iphone) {
-      document.getElementById('appBannerTitle').textContent = 'Start free on the web';
-      const cta = document.getElementById('appBannerCta');
-      cta.href = SIGNUP_URL;
-      cta.textContent = 'Sign up';
-    }
     banner.hidden = false;
     document.body.classList.add('has-app-banner');
     track('web_app_banner_viewed', { platform: iphone ? 'ios' : /Android/.test(ua) ? 'android' : 'desktop' });
