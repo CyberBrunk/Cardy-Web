@@ -347,8 +347,8 @@
     }
     .tri-left { left: 11%; top: 80%; }
     .tri-right { left: 89%; top: 80%; }
-    /* Side labels stay readable where they meet the phones */
-    .tri-left figcaption, .tri-right figcaption { position: relative; z-index: 2; text-shadow: 0 1px 6px rgba(11, 14, 26, 0.95); }
+    /* Side labels on two lines, narrow enough to clear the phones' edges */
+    .tri-left figcaption, .tri-right figcaption { line-height: 1.25; text-shadow: 0 1px 6px rgba(11, 14, 26, 0.95); }
     .tri-apex { left: 50%; top: 20%; width: 19%; animation-delay: 0.4s; }
     .tri-apex img { animation: triApex 0.6s ease-out 2.2s both; }
     @keyframes triApex { from { transform: scale(0.92); } to { transform: scale(1); } }
@@ -1959,8 +1959,8 @@
           <path class="tri-rise" pathLength="1" d="M89 64 L50 16" />
         </svg>
         <div class="tri-glow" aria-hidden="true"></div>
-        <figure class="tri-fig tri-left"><img src="assets/sun-cards/inner-child.webp" alt="" width="120" height="120" /><figcaption>Inner Child</figcaption></figure>
-        <figure class="tri-fig tri-right"><img src="assets/sun-cards/chosen-purpose.webp" alt="" width="120" height="120" /><figcaption>Chosen Purpose</figcaption></figure>
+        <figure class="tri-fig tri-left"><img src="assets/sun-cards/inner-child.webp" alt="" width="120" height="120" /><figcaption>Inner<br />Child</figcaption></figure>
+        <figure class="tri-fig tri-right"><img src="assets/sun-cards/chosen-purpose.webp" alt="" width="120" height="120" /><figcaption>Chosen<br />Purpose</figcaption></figure>
         <figure class="tri-fig tri-apex"><figcaption>Highest Self</figcaption><img src="assets/sun-cards/highest-self.webp" alt="" width="150" height="150" /></figure>
       </div>
       <img src="assets/cardy-hero-520.webp" srcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" sizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" width="520" height="667" fetchpriority="high" decoding="async" alt="Cardy app showing daily card readings and friend profiles" />
