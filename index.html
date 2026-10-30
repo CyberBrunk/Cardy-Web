@@ -288,11 +288,70 @@
       justify-content: center;
       animation: fadeIn 0.4s ease-out both;
     }
-    .hero-image img {
+    .hero-image > img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 520px;
       height: auto;
       filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+    }
+    /* Sun-card triangle behind the phones (iOS SunCardsTriangle timings) */
+    .hero-image { position: relative; }
+    .hero-triangle {
+      --gold: #F5C563;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(128%, calc(100vw - 16px));
+      max-width: 700px;
+      aspect-ratio: 100 / 80;
+      /* High enough that Highest Self clears the tops of the phones */
+      transform: translate(-50%, -72%);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      /* Phones stacked under the copy: room above them for Highest Self */
+      .hero-image { padding-top: 72px; }
+      .hero-triangle { transform: translate(-50%, -60%); }
+      .hero-triangle .tri-fig figcaption { font-size: 9px; letter-spacing: 0.08em; white-space: normal; line-height: 1.2; }
+      .hero-triangle .tri-left { left: 9%; }
+      .hero-triangle .tri-right { left: 91%; }
+    }
+    .hero-triangle-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .hero-triangle-lines path {
+      /* viewBox units: ~0.25 is about 1.5px at full size */
+      fill: none; stroke: var(--gold); stroke-opacity: 0.55; stroke-width: 0.25; stroke-linecap: round;
+      stroke-dasharray: 1; stroke-dashoffset: 1;
+    }
+    .tri-base { animation: triDraw 0.7s ease-in-out 0.7s forwards; }
+    .tri-rise { animation: triDraw 0.9s ease-in-out 1.4s forwards; }
+    @keyframes triDraw { to { stroke-dashoffset: 0; } }
+    .tri-glow {
+      position: absolute; left: 50%; top: 20%; width: 34%; aspect-ratio: 1;
+      transform: translate(-50%, -50%) scale(0.92);
+      background: radial-gradient(circle, rgba(245, 197, 99, 0.45) 0%, rgba(245, 197, 99, 0) 70%);
+      opacity: 0;
+      animation: triLit 0.6s ease-out 2.2s forwards, triBreathe 4s ease-in-out 2.8s infinite;
+    }
+    @keyframes triLit { to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    @keyframes triBreathe { 50% { opacity: 0.6; } }
+    .tri-fig { position: absolute; margin: 0; width: 16%; text-align: center; transform: translate(-50%, -50%); opacity: 0; animation: fadeIn 0.6s ease-out 0.4s forwards; }
+    .tri-fig img { display: block; width: 100%; height: auto; }
+    .tri-fig figcaption {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); white-space: nowrap;
+    }
+    .tri-left { left: 11%; top: 80%; }
+    .tri-right { left: 89%; top: 80%; }
+    /* Side labels stay readable where they meet the phones */
+    .tri-left figcaption, .tri-right figcaption { position: relative; z-index: 2; text-shadow: 0 1px 6px rgba(11, 14, 26, 0.95); }
+    .tri-apex { left: 50%; top: 20%; width: 19%; animation-delay: 0.4s; }
+    .tri-apex img { animation: triApex 0.6s ease-out 2.2s both; }
+    @keyframes triApex { from { transform: scale(0.92); } to { transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-triangle-lines path { animation: none; stroke-dashoffset: 0; }
+      .tri-glow, .tri-fig, .tri-apex img { animation: none; opacity: 1; }
+      .tri-glow { transform: translate(-50%, -50%); }
     }
 
     /* ---- Dedicated 3-Card Reveal Section ---- */
@@ -1601,7 +1660,7 @@
       .hero-buttons { justify-content: center; }
       .steps { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .hero-image { order: 1; }
-      .hero-image img { max-width: 400px; }
+      .hero-image > img { max-width: 400px; }
       .reveal-section { padding: 80px 24px; }
       .cards-stage { gap: 16px; }
       .card-center-suit { font-size: 44px; }
@@ -1623,7 +1682,7 @@
     @media (max-width: 600px) {
       .hero { padding: 100px 20px 60px; min-height: auto; }
       .nav-links .hide-sm { display: none; }
-      .hero-image img { max-width: 300px; }
+      .hero-image > img { max-width: 300px; }
       .store-btn { padding: 12px 20px; font-size: 14px; }
       .reveal-section { padding: 60px 16px; }
       .reveal-wrap { display: block; }
@@ -1886,6 +1945,18 @@
       </div>
     </div>
     <div class="hero-image">
+      <!-- The iOS onboarding finale: Inner Child and Chosen Purpose join, then rise to Highest Self -->
+      <div class="hero-triangle" role="img" aria-label="Inner Child and Chosen Purpose lead to your Highest Self">
+        <svg class="hero-triangle-lines" viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true">
+          <path class="tri-base" pathLength="1" d="M11 64 L89 64" />
+          <path class="tri-rise" pathLength="1" d="M11 64 L50 16" />
+          <path class="tri-rise" pathLength="1" d="M89 64 L50 16" />
+        </svg>
+        <div class="tri-glow" aria-hidden="true"></div>
+        <figure class="tri-fig tri-left"><img src="assets/sun-cards/inner-child.webp" alt="" width="120" height="120" /><figcaption>Inner Child</figcaption></figure>
+        <figure class="tri-fig tri-right"><img src="assets/sun-cards/chosen-purpose.webp" alt="" width="120" height="120" /><figcaption>Chosen Purpose</figcaption></figure>
+        <figure class="tri-fig tri-apex"><figcaption>Highest Self</figcaption><img src="assets/sun-cards/highest-self.webp" alt="" width="150" height="150" /></figure>
+      </div>
       <img src="assets/cardy-hero-520.webp" srcset="assets/cardy-hero-520.webp 520w, assets/cardy-hero-1040.webp 1040w" sizes="(max-width: 600px) 300px, (max-width: 900px) 400px, 520px" width="520" height="667" fetchpriority="high" decoding="async" alt="Cardy app showing daily card readings and friend profiles" />
     </div>
   </div>
