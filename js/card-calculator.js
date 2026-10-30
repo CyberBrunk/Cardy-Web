@@ -21,268 +21,268 @@
     // Hearts
     'Ace of Hearts': {
       slug: 'ace-of-hearts',
-      archetype: 'The Desire for Love & Awakening',
+      archetype: 'The Love Catalyst',
       desc: 'The pioneer of the heart. You possess a restless craving for affection, creative expression, and new emotional horizons. Passionate and magnetic, your primary life lesson is cultivating inner self-love so you do not chase validation at the expense of your own peace.'
     },
     '2 of Hearts': {
       slug: '2-of-hearts',
-      archetype: "The Lover's Card & Sacred Union",
+      archetype: 'The Synergizer of Love',
       desc: 'Deeply devoted, affectionate, and wired for intimate partnership. You flourish when sharing your life and projects with a kindred spirit, learning to overcome codependency so your unions remain equal and empowering.'
     },
     '3 of Hearts': {
       slug: '3-of-hearts',
-      archetype: 'The Creative Explorer & Variety',
+      archetype: 'The Heart Expander',
       desc: 'An expressive artist and social butterfly gifted with immense charm, playful wit, and emotional curiosity. Your central challenge is romantic and creative indecision—learning that depth of commitment yields far richer joy than endless novelty.'
     },
     '4 of Hearts': {
       slug: '4-of-hearts',
-      archetype: 'The Marriage Card & Emotional Security',
+      archetype: 'The Protector of Love',
       desc: 'Stable, loyal, and deeply protective of family and lifelong companions. You are the emotional foundation of your community, learning to release emotional stubbornness and trust life when relationships require growth.'
     },
     '5 of Hearts': {
       slug: '5-of-hearts',
-      archetype: 'The Restless Heart & Emotional Adventurer',
+      archetype: 'The Explorer of Love',
       desc: 'Curious, freedom-loving, and driven by an appetite for emotional adventure and travel. Your fulfillment comes when you learn to sustain deep emotional roots without feeling an urge to flee when intimacy deepens.'
     },
     '6 of Hearts': {
       slug: '6-of-hearts',
-      archetype: 'The Peacemaker & Karmic Love',
+      archetype: 'The Warrior of Peace',
       desc: 'A natural healer and diplomat centered on peace, fairness, and domestic responsibility. Your vital life lesson is learning healthy boundaries: forgiving without enabling, and knowing when an old emotional debt has already been paid.'
     },
     '7 of Hearts': {
       slug: '7-of-hearts',
-      archetype: 'The Spiritual Lover & Unconditional Heart',
+      archetype: 'The Loving Alchemist',
       desc: 'A card of high emotional sensitivity, deep intuition, and spiritual awakening through love. When you elevate your love beyond possessiveness into unconditional compassion, your intuitive and healing gifts shine brilliantly.'
     },
     '8 of Hearts': {
       slug: '8-of-hearts',
-      archetype: 'The Card of Emotional Magnetism & Charm',
+      archetype: 'The Devotee of Love',
       desc: 'Magnetic, captivating, and socially formidable. You hold a natural gift for charming crowds and commanding affection without force, called to wield this emotional authority with genuine integrity and kindness.'
     },
     '9 of Hearts': {
       slug: '9-of-hearts',
-      archetype: 'The Universal Giver & Sacred Completion',
+      archetype: 'The Heartbreaker',
       desc: 'Compassionate, generous, and attuned to the broader human condition. By embracing release with an open heart rather than resisting endings, you graduate from personal attachments into profound universal wisdom.'
     },
     '10 of Hearts': {
       slug: '10-of-hearts',
-      archetype: 'The Radiant Community & Social Success',
+      archetype: 'The Mentor of Love',
       desc: 'Charismatic, uplifting, and born to shine in front of groups. While you effortlessly gain public admiration, your challenge is maintaining genuine, grounded emotional intimacy in private life away from the applause.'
     },
     'Jack of Hearts': {
       slug: 'jack-of-hearts',
-      archetype: 'The Devoted Sacrifice & Youthful Romantic',
+      archetype: 'Sacrificial Love',
       desc: 'Playful, idealistic, and driven by selfless devotion to the people and causes you love. Your path involves grounding your ideals in reality so you do not sacrifice your well-being for unreciprocated dreams.'
     },
     'Queen of Hearts': {
       slug: 'queen-of-hearts',
-      archetype: 'The Loving Mother & Empathetic Nurturer',
+      archetype: 'Mystical Love',
       desc: 'Warm, regal, highly intuitive, and instinctively supportive. You radiate unconditional empathy and domestic beauty, with the lifelong lesson of honoring your own needs with the same care you offer to others.'
     },
     'King of Hearts': {
       slug: 'king-of-hearts',
-      archetype: 'The Master of the Heart & Emotional Patriarch',
+      archetype: 'Masterful Love',
       desc: 'Wise, protective, composed, and fatherly. You command natural authority in relationships, maintaining emotional mastery and fair leadership even amidst crisis while leading with a compassionate heart.'
     },
 
     // Clubs
     'Ace of Clubs': {
       slug: 'ace-of-clubs',
-      archetype: 'The Seeker of Truth & Spark of Curiosity',
+      archetype: 'The Insatiable Mind',
       desc: 'Fueled by an unquenchable thirst for knowledge, books, and fresh ideas. Your challenge is overcoming mental anxiety and over-analysis by pairing your brilliant mental spark with intuitive stillness and decisive action.'
     },
     '2 of Clubs': {
       slug: '2-of-clubs',
-      archetype: 'The Inquisitive Conversationalist & Mental Match',
+      archetype: 'The Mental Mirror',
       desc: 'Gifted in dialogue, debate, and intellectual companionship. You think best out loud with someone who sharpens your intellect, learning to quiet mental restlessness and trust your own independent judgment.'
     },
     '3 of Clubs': {
       slug: '3-of-clubs',
-      archetype: 'The Creative Genius & Mental Dynamo',
+      archetype: 'The Mind Expander',
       desc: 'A rapid-fire writer, speaker, or innovator bursting with creative concepts. Your central challenge is focus: resisting the urge to juggle too many ideas at once so your most brilliant visions reach completion.'
     },
     '4 of Clubs': {
       slug: '4-of-clubs',
-      archetype: 'The Structured Mind & Stable Knowledge',
+      archetype: 'The Art-chitect',
       desc: 'Grounded, practical, organized, and mentally resilient. You excel at building frameworks and methodologies that stand the test of time, learning to remain intellectually flexible with modern evidence.'
     },
     '5 of Clubs': {
       slug: '5-of-clubs',
-      archetype: 'The Inquisitive Traveler & Mental Wanderer',
+      archetype: 'The Open Mind',
       desc: 'Hungry for adventure, philosophical shifts, and diverse viewpoints. You despise intellectual monotony, thriving when you channel your restless curiosity into purposeful travel and deep specialized study.'
     },
     '6 of Clubs': {
       slug: '6-of-clubs',
-      archetype: 'The Messenger of Truth & Intuitive Clarity',
+      archetype: 'The Messenger of Truth',
       desc: 'Calm, reliable, and deeply committed to intellectual integrity. You carry a natural talent for recognizing universal truths, tested to stand firm in your convictions without compromising simply to avoid debate.'
     },
     '7 of Clubs': {
       slug: '7-of-clubs',
-      archetype: 'The Spiritual Intellect & Overcoming Worry',
+      archetype: 'The Spiritual Mind',
       desc: 'Intuitive, visionary, and philosophically inclined. When you train your mind to focus on spiritual faith and positive visualization rather than worst-case scenarios, your mind becomes an instrument of remarkable inspiration.'
     },
     '8 of Clubs': {
       slug: '8-of-clubs',
-      archetype: 'The Mental Powerhouse & Intellectual Authority',
+      archetype: 'The Mental Powerhouse',
       desc: 'Mentally formidable, persuasive, and exceptionally disciplined. You possess intense focus and executive intelligence, capable of achieving remarkable intellectual milestones through steady concentration.'
     },
     '9 of Clubs': {
       slug: '9-of-clubs',
-      archetype: 'The Universal Thinker & Philosophical Completion',
+      archetype: 'The Revolutionary Mind',
       desc: 'Broad-minded, philanthropic, and naturally wise. You synthesize complex worldviews and mentor others, continually releasing obsolete philosophies to make room for higher spiritual understanding.'
     },
     '10 of Clubs': {
       slug: '10-of-clubs',
-      archetype: 'The Radiant Teacher & Public Brilliance',
+      archetype: 'The Teacher',
       desc: 'Exceptionally articulate, widely read, and born to communicate to the public. You succeed as a teacher, author, or public strategist, balancing your intense mental output with physical restoration.'
     },
     'Jack of Clubs': {
       slug: 'jack-of-clubs',
-      archetype: 'The Clever Strategist & Creative Trickster',
+      archetype: 'The Creative Genius',
       desc: 'Ingenious, witty, charismatic, and always ten steps ahead. Your destiny asks you to anchor your razor-sharp cleverness in unwavering ethics, using your inventive mind to build rather than outmaneuver.'
     },
     'Queen of Clubs': {
       slug: 'queen-of-clubs',
-      archetype: 'The Intuitive Counselor & Practical Queen',
+      archetype: 'The Mental Maven',
       desc: 'Perceptive, hardworking, and gifted with razor-sharp business instincts and intuitive foresight. Your growth lies in delegating responsibilities and guarding against mental exhaustion from carrying everyone’s problems.'
     },
     'King of Clubs': {
       slug: 'king-of-clubs',
-      archetype: 'The Master of the Mind & Executive Intellect',
+      archetype: 'The Master Mind',
       desc: 'Commanding, strategic, authoritative, and visionary. You are an intellectual heavyweight whose mental clarity allows you to govern enterprises and philosophies with quiet confidence and impartial justice.'
     },
 
     // Diamonds
     'Ace of Diamonds': {
       slug: 'ace-of-diamonds',
-      archetype: 'The Ambition for Worth & Financial Drive',
+      archetype: 'The Valuable Visionary',
       desc: 'Enterprising, self-reliant, and motivated by tangible achievement. You possess a keen eye for commerce and asset creation, learning that authentic wealth begins with unshakeable inner self-esteem.'
     },
     '2 of Diamonds': {
       slug: '2-of-diamonds',
-      archetype: 'The Business Partner & Dealmaker',
+      archetype: 'The Worth Weaver',
       desc: 'Diplomatic, commercially savvy, and skilled in collaborative enterprise. You generate wealth through joint ventures, learning to value equal reciprocity and make sure love is never treated as a transactional bargain.'
     },
     '3 of Diamonds': {
       slug: '3-of-diamonds',
-      archetype: 'The Financial Innovator & Multiple Interests',
+      archetype: 'The Value Expander',
       desc: 'Versatile, entrepreneurial, and creative in commerce. You often juggle multiple income streams and ventures, thriving when you overcome financial anxiety and commit to your core enterprise.'
     },
     '4 of Diamonds': {
       slug: '4-of-diamonds',
-      archetype: 'The Bedrock of Wealth & Material Security',
+      archetype: 'The Builder of Value',
       desc: 'Methodical, hardworking, and dedicated to building enduring financial stability. You are the rock of family and business assets, learning to release fear of scarcity and enjoy the fruits of your labor.'
     },
     '5 of Diamonds': {
       slug: '5-of-diamonds',
-      archetype: 'The Commercial Adventurer & Changing Fortunes',
+      archetype: 'The Seeker of Truth',
       desc: 'Free-spirited, adaptive, and drawn to diverse ventures, trading, and travel. You understand market cycles intuitively, learning to cultivate internal stability amidst external economic shifts.'
     },
     '6 of Diamonds': {
       slug: '6-of-diamonds',
-      archetype: 'The Settler of Debts & Financial Balancer',
+      archetype: 'The Earth Balancer',
       desc: 'Fair, generous, and committed to financial integrity and karmic settling. You have a steady money karma and an instinct for equitable compensation, challenged to charge what you are truly worth.'
     },
     '7 of Diamonds': {
       slug: '7-of-diamonds',
-      archetype: 'The Spiritual Millionaire & True Value',
+      archetype: 'The Lucky Charm',
       desc: 'Intuitive, discerning, and spiritually tested around money. You discover that when you fixate on material scarcity you struggle, but when you align with purpose and trust divine timing, abundance flows freely.'
     },
     '8 of Diamonds': {
       slug: '8-of-diamonds',
-      archetype: 'The Sun Card of Wealth & Executive Power',
+      archetype: 'The Sunbeam',
       desc: 'Imposing, prosperous, and naturally influential in business. You wield executive clout and financial magnetism with ease, born to manage large capital and use your wealth to elevate your community.'
     },
     '9 of Diamonds': {
       slug: '9-of-diamonds',
-      archetype: 'The Philanthropist & Release of Material Ego',
+      archetype: 'The Dragon Slayer',
       desc: 'Generous, worldly, and driven by higher humanitarian values over mere accumulation. You learn that true richness lies in giving back, releasing material control, and sharing abundance freely.'
     },
     '10 of Diamonds': {
       slug: '10-of-diamonds',
-      archetype: 'The Pinnacle of Success & Commercial Titan',
+      archetype: 'The Blessed One',
       desc: 'Highly ambitious, capable, and born for grand-scale prosperity. You possess the drive to build prominent businesses and achieve public renown, learning to ground your self-worth in character over balance sheets.'
     },
     'Jack of Diamonds': {
       slug: 'jack-of-diamonds',
-      archetype: 'The Enterprising Trader & Charming Promoter',
+      archetype: 'The Free Flyer',
       desc: 'Shrewd, persuasive, and magnetically creative in sales, technology, and enterprise. You spot opportunities before anyone else, called to hold the highest ethical standards in every deal.'
     },
     'Queen of Diamonds': {
       slug: 'queen-of-diamonds',
-      archetype: 'The Gracious Patron & Business Maven',
+      archetype: 'The Philanthropist',
       desc: 'Elegant, astute, and gifted with a refined appreciation for quality and craftsmanship. You cultivate and protect capital with grace, learning to balance generosity with personal boundaries.'
     },
     'King of Diamonds': {
       slug: 'king-of-diamonds',
-      archetype: 'The Master of Commerce & Industry Titan',
+      archetype: 'The Master of Action',
       desc: 'Decisive, authoritative, and seasoned in the laws of value and enterprise. You sit comfortably atop financial hierarchies, leading with pragmatic strength, executive vision, and honor.'
     },
 
     // Spades
     'Ace of Spades': {
       slug: 'ace-of-spades',
-      archetype: 'The Secret of Transformation & Inner Will',
+      archetype: 'The Magi',
       desc: 'The ancient card of profound metamorphosis, ambition, and spiritual awakening. You possess immense resolve to overcome hardship, discovering that true power emerges when you align your labor with spiritual devotion.'
     },
     '2 of Spades': {
       slug: '2-of-spades',
-      archetype: 'The Dedicated Partner & Fellowship of Labor',
+      archetype: 'The Spiritual Symbiote',
       desc: 'Reliable, loyal, and committed to common causes in work and craftsmanship. You excel in long-term professional partnerships, learning to balance devotion to duty with your own personal well-being.'
     },
     '3 of Spades': {
       slug: '3-of-spades',
-      archetype: 'The Master Craftsman & Creative Effort',
+      archetype: 'The Soul Expander',
       desc: 'Energetic, multitalented, and capable of turning physical effort into fine art. You excel across varied trades or design disciplines, challenged to avoid chronic overwork through focused moderation.'
     },
     '4 of Spades': {
       slug: '4-of-spades',
-      archetype: 'The Unshakable Foundation & Pillar of Health',
+      archetype: 'The Strong Spirit',
       desc: 'Resilient, grounded, and possessing an iron constitution and work ethic. You build enduring structures and take pride in dependable labor, learning flexibility when life invites new methods.'
     },
     '5 of Spades': {
       slug: '5-of-spades',
-      archetype: 'The Restless Wanderer & Life Reinventor',
+      archetype: 'The Wandering Spirit',
       desc: 'Dynamic, bold, and unafraid of major career transitions or physical relocations. When you anchor your transformations to a meaningful spiritual or professional mission, your adaptability becomes your greatest superpower.'
     },
     '6 of Spades': {
       slug: '6-of-spades',
-      archetype: 'The Card of Fate & The Steadfast Laborer',
+      archetype: 'The Karmic Soul',
       desc: 'Steadfast, karmically disciplined, and aligned with personal destiny. You understand that actions carry consequences, navigating work and health with unwavering integrity and calm endurance under pressure.'
     },
     '7 of Spades': {
       slug: '7-of-spades',
-      archetype: 'The Spiritual Healer & Faith Under Pressure',
+      archetype: 'The Faithful Spirit',
       desc: 'Deep, mystical, and resilient. You often encounter pivotal lessons around health or demanding workloads, discovering that inner faith and mindfulness dissolve outer obstacles into profound healing gifts.'
     },
     '8 of Spades': {
       slug: '8-of-spades',
-      archetype: 'The Power of Labor & Unstoppable Willpower',
+      archetype: 'The Deep Devotee',
       desc: 'Formidable, healing, and possessing immense stamina and executive drive. You overcome enormous obstacles through perseverance, learning to temper your iron will with gentleness and rest.'
     },
     '9 of Spades': {
       slug: '9-of-spades',
-      archetype: 'The Universal Sage & The Great Completion',
+      archetype: 'The Revolutionary',
       desc: 'Philosophically profound, compassionate, and spiritually mature. You assist others through life’s major endings and transformations, carrying the deck’s oldest wisdom into selfless service.'
     },
     '10 of Spades': {
       slug: '10-of-spades',
-      archetype: 'The Titan of Achievement & Public Mastery',
+      archetype: 'The Satisfied Soul',
       desc: 'The card of towering career success, supreme effort, and monumental accomplishment. You have the stamina to carry entire enterprises, challenged to step back and replenish your spiritual well-being.'
     },
     'Jack of Spades': {
       slug: 'jack-of-spades',
-      archetype: 'The Visionary Initiate & Spiritual Actor',
+      archetype: 'The Spiritual Initiate',
       desc: 'Clever, mystical, charismatic, and multifaceted. You operate with ease between spiritual awareness and practical mastery, called to channel your creative vision into transformative work.'
     },
     'Queen of Spades': {
       slug: 'queen-of-spades',
-      archetype: 'The Sovereign of Self-Mastery & Practical Wisdom',
+      archetype: 'The Medicine Spirit',
       desc: 'Disciplined, capable, intuitive, and deeply authoritative. You combine spiritual insight with organizational prowess, inspiring others through selfless service and quiet dignity.'
     },
     'King of Spades': {
       slug: 'king-of-spades',
-      archetype: 'The Crown of Wisdom & Supreme Master',
+      archetype: 'The Master of Self',
       desc: 'The highest card in the entire deck. Regal, principled, and seasoned by life’s ultimate lessons, you hold innate authority across work, philosophy, and leadership, governing with impartial grace.'
     },
 

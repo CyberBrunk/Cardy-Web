@@ -82,6 +82,46 @@
       border-bottom: 1px solid rgba(255, 244, 244, 0.06);
       transition: background 0.3s;
     }
+    /* ---- Top app banner (pushes the fixed nav down while shown) ---- */
+    .app-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 101;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 12px 0 16px;
+      background: linear-gradient(90deg, #B42B19 0%, #D83A26 100%);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+    .app-banner[hidden] { display: none; }
+    .app-banner-icon { border-radius: 9px; flex-shrink: 0; box-shadow: 0 0 0 1.5px rgba(255, 244, 244, 0.5); }
+    .app-banner-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+    .app-banner-text strong { font-size: 14px; color: var(--cream); }
+    .app-banner-text span { font-size: 12.5px; color: rgba(255, 244, 244, 0.88); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-banner-cta {
+      margin-left: auto;
+      flex-shrink: 0;
+      background: var(--cream);
+      color: #B42B19;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+    .app-banner-cta:hover { transform: scale(1.04); }
+    .app-banner-close {
+      display: flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; flex-shrink: 0;
+      border: 0; border-radius: 50%;
+      background: transparent; color: rgba(255, 244, 244, 0.85); cursor: pointer;
+    }
+    .app-banner-close:hover { background: rgba(255, 244, 244, 0.18); color: var(--cream); }
+    body.has-app-banner nav { top: 56px; }
+    body.has-app-banner .hero { margin-top: 56px; }
     .nav-logo {
       display: flex;
       align-items: center;
@@ -285,7 +325,7 @@
       border: 1px solid rgba(255, 244, 244, 0.14);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
       border-radius: 999px;
-      padding: 6px 8px 6px 20px;
+      padding: 6px 8px 6px 10px;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       margin-bottom: 48px;
@@ -301,26 +341,81 @@
       gap: 12px;
       align-items: center;
     }
-    .reveal-select {
+    .reveal-input {
+      width: 7.5em;
       background: transparent;
       border: none;
       color: var(--cream);
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 16px;
+      font-weight: 600;
       font-family: inherit;
-      padding: 8px 10px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.5px;
+      padding: 8px 4px;
       outline: none;
+    }
+    .reveal-input::placeholder { color: rgba(255, 244, 244, 0.45); font-weight: 500; }
+    .reveal-field { position: relative; display: flex; align-items: center; gap: 4px; }
+    .reveal-cal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 50%;
+      color: rgba(255, 244, 244, 0.7);
       cursor: pointer;
+      transition: color 0.2s, background 0.2s;
     }
-    .reveal-select option {
-      background: #14182A;
+    .reveal-cal:hover, .reveal-cal:focus-visible { color: var(--cream); background: rgba(255, 244, 244, 0.08); outline: none; }
+    .bday-pop {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: -4px;
+      z-index: 30;
+      width: 300px;
+      padding: 14px;
+      background: var(--dark-surface);
+      border: 1px solid rgba(255, 244, 244, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      text-align: left;
+      animation: bdayPopIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bday-pop[hidden] { display: none; }
+    @keyframes bdayPopIn { from { opacity: 0; transform: translateY(-6px) scale(0.98); } }
+    .bday-pop-head { display: flex; align-items: center; gap: 6px; height: 30px; margin: 0 2px 10px; }
+    .bday-pop-title { font-size: 13px; font-weight: 700; letter-spacing: 0.4px; color: var(--cream); }
+    .bday-back {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border: 0; border-radius: 50%;
+      background: rgba(255, 244, 244, 0.06); color: var(--cream); cursor: pointer;
+    }
+    .bday-back[hidden] { display: none; }
+    .bday-back:hover { background: rgba(255, 244, 244, 0.14); }
+    .bday-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .bday-grid.is-days { grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .bday-opt {
+      height: 42px;
+      border: 0;
+      border-radius: 12px;
+      background: rgba(255, 244, 244, 0.05);
       color: var(--cream);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, transform 0.1s;
     }
-    .reveal-divider {
-      width: 1px;
-      height: 20px;
-      background: rgba(255, 244, 244, 0.15);
-    }
+    .bday-grid.is-days .bday-opt { height: 36px; border-radius: 50%; background: transparent; font-variant-numeric: tabular-nums; }
+    .bday-opt:hover, .bday-opt:focus-visible { background: rgba(255, 244, 244, 0.12); outline: none; }
+    .bday-opt:active { transform: scale(0.94); }
+    .bday-opt.is-selected { background: var(--red); color: var(--cream); }
     .reveal-btn {
       background: linear-gradient(135deg, var(--red) 0%, #D83A26 100%);
       color: var(--cream);
@@ -562,76 +657,97 @@
       margin-bottom: 3px;
     }
     .stage-card-title {
-      font-size: 14px;
-      font-weight: 600;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
       color: var(--cream);
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
-    /* Simplified High-Converting Enticement Card */
+    /* Reveal result: archetype, card, one line, email unlock */
     .reveal-result-box {
-      max-width: 680px;
-      margin: 32px auto 0;
-      background: linear-gradient(135deg, rgba(180, 43, 25, 0.14) 0%, rgba(26, 31, 53, 0.7) 100%);
-      border: 1px solid rgba(180, 43, 25, 0.28);
+      max-width: 520px;
+      margin: 28px auto 0;
+      padding: 28px 28px 22px;
+      text-align: center;
+      background: rgba(19, 23, 41, 0.72);
+      border: 1px solid rgba(255, 244, 244, 0.08);
       border-radius: 20px;
-      padding: 24px 32px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
       animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .result-kicker {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #FF8A80;
+      margin-bottom: 8px;
     }
     .result-headline {
       font-family: var(--font-display);
-      font-size: 22px;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 1.2;
       color: var(--cream);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .result-sub {
       font-size: 15px;
       color: var(--cream-dim);
       line-height: 1.6;
-      margin: 0 0 20px 0;
+      margin: 0 auto 22px;
+      max-width: 440px;
     }
-    .result-cta-row {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-unlock-app {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--cream);
-      color: var(--dark);
-      padding: 13px 26px;
+    .result-alt { margin-top: 16px; font-size: 13px; color: var(--cream-dim); }
+    .result-alt a { color: var(--cream); font-weight: 600; text-underline-offset: 3px; }
+    .result-alt a:hover { color: #FF8A80; }
+
+    /* ---- Email capture: unlocks Cards 2 and 3 ---- */
+    .lead-capture-row { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
+    .lead-input {
+      flex: 1;
+      min-width: 0;
+      background: rgba(255, 244, 244, 0.06);
+      border: 1px solid rgba(255, 244, 244, 0.22);
       border-radius: 12px;
-      text-decoration: none;
+      padding: 13px 16px;
+      font: inherit;
+      font-size: 15px;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .lead-input::placeholder { color: rgba(255, 244, 244, 0.45); }
+    .lead-input:focus { border-color: rgba(255, 244, 244, 0.55); background: rgba(255, 244, 244, 0.1); }
+    .lead-input.is-invalid { border-color: #FF8A80; }
+    .lead-btn {
+      background: var(--red);
+      color: var(--cream);
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 22px;
+      font: inherit;
       font-size: 14px;
       font-weight: 700;
-      transition: transform 0.15s, box-shadow 0.2s;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
     }
-    .btn-unlock-app:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255, 244, 244, 0.2);
-    }
-    .btn-unlock-web {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 244, 244, 0.08);
-      color: var(--cream);
-      border: 1px solid rgba(255, 244, 244, 0.18);
-      padding: 13px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    }
-    .btn-unlock-web:hover {
-      background: rgba(255, 244, 244, 0.15);
-      border-color: rgba(255, 244, 244, 0.35);
-      transform: translateY(-2px);
+    .lead-btn:hover { background: var(--red-light); transform: translateY(-2px); }
+    .lead-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .lead-fine { margin-top: 10px; font-size: 12.5px; color: var(--cream-dim); }
+    .lead-fine.is-error { color: #FF8A80; }
+    .lead-capture.is-done .lead-capture-row { display: none; }
+    .lead-capture.is-done .lead-fine { font-size: 14px; color: var(--cream); }
+    .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    /* Cards 2 and 3, face up once the email is in */
+    .stage-card-wrap.unlocked .card-static-back { position: relative; overflow: hidden; background: none; border: 0; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45); }
+    .stage-card-wrap.unlocked .card-static-back::before { display: none; }
+    .stage-card-wrap.unlocked .unlocked-art {
+      width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
 
@@ -642,6 +758,7 @@
     /* ---- Hero deck: three card backs resting behind the birthday bar ---- */
     .reveal-wrap {
       position: relative;
+      z-index: 5; /* keeps the birthday popover above the phone mockups */
       display: inline-block;
       isolation: isolate;
     }
@@ -907,7 +1024,7 @@
       color: #FF8A80;
       margin: -8px 0 14px;
     }
-    .reveal-select.is-invalid { color: #FF8A80; }
+    .reveal-input.is-invalid { color: #FF8A80; }
     .reveal-bar.is-invalid {
       border-color: rgba(255, 138, 128, 0.7);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 138, 128, 0.18);
@@ -949,29 +1066,6 @@
       box-shadow: 0 0 0 2px rgba(180, 43, 25, 0.5);
     }
 
-    /* ---- Trust: client quote in the reveal result ---- */
-    .result-story {
-      margin: 0 auto 20px;
-      max-width: 520px;
-      padding: 16px 20px;
-      border-radius: 14px;
-      background: rgba(11, 14, 26, 0.45);
-      border-left: 3px solid var(--red-light);
-      text-align: left;
-    }
-    .result-story blockquote {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--cream);
-      font-style: italic;
-      margin-bottom: 8px;
-    }
-    .result-story figcaption { font-size: 13px; color: var(--cream-dim); }
-    .result-reassure {
-      margin-top: 14px;
-      font-size: 13px;
-      color: var(--cream-dim);
-    }
 
     /* ---- Meet Katie ---- */
     .katie-section { padding-top: 40px; }
@@ -1291,6 +1385,35 @@
     .modal-overlay.open .modal {
       transform: translateY(0) scale(1);
     }
+    /* Birth card details */
+    .card-modal { position: relative; padding: 32px; max-width: 540px; }
+    .card-modal-close { position: absolute; top: 12px; right: 12px; }
+    .card-modal-top { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; padding-right: 24px; }
+    .card-modal-art { width: 96px; height: auto; border-radius: 10px; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45); flex-shrink: 0; }
+    .card-modal-art[hidden] { display: none; }
+    .card-modal-name { font-family: var(--font-display); font-size: 28px; line-height: 1.15; color: var(--cream); font-weight: 400; }
+    .card-modal-title { margin-top: 4px; font-size: 15px; color: var(--cream-dim); font-style: italic; }
+    .card-modal-body h3 {
+      margin: 20px 0 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: #FF8A80;
+    }
+    .card-modal-body h3:first-child { margin-top: 0; }
+    .card-modal-body p { font-size: 15px; line-height: 1.65; color: rgba(255, 244, 244, 0.88); }
+    .card-modal-body.is-loading p { opacity: 0.5; }
+    .card-modal-cta {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(255, 244, 244, 0.1);
+    }
+    .card-modal-more { font-size: 13px; color: var(--cream-dim); text-underline-offset: 3px; }
+    .card-modal-more:hover { color: var(--cream); }
+    @media (max-width: 600px) {
+      .card-modal { padding: 26px 20px; }
+      .card-modal-top { gap: 16px; }
+      .card-modal-art { width: 76px; }
+      .card-modal-name { font-size: 23px; }
+      .card-modal-cta { flex-direction: column; align-items: stretch; text-align: center; }
+    }
     .modal-header {
       display: flex;
       align-items: center;
@@ -1485,14 +1608,15 @@
         width: 100%;
         gap: 10px;
       }
-      .reveal-select {
+      .reveal-field {
         width: 100%;
-        padding: 10px;
+        padding: 4px 6px;
         background: rgba(13, 16, 28, 0.8);
         border: 1px solid rgba(255, 244, 244, 0.12);
         border-radius: 10px;
       }
-      .reveal-divider { display: none; }
+      .reveal-input { flex: 1; width: auto; min-width: 0; padding: 10px 4px; }
+      .bday-pop { left: 0; right: 0; width: auto; top: calc(100% + 8px); }
       .reveal-btn { width: 100%; justify-content: center; }
       .cards-stage { gap: 8px; }
       .stage-card-face, .card-static-back { border-radius: 12px; }
@@ -1502,12 +1626,12 @@
       .card-center-suit { font-size: 32px; }
       .lock-medallion, .card-back-icon { width: 36px; height: 36px; }
       .lock-medallion svg { width: 16px; height: 16px; }
-      .stage-card-title { font-size: 11px; }
-      .reveal-result-box { padding: 20px 16px; }
-      .result-headline { font-size: 18px; }
-      .result-sub { font-size: 13px; }
-      .result-cta-row { flex-direction: column; }
-      .btn-unlock-app, .btn-unlock-web { width: 100%; justify-content: center; }
+      .stage-card-title { font-size: 12.5px; }
+      .reveal-result-box { padding: 22px 18px 18px; }
+      .result-headline { font-size: 22px; }
+      .result-sub { font-size: 14px; }
+      .lead-capture-row { flex-direction: column; }
+      .lead-btn { width: 100%; }
       .features, .cta-band { padding: 60px 20px; }
       .cta-box { padding: 40px 28px; }
       .modal { padding: 28px 24px; }
@@ -1525,10 +1649,8 @@
       .stories-sub { margin: -44px auto 32px; font-size: 15px; }
       .story-card { padding: 24px 20px; }
       .story-card blockquote { font-size: 16px; }
-      .result-story { padding: 14px 16px; }
       .founder-note { padding: 24px 20px; }
       .example-card { padding: 24px 20px; }
-      .result-story blockquote { font-size: 14px; }
     }
     @media (max-width: 360px) {
       .hero-card-tag { margin-bottom: 14px; padding: 5px 10px; gap: 9px; }
@@ -1615,6 +1737,19 @@
   <div class="linen-texture" id="linenTexture"></div>
 </div>
 
+<!-- App banner: App Store on iPhone (hidden in Safari, which shows Apple's own banner), web sign-up elsewhere -->
+<div class="app-banner" id="appBanner" hidden>
+  <img src="assets/icon-80.webp" alt="" width="36" height="36" class="app-banner-icon" />
+  <div class="app-banner-text">
+    <strong id="appBannerTitle">Cardy for iPhone</strong>
+    <span id="appBannerSub">Your cards, read for you daily</span>
+  </div>
+  <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="app-banner-cta" id="appBannerCta" target="_blank" rel="noopener" data-placement="top_banner">Get the app</a>
+  <button type="button" class="app-banner-close" id="appBannerClose" aria-label="Dismiss">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+
 <!-- Nav -->
 <nav>
   <a href="#" class="nav-logo">
@@ -1628,6 +1763,47 @@
     <li><a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="nav-cta" target="_blank" rel="noopener">Download</a></li>
   </ul>
 </nav>
+<script>
+  // iPhone visitors get the App Store; everyone else signs up in the web app
+  // (the app is iPhone-only), where an iPhone prompt follows onboarding.
+  (function initGetCardy() {
+    const ua = navigator.userAgent;
+    const iphone = /iPhone|iPad|iPod/.test(ua);
+    // Apple's Smart App Banner only appears in real iOS Safari, not in-app browsers (TikTok, Instagram) or Chrome.
+    const iosSafari = iphone && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|Instagram|FBAN|FBAV|TikTok|musical_ly|Snapchat|Line\//.test(ua);
+    const SIGNUP_URL = 'https://app.cardy.today/onboarding';
+    const track = window.cardyTrack || function () {};
+
+    const navCta = document.querySelector('nav .nav-cta');
+    if (navCta && !iphone) {
+      navCta.textContent = 'Sign up';
+      navCta.href = SIGNUP_URL;
+    }
+
+    const banner = document.getElementById('appBanner');
+    const KEY = 'cardy_app_banner_dismissed';
+    let dismissedAt = 0;
+    try { dismissedAt = Number(localStorage.getItem(KEY)) || 0; } catch (e) {}
+    if (iosSafari || Date.now() - dismissedAt < 14 * 864e5) return;
+
+    if (!iphone) {
+      document.getElementById('appBannerTitle').textContent = 'Start free on the web';
+      const cta = document.getElementById('appBannerCta');
+      cta.href = SIGNUP_URL;
+      cta.textContent = 'Sign up';
+    }
+    banner.hidden = false;
+    document.body.classList.add('has-app-banner');
+    track('web_app_banner_viewed', { platform: iphone ? 'ios' : /Android/.test(ua) ? 'android' : 'desktop' });
+
+    document.getElementById('appBannerClose').addEventListener('click', () => {
+      banner.hidden = true;
+      document.body.classList.remove('has-app-banner');
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      track('web_app_banner_dismissed', {});
+    });
+  })();
+</script>
 
 <!-- Hero -->
 <section class="hero" id="top">
@@ -1645,17 +1821,23 @@
   <div class="hero-deck" id="heroDeck" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="reveal-bar">
     <div class="reveal-bar-inputs">
-      <select id="heroMonth" class="reveal-select" aria-label="Birth Month">
-        <option value="" disabled selected>Select Month</option>
-        <option value="1">January</option><option value="2">February</option><option value="3">March</option>
-        <option value="4">April</option><option value="5">May</option><option value="6">June</option>
-        <option value="7">July</option><option value="8">August</option><option value="9">September</option>
-        <option value="10">October</option><option value="11">November</option><option value="12">December</option>
-      </select>
-      <div class="reveal-divider"></div>
-      <select id="heroDay" class="reveal-select" aria-label="Birth Day">
-        <option value="" disabled selected>Select Day</option>
-      </select>
+      <div class="reveal-field">
+        <button type="button" class="reveal-cal" id="heroCalBtn" aria-label="Pick your birthday" aria-haspopup="dialog" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+        </button>
+        <label for="heroBirthday" class="sr-only">Your birthday, month and day</label>
+        <input id="heroBirthday" class="reveal-input" type="text" inputmode="numeric" autocomplete="off" placeholder="MM / DD" maxlength="7" />
+        <!-- Month, then day. No year: it doesn't change your cards. -->
+        <div class="bday-pop" id="bdayPop" role="dialog" aria-label="Choose your birthday" hidden>
+          <div class="bday-pop-head">
+            <button type="button" class="bday-back" id="bdayBack" aria-label="Back to months" hidden>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="bday-pop-title" id="bdayPopTitle">Birth month</span>
+          </div>
+          <div class="bday-grid" id="bdayGrid"></div>
+        </div>
+      </div>
       <button type="button" id="heroCalcBtn" class="reveal-btn">
         <span>See My Birth Card · Free</span>
         <span class="btn-sparkle">✦</span>
@@ -1664,7 +1846,7 @@
   </div>
   </div>
 
-      <p class="reveal-hint" id="revealHint" role="alert" hidden>Pick your birth month and day to see your card.</p>
+      <p class="reveal-hint" id="revealHint" role="alert" hidden>Enter your birthday as month / day, like 03 / 14.</p>
       <p class="hero-alt" id="download">Or get the app: <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web App (Android)</a></p>
       <div class="hero-proof">
         <a class="katie-byline" href="#katie" data-track="katie_byline">
@@ -1684,7 +1866,7 @@
 <section class="reveal-section" id="reveal">
   <div class="reveal-inner">
     <h2 class="section-title reveal-title">See what your birthday says about you</h2>
-    <p class="reveal-sub">Card 1 is free. Cards 2 and 3 unlock in the app.</p>
+    <p class="reveal-sub">Card 1 is free. Cards 2 and 3 are yours with an email.</p>
 
     <!-- The 3 Cards Stage -->
     <div class="cards-stage">
@@ -1746,24 +1928,19 @@
 
     <!-- Simplified, High-Converting Enticement Card -->
     <div class="reveal-result-box" id="heroCalcUnlock" style="display: none;">
-      <div class="result-message">
-        <div class="result-headline" id="unlockHeadlineText">You are a <strong>Queen of Hearts</strong>!</div>
-        <p class="result-sub" id="unlockDesc"></p>
-      </div>
-      <figure class="result-story" id="resultStory" hidden>
-        <blockquote id="resultStoryQuote"></blockquote>
-        <figcaption id="resultStoryCite"></figcaption>
-      </figure>
-      <div class="result-cta-row">
-        <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="btn-unlock-app" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span>Unlock Cards 2 & 3 in the App</span>
-        </a>
-        <a href="https://app.cardy.today" class="btn-unlock-web" target="_blank" rel="noopener">
-          <span>Web App (Android) →</span>
-        </a>
-      </div>
-      <p class="result-reassure">Free to download</p>
+      <p class="result-kicker" id="unlockArchetype"></p>
+      <h3 class="result-headline" id="unlockHeadlineText"></h3>
+      <p class="result-sub" id="unlockDesc"></p>
+      <form class="lead-capture" id="leadCapture" novalidate>
+        <div class="lead-capture-row">
+          <label for="leadEmail" class="sr-only">Email address</label>
+          <input type="email" id="leadEmail" name="email" class="lead-input" placeholder="Your email" autocomplete="email" inputmode="email" required />
+          <input type="text" name="website" class="lead-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="lead-btn" id="leadBtn">Unlock cards 2 &amp; 3</button>
+        </div>
+        <p class="lead-fine" id="leadMsg" role="status">We’ll email you all three. Unsubscribe anytime.</p>
+      </form>
+      <p class="result-alt"><span id="resultAltLabel">Or unlock them in the app:</span> <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web app</a></p>
     </div>
   </div>
 </section>
@@ -1971,6 +2148,26 @@
 </footer>
 
 <!-- Support Modal -->
+<!-- Birth card details: opened from "Read more" / the revealed card -->
+<div class="modal-overlay" id="cardModal" aria-hidden="true">
+  <div class="modal card-modal" role="dialog" aria-modal="true" aria-labelledby="cardModalName">
+    <button class="modal-close card-modal-close" id="cardModalClose" aria-label="Close">&times;</button>
+    <div class="card-modal-top">
+      <img class="card-modal-art" id="cardModalArt" alt="" width="96" height="142" />
+      <div>
+        <p class="result-kicker">Card 1 · Inner Child</p>
+        <h2 class="card-modal-name" id="cardModalName"></h2>
+        <p class="card-modal-title" id="cardModalTitle"></p>
+      </div>
+    </div>
+    <div class="card-modal-body" id="cardModalBody"></div>
+    <div class="card-modal-cta">
+      <button type="button" class="lead-btn" id="cardModalUnlock">Unlock cards 2 &amp; 3</button>
+      <a class="card-modal-more" id="cardModalMore" href="/birth-card-meanings">All 52 birth cards →</a>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="supportModal" onclick="closeModalOutside(event)">
   <div class="modal" onclick="event.stopPropagation()">
     <div id="supportForm">
@@ -2214,8 +2411,7 @@
 
   // Interactive 3-Card Reveal with Direct Link to Description
   (function initRevealSection() {
-    const mSelect = document.getElementById('heroMonth');
-    const dSelect = document.getElementById('heroDay');
+    const bdayInput = document.getElementById('heroBirthday');
     const btn = document.getElementById('heroCalcBtn');
 
     const card1Link = document.getElementById('card1Link');
@@ -2238,48 +2434,134 @@
     }
 
     const unlockBox = document.getElementById('heroCalcUnlock');
+    const archetypeEl = document.getElementById('unlockArchetype');
     const headline = document.getElementById('unlockHeadlineText');
     const desc = document.getElementById('unlockDesc');
 
-    if (!mSelect || !dSelect || !btn) return;
+    if (!bdayInput || !btn) return;
 
-    function populateDays() {
-      const m = parseInt(mSelect.value, 10);
-      const prevVal = dSelect.value;
-      dSelect.innerHTML = '<option value="" disabled selected>Select Day</option>';
-      if (!m) return;
-      let days = 31;
-      if ([4, 6, 9, 11].includes(m)) days = 30;
-      else if (m === 2) days = 29;
-      for (let d = 1; d <= days; d++) {
-        const opt = document.createElement('option');
-        opt.value = d;
-        opt.textContent = d;
-        if (prevVal && parseInt(prevVal, 10) === d) {
-          opt.selected = true;
-        }
-        dSelect.appendChild(opt);
+    // One "MM / DD" field. Typing 3 pads to 03; "3/14" and "0314" both work.
+    // Editing just the month of "02 / 29" leaves the day alone.
+    function formatBirthday(raw) {
+      const parts = raw.match(/^\s*(\d{0,2})\s*[\/\-. ]\s*(\d{0,2})/);
+      if (parts) {
+        let mm = parts[1];
+        // "3 / 14" → "03 / 14"; "1/" typed fresh means January.
+        if (mm.length === 1 && (mm > '1' || !parts[2])) mm = '0' + mm;
+        return `${mm} / ${parts[2]}`;
       }
+      let digits = raw.replace(/\D/g, '').slice(0, 4);
+      if (digits[0] > '1') digits = ('0' + digits).slice(0, 4);
+      return digits.length >= 2 ? `${digits.slice(0, 2)} / ${digits.slice(2)}` : digits;
+    }
+    // { m, d } for a real calendar day (Feb 29 allowed), else null.
+    function readBirthday() {
+      const parts = bdayInput.value.match(/^(\d{1,2}) \/ (\d{1,2})$/);
+      if (!parts) return null;
+      const m = parseInt(parts[1], 10);
+      const d = parseInt(parts[2], 10);
+      const days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1];
+      return days && d >= 1 && d <= days ? { m: m, d: d } : null;
     }
 
-    mSelect.addEventListener('change', populateDays);
-
-    const revealBar = mSelect.closest('.reveal-bar');
+    const revealBar = bdayInput.closest('.reveal-bar');
     const revealHint = document.getElementById('revealHint');
     function clearInvalid() {
-      mSelect.classList.remove('is-invalid');
-      dSelect.classList.remove('is-invalid');
+      bdayInput.classList.remove('is-invalid');
       if (revealBar) revealBar.classList.remove('is-invalid');
       if (revealHint) revealHint.hidden = true;
     }
     let birthdayStarted = false;
-    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', () => {
-      if (mSelect.value && dSelect.value) clearInvalid();
+    bdayInput.addEventListener('input', (e) => {
+      // Let backspace remove the separator instead of re-adding it.
+      if (!(e.inputType || '').startsWith('delete')) {
+        // Keep the caret after the same digit it was after, so mid-field edits work.
+        const raw = bdayInput.value;
+        const caret = bdayInput.selectionStart ?? raw.length;
+        const digitsBefore = raw.slice(0, caret).replace(/\D/g, '').length;
+        const atEnd = caret >= raw.length;
+        const formatted = formatBirthday(raw);
+        bdayInput.value = formatted;
+        if (!atEnd) {
+          let pos = 0, seen = 0;
+          while (pos < formatted.length && seen < digitsBefore) { if (/\d/.test(formatted[pos])) seen++; pos++; }
+          bdayInput.setSelectionRange(pos, pos);
+        }
+      }
+      if (readBirthday()) clearInvalid();
       if (!birthdayStarted) {
         birthdayStarted = true;
-        window.cardyTrack('web_birthday_started', { field: sel === mSelect ? 'month' : 'day' });
+        window.cardyTrack('web_birthday_started', { field: 'birthday' });
       }
-    }));
+    });
+    bdayInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); revealCards(); }
+    });
+
+    // Calendar icon: month grid, then day grid. Fills "MM / DD".
+    const calBtn = document.getElementById('heroCalBtn');
+    const pop = document.getElementById('bdayPop');
+    const grid = document.getElementById('bdayGrid');
+    const popTitle = document.getElementById('bdayPopTitle');
+    const popBack = document.getElementById('bdayBack');
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const DAYS_IN = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    function option(label, selected, onPick, ariaLabel) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'bday-opt' + (selected ? ' is-selected' : '');
+      b.textContent = label;
+      if (ariaLabel) b.setAttribute('aria-label', ariaLabel);
+      b.addEventListener('click', onPick);
+      return b;
+    }
+    function showMonths() {
+      const current = readBirthday();
+      popTitle.textContent = 'Birth month';
+      popBack.hidden = true;
+      grid.className = 'bday-grid';
+      grid.replaceChildren(...MONTHS.map((name, i) =>
+        option(name.slice(0, 3), current && current.m === i + 1, () => showDays(i + 1), name)));
+    }
+    function showDays(m) {
+      const current = readBirthday();
+      popTitle.textContent = MONTHS[m - 1];
+      popBack.hidden = false;
+      grid.className = 'bday-grid is-days';
+      const days = [];
+      for (let d = 1; d <= DAYS_IN[m - 1]; d++) {
+        days.push(option(String(d), current && current.m === m && current.d === d, () => {
+          bdayInput.value = `${String(m).padStart(2, '0')} / ${String(d).padStart(2, '0')}`;
+          bdayInput.dispatchEvent(new Event('input'));
+          closePop();
+          btn.focus();
+        }, `${MONTHS[m - 1]} ${d}`));
+      }
+      grid.replaceChildren(...days);
+      grid.firstChild.focus();
+    }
+    function openPop() {
+      const current = readBirthday();
+      pop.hidden = false;
+      calBtn.setAttribute('aria-expanded', 'true');
+      if (current) showDays(current.m); else { showMonths(); grid.firstChild.focus(); }
+      window.cardyTrack('web_birthday_calendar_opened', {});
+    }
+    function closePop() {
+      pop.hidden = true;
+      calBtn.setAttribute('aria-expanded', 'false');
+    }
+    calBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (pop.hidden) openPop(); else closePop();
+    });
+    popBack.addEventListener('click', (e) => { e.stopPropagation(); showMonths(); grid.firstChild.focus(); });
+    pop.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('click', () => { if (!pop.hidden) closePop(); });
+    pop.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closePop(); calBtn.focus(); }
+    });
     let revealCount = 0;
 
     const suits = [
@@ -2291,13 +2573,69 @@
     const ranks = ['', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     const rankNames = ['', 'Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
 
+    // Cards 2 and 3, same math as the app (and the capture-lead function): walk
+    // the Earth chart from Card 1 by the zodiac's offset, then add the two.
+    const EARTH_CHART = [
+      'Clubs-10','Diamonds-8','Spades-King','Hearts-3','Clubs-Ace','Clubs-Queen','Spades-10','Clubs-5',
+      'Diamonds-3','Spades-Ace','Hearts-7','Diamonds-7','Spades-5','Hearts-Jack','Clubs-9','Spades-9',
+      'Hearts-2','Hearts-King','Diamonds-King','Hearts-6','Clubs-4','Diamonds-2','Spades-Jack','Clubs-8',
+      'Diamonds-6','Spades-4','Hearts-10','Diamonds-10','Spades-8','Hearts-Ace','Diamonds-Ace','Diamonds-Queen',
+      'Hearts-5','Clubs-3','Spades-3','Hearts-9','Clubs-7','Diamonds-5','Spades-Queen','Clubs-Jack',
+      'Diamonds-9','Spades-7','Clubs-2','Clubs-King','Diamonds-Jack','Hearts-4','Diamonds-4','Spades-2',
+      'Hearts-8','Clubs-6','Spades-6','Hearts-Queen'
+    ];
+    const ZODIAC_OFFSET = { Aries: 3, Taurus: 2, Libra: 2, Gemini: 1, Virgo: 1, Cancer: -1, Leo: 6, Aquarius: 6, Scorpio: 8, Sagittarius: 4, Capricorn: 5, Pisces: 7 };
+    const SIGN_ENDS = [[1, 19, 'Capricorn'], [2, 18, 'Aquarius'], [3, 20, 'Pisces'], [4, 19, 'Aries'], [5, 20, 'Taurus'], [6, 20, 'Gemini'], [7, 22, 'Cancer'], [8, 22, 'Leo'], [9, 22, 'Virgo'], [10, 22, 'Libra'], [11, 21, 'Scorpio'], [12, 21, 'Sagittarius'], [12, 31, 'Capricorn']];
+    function cardIdFromValue(val) {
+      return `${suits[Math.floor((val - 1) / 13)].name}-${rankNames[((val - 1) % 13) + 1]}`;
+    }
+    function cardValue(id) {
+      const [suit, rank] = id.split('-');
+      return suits.findIndex((s) => s.name === suit) * 13 + rankNames.indexOf(rank);
+    }
+    // Names ("King of Hearts") of Cards 2 and 3 for a birthday whose Card 1 has value val1.
+    function laterCardNames(m, d, val1) {
+      if (m === 12 && d === 31) return ['The Joker', 'The Joker'];
+      const sign = SIGN_ENDS.find(([em, ed]) => m < em || (m === em && d <= ed))[2];
+      const n = EARTH_CHART.length;
+      const idx = EARTH_CHART.indexOf(cardIdFromValue(val1));
+      const card2 = EARTH_CHART[(((idx + ZODIAC_OFFSET[sign]) % n) + n) % n];
+      let sum = val1 + cardValue(card2);
+      if (sum > 52) sum -= 52;
+      return [card2, cardIdFromValue(sum)].map((id) => id.split('-').reverse().join(' of '));
+    }
+    // The app's card titles (card_descriptions "personal" titles, as on the card's
+    // own page in the app). Keep in sync with Supabase.
+    const CARD_TITLES = {
+      'Hearts-Ace': 'The Love Catalyst', 'Hearts-2': 'The Synergizer of Love', 'Hearts-3': 'The Heart Expander', 'Hearts-4': 'The Protector of Love', 'Hearts-5': 'The Explorer of Love', 'Hearts-6': 'The Warrior of Peace', 'Hearts-7': 'The Loving Alchemist', 'Hearts-8': 'The Devotee of Love', 'Hearts-9': 'The Heartbreaker', 'Hearts-10': 'The Mentor of Love', 'Hearts-Jack': 'Sacrificial Love', 'Hearts-Queen': 'Mystical Love', 'Hearts-King': 'Masterful Love',
+      'Clubs-Ace': 'The Insatiable Mind', 'Clubs-2': 'The Mental Mirror', 'Clubs-3': 'The Mind Expander', 'Clubs-4': 'The Art-chitect', 'Clubs-5': 'The Open Mind', 'Clubs-6': 'The Messenger of Truth', 'Clubs-7': 'The Spiritual Mind', 'Clubs-8': 'The Mental Powerhouse', 'Clubs-9': 'The Revolutionary Mind', 'Clubs-10': 'The Teacher', 'Clubs-Jack': 'The Creative Genius', 'Clubs-Queen': 'The Mental Maven', 'Clubs-King': 'The Master Mind',
+      'Diamonds-Ace': 'The Valuable Visionary', 'Diamonds-2': 'The Worth Weaver', 'Diamonds-3': 'The Value Expander', 'Diamonds-4': 'The Builder of Value', 'Diamonds-5': 'The Seeker of Truth', 'Diamonds-6': 'The Earth Balancer', 'Diamonds-7': 'The Lucky Charm', 'Diamonds-8': 'The Sunbeam', 'Diamonds-9': 'The Dragon Slayer', 'Diamonds-10': 'The Blessed One', 'Diamonds-Jack': 'The Free Flyer', 'Diamonds-Queen': 'The Philanthropist', 'Diamonds-King': 'The Master of Action',
+      'Spades-Ace': 'The Magi', 'Spades-2': 'The Spiritual Symbiote', 'Spades-3': 'The Soul Expander', 'Spades-4': 'The Strong Spirit', 'Spades-5': 'The Wandering Spirit', 'Spades-6': 'The Karmic Soul', 'Spades-7': 'The Faithful Spirit', 'Spades-8': 'The Deep Devotee', 'Spades-9': 'The Revolutionary', 'Spades-10': 'The Satisfied Soul', 'Spades-Jack': 'The Spiritual Initiate', 'Spades-Queen': 'The Medicine Spirit', 'Spades-King': 'The Master of Self',
+      'The Joker': 'The Joker'
+    };
+    // "4 of Diamonds" → "The Builder of Value".
+    function cardTitle(name) {
+      return CARD_TITLES[name] || CARD_TITLES[name.split(' of ').reverse().join('-')] || name;
+    }
+    // Face down, but titled: "The Builder of Value", never the rank or suit.
+    function teaseLaterCards(names) {
+      const wraps = document.querySelectorAll('.cards-stage .stage-card-wrap');
+      names.forEach((name, i) => {
+        const info = wraps[i + 1] && wraps[i + 1].querySelector('.stage-card-info');
+        if (!info) return;
+        let t = info.querySelector('.stage-card-title');
+        if (!t) { t = document.createElement('div'); t.className = 'stage-card-title'; info.appendChild(t); }
+        t.textContent = cardTitle(name);
+      });
+    }
+
     // Start loading the birth card's art as soon as a full birthday is picked,
     // so the flip to its face doesn't wait on the download.
     const preloaded = new Set();
     function preloadBirthCard() {
-      const m = parseInt(mSelect.value, 10);
-      const d = parseInt(dSelect.value, 10);
-      if (!m || !d || (m === 12 && d === 31)) return;
+      const bday = readBirthday();
+      if (!bday || (bday.m === 12 && bday.d === 31)) return;
+      const m = bday.m, d = bday.d;
       let val = 55 - (2 * m + d);
       if (val <= 0) val += 52;
       const suit = suits[Math.floor((val - 1) / 13)] || suits[0];
@@ -2307,274 +2645,274 @@
       preloaded.add(src);
       new Image().src = src;
     }
-    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', preloadBirthCard));
+    bdayInput.addEventListener('input', preloadBirthCard);
 
     const CARD_PROFILES = {
       // Hearts
       'Ace of Hearts': {
         slug: 'ace-of-hearts',
-        archetype: 'The Desire for Love & Awakening',
+        archetype: 'The Love Catalyst',
         desc: 'The pioneer of the heart. You possess a restless craving for affection, creative expression, and new emotional horizons. Passionate and magnetic, your primary life lesson is cultivating inner self-love so you do not chase validation at the expense of your own peace.'
       },
       '2 of Hearts': {
         slug: '2-of-hearts',
-        archetype: "The Lover's Card & Sacred Union",
+        archetype: 'The Synergizer of Love',
         desc: 'Deeply devoted, affectionate, and wired for intimate partnership. You flourish when sharing your life and projects with a kindred spirit, learning to overcome codependency so your unions remain equal and empowering.'
       },
       '3 of Hearts': {
         slug: '3-of-hearts',
-        archetype: 'The Creative Explorer & Variety',
+        archetype: 'The Heart Expander',
         desc: 'An expressive artist and social butterfly gifted with immense charm, playful wit, and emotional curiosity. Your central challenge is romantic and creative indecision—learning that depth of commitment yields far richer joy than endless novelty.'
       },
       '4 of Hearts': {
         slug: '4-of-hearts',
-        archetype: 'The Marriage Card & Emotional Security',
+        archetype: 'The Protector of Love',
         desc: 'Stable, loyal, and deeply protective of family and lifelong companions. You are the emotional foundation of your community, learning to release emotional stubbornness and trust life when relationships require growth.'
       },
       '5 of Hearts': {
         slug: '5-of-hearts',
-        archetype: 'The Restless Heart & Emotional Adventurer',
+        archetype: 'The Explorer of Love',
         desc: 'Curious, freedom-loving, and driven by an appetite for emotional adventure and travel. Your fulfillment comes when you learn to sustain deep emotional roots without feeling an urge to flee when intimacy deepens.'
       },
       '6 of Hearts': {
         slug: '6-of-hearts',
-        archetype: 'The Peacemaker & Karmic Love',
+        archetype: 'The Warrior of Peace',
         desc: 'A natural healer and diplomat centered on peace, fairness, and domestic responsibility. Your vital life lesson is learning healthy boundaries: forgiving without enabling, and knowing when an old emotional debt has already been paid.'
       },
       '7 of Hearts': {
         slug: '7-of-hearts',
-        archetype: 'The Spiritual Lover & Unconditional Heart',
+        archetype: 'The Loving Alchemist',
         desc: 'A card of high emotional sensitivity, deep intuition, and spiritual awakening through love. When you elevate your love beyond possessiveness into unconditional compassion, your intuitive and healing gifts shine brilliantly.'
       },
       '8 of Hearts': {
         slug: '8-of-hearts',
-        archetype: 'The Card of Emotional Magnetism & Charm',
+        archetype: 'The Devotee of Love',
         desc: 'Magnetic, captivating, and socially formidable. You hold a natural gift for charming crowds and commanding affection without force, called to wield this emotional authority with genuine integrity and kindness.'
       },
       '9 of Hearts': {
         slug: '9-of-hearts',
-        archetype: 'The Universal Giver & Sacred Completion',
+        archetype: 'The Heartbreaker',
         desc: 'Compassionate, generous, and attuned to the broader human condition. By embracing release with an open heart rather than resisting endings, you graduate from personal attachments into profound universal wisdom.'
       },
       '10 of Hearts': {
         slug: '10-of-hearts',
-        archetype: 'The Radiant Community & Social Success',
+        archetype: 'The Mentor of Love',
         desc: 'Charismatic, uplifting, and born to shine in front of groups. While you effortlessly gain public admiration, your challenge is maintaining genuine, grounded emotional intimacy in private life away from the applause.'
       },
       'Jack of Hearts': {
         slug: 'jack-of-hearts',
-        archetype: 'The Devoted Sacrifice & Youthful Romantic',
+        archetype: 'Sacrificial Love',
         desc: 'Playful, idealistic, and driven by selfless devotion to the people and causes you love. Your path involves grounding your ideals in reality so you do not sacrifice your well-being for unreciprocated dreams.'
       },
       'Queen of Hearts': {
         slug: 'queen-of-hearts',
-        archetype: 'The Loving Mother & Empathetic Nurturer',
+        archetype: 'Mystical Love',
         desc: 'Warm, regal, highly intuitive, and instinctively supportive. You radiate unconditional empathy and domestic beauty, with the lifelong lesson of honoring your own needs with the same care you offer to others.'
       },
       'King of Hearts': {
         slug: 'king-of-hearts',
-        archetype: 'The Master of the Heart & Emotional Patriarch',
+        archetype: 'Masterful Love',
         desc: 'Wise, protective, composed, and fatherly. You command natural authority in relationships, maintaining emotional mastery and fair leadership even amidst crisis while leading with a compassionate heart.'
       },
 
       // Clubs
       'Ace of Clubs': {
         slug: 'ace-of-clubs',
-        archetype: 'The Seeker of Truth & Spark of Curiosity',
+        archetype: 'The Insatiable Mind',
         desc: 'Fueled by an unquenchable thirst for knowledge, books, and fresh ideas. Your challenge is overcoming mental anxiety and over-analysis by pairing your brilliant mental spark with intuitive stillness and decisive action.'
       },
       '2 of Clubs': {
         slug: '2-of-clubs',
-        archetype: 'The Inquisitive Conversationalist & Mental Match',
+        archetype: 'The Mental Mirror',
         desc: 'Gifted in dialogue, debate, and intellectual companionship. You think best out loud with someone who sharpens your intellect, learning to quiet mental restlessness and trust your own independent judgment.'
       },
       '3 of Clubs': {
         slug: '3-of-clubs',
-        archetype: 'The Creative Genius & Mental Dynamo',
+        archetype: 'The Mind Expander',
         desc: 'A rapid-fire writer, speaker, or innovator bursting with creative concepts. Your central challenge is focus: resisting the urge to juggle too many ideas at once so your most brilliant visions reach completion.'
       },
       '4 of Clubs': {
         slug: '4-of-clubs',
-        archetype: 'The Structured Mind & Stable Knowledge',
+        archetype: 'The Art-chitect',
         desc: 'Grounded, practical, organized, and mentally resilient. You excel at building frameworks and methodologies that stand the test of time, learning to remain intellectually flexible with modern evidence.'
       },
       '5 of Clubs': {
         slug: '5-of-clubs',
-        archetype: 'The Inquisitive Traveler & Mental Wanderer',
+        archetype: 'The Open Mind',
         desc: 'Hungry for adventure, philosophical shifts, and diverse viewpoints. You despise intellectual monotony, thriving when you channel your restless curiosity into purposeful travel and deep specialized study.'
       },
       '6 of Clubs': {
         slug: '6-of-clubs',
-        archetype: 'The Messenger of Truth & Intuitive Clarity',
+        archetype: 'The Messenger of Truth',
         desc: 'Calm, reliable, and deeply committed to intellectual integrity. You carry a natural talent for recognizing universal truths, tested to stand firm in your convictions without compromising simply to avoid debate.'
       },
       '7 of Clubs': {
         slug: '7-of-clubs',
-        archetype: 'The Spiritual Intellect & Overcoming Worry',
+        archetype: 'The Spiritual Mind',
         desc: 'Intuitive, visionary, and philosophically inclined. When you train your mind to focus on spiritual faith and positive visualization rather than worst-case scenarios, your mind becomes an instrument of remarkable inspiration.'
       },
       '8 of Clubs': {
         slug: '8-of-clubs',
-        archetype: 'The Mental Powerhouse & Intellectual Authority',
+        archetype: 'The Mental Powerhouse',
         desc: 'Mentally formidable, persuasive, and exceptionally disciplined. You possess intense focus and executive intelligence, capable of achieving remarkable intellectual milestones through steady concentration.'
       },
       '9 of Clubs': {
         slug: '9-of-clubs',
-        archetype: 'The Universal Thinker & Philosophical Completion',
+        archetype: 'The Revolutionary Mind',
         desc: 'Broad-minded, philanthropic, and naturally wise. You synthesize complex worldviews and mentor others, continually releasing obsolete philosophies to make room for higher spiritual understanding.'
       },
       '10 of Clubs': {
         slug: '10-of-clubs',
-        archetype: 'The Radiant Teacher & Public Brilliance',
+        archetype: 'The Teacher',
         desc: 'Exceptionally articulate, widely read, and born to communicate to the public. You succeed as a teacher, author, or public strategist, balancing your intense mental output with physical restoration.'
       },
       'Jack of Clubs': {
         slug: 'jack-of-clubs',
-        archetype: 'The Clever Strategist & Creative Trickster',
+        archetype: 'The Creative Genius',
         desc: 'Ingenious, witty, charismatic, and always ten steps ahead. Your destiny asks you to anchor your razor-sharp cleverness in unwavering ethics, using your inventive mind to build rather than outmaneuver.'
       },
       'Queen of Clubs': {
         slug: 'queen-of-clubs',
-        archetype: 'The Intuitive Counselor & Practical Queen',
+        archetype: 'The Mental Maven',
         desc: 'Perceptive, hardworking, and gifted with razor-sharp business instincts and intuitive foresight. Your growth lies in delegating responsibilities and guarding against mental exhaustion from carrying everyone’s problems.'
       },
       'King of Clubs': {
         slug: 'king-of-clubs',
-        archetype: 'The Master of the Mind & Executive Intellect',
+        archetype: 'The Master Mind',
         desc: 'Commanding, strategic, authoritative, and visionary. You are an intellectual heavyweight whose mental clarity allows you to govern enterprises and philosophies with quiet confidence and impartial justice.'
       },
 
       // Diamonds
       'Ace of Diamonds': {
         slug: 'ace-of-diamonds',
-        archetype: 'The Ambition for Worth & Financial Drive',
+        archetype: 'The Valuable Visionary',
         desc: 'Enterprising, self-reliant, and motivated by tangible achievement. You possess a keen eye for commerce and asset creation, learning that authentic wealth begins with unshakeable inner self-esteem.'
       },
       '2 of Diamonds': {
         slug: '2-of-diamonds',
-        archetype: 'The Business Partner & Dealmaker',
+        archetype: 'The Worth Weaver',
         desc: 'Diplomatic, commercially savvy, and skilled in collaborative enterprise. You generate wealth through joint ventures, learning to value equal reciprocity and make sure love is never treated as a transactional bargain.'
       },
       '3 of Diamonds': {
         slug: '3-of-diamonds',
-        archetype: 'The Financial Innovator & Multiple Interests',
+        archetype: 'The Value Expander',
         desc: 'Versatile, entrepreneurial, and creative in commerce. You often juggle multiple income streams and ventures, thriving when you overcome financial anxiety and commit to your core enterprise.'
       },
       '4 of Diamonds': {
         slug: '4-of-diamonds',
-        archetype: 'The Bedrock of Wealth & Material Security',
+        archetype: 'The Builder of Value',
         desc: 'Methodical, hardworking, and dedicated to building enduring financial stability. You are the rock of family and business assets, learning to release fear of scarcity and enjoy the fruits of your labor.'
       },
       '5 of Diamonds': {
         slug: '5-of-diamonds',
-        archetype: 'The Commercial Adventurer & Changing Fortunes',
+        archetype: 'The Seeker of Truth',
         desc: 'Free-spirited, adaptive, and drawn to diverse ventures, trading, and travel. You understand market cycles intuitively, learning to cultivate internal stability amidst external economic shifts.'
       },
       '6 of Diamonds': {
         slug: '6-of-diamonds',
-        archetype: 'The Settler of Debts & Financial Balancer',
+        archetype: 'The Earth Balancer',
         desc: 'Fair, generous, and committed to financial integrity and karmic settling. You have a steady money karma and an instinct for equitable compensation, challenged to charge what you are truly worth.'
       },
       '7 of Diamonds': {
         slug: '7-of-diamonds',
-        archetype: 'The Spiritual Millionaire & True Value',
+        archetype: 'The Lucky Charm',
         desc: 'Intuitive, discerning, and spiritually tested around money. You discover that when you fixate on material scarcity you struggle, but when you align with purpose and trust divine timing, abundance flows freely.'
       },
       '8 of Diamonds': {
         slug: '8-of-diamonds',
-        archetype: 'The Sun Card of Wealth & Executive Power',
+        archetype: 'The Sunbeam',
         desc: 'Imposing, prosperous, and naturally influential in business. You wield executive clout and financial magnetism with ease, born to manage large capital and use your wealth to elevate your community.'
       },
       '9 of Diamonds': {
         slug: '9-of-diamonds',
-        archetype: 'The Philanthropist & Release of Material Ego',
+        archetype: 'The Dragon Slayer',
         desc: 'Generous, worldly, and driven by higher humanitarian values over mere accumulation. You learn that true richness lies in giving back, releasing material control, and sharing abundance freely.'
       },
       '10 of Diamonds': {
         slug: '10-of-diamonds',
-        archetype: 'The Pinnacle of Success & Commercial Titan',
+        archetype: 'The Blessed One',
         desc: 'Highly ambitious, capable, and born for grand-scale prosperity. You possess the drive to build prominent businesses and achieve public renown, learning to ground your self-worth in character over balance sheets.'
       },
       'Jack of Diamonds': {
         slug: 'jack-of-diamonds',
-        archetype: 'The Enterprising Trader & Charming Promoter',
+        archetype: 'The Free Flyer',
         desc: 'Shrewd, persuasive, and magnetically creative in sales, technology, and enterprise. You spot opportunities before anyone else, called to hold the highest ethical standards in every deal.'
       },
       'Queen of Diamonds': {
         slug: 'queen-of-diamonds',
-        archetype: 'The Gracious Patron & Business Maven',
+        archetype: 'The Philanthropist',
         desc: 'Elegant, astute, and gifted with a refined appreciation for quality and craftsmanship. You cultivate and protect capital with grace, learning to balance generosity with personal boundaries.'
       },
       'King of Diamonds': {
         slug: 'king-of-diamonds',
-        archetype: 'The Master of Commerce & Industry Titan',
+        archetype: 'The Master of Action',
         desc: 'Decisive, authoritative, and seasoned in the laws of value and enterprise. You sit comfortably atop financial hierarchies, leading with pragmatic strength, executive vision, and honor.'
       },
 
       // Spades
       'Ace of Spades': {
         slug: 'ace-of-spades',
-        archetype: 'The Secret of Transformation & Inner Will',
+        archetype: 'The Magi',
         desc: 'The ancient card of profound metamorphosis, ambition, and spiritual awakening. You possess immense resolve to overcome hardship, discovering that true power emerges when you align your labor with spiritual devotion.'
       },
       '2 of Spades': {
         slug: '2-of-spades',
-        archetype: 'The Dedicated Partner & Fellowship of Labor',
+        archetype: 'The Spiritual Symbiote',
         desc: 'Reliable, loyal, and committed to common causes in work and craftsmanship. You excel in long-term professional partnerships, learning to balance devotion to duty with your own personal well-being.'
       },
       '3 of Spades': {
         slug: '3-of-spades',
-        archetype: 'The Master Craftsman & Creative Effort',
+        archetype: 'The Soul Expander',
         desc: 'Energetic, multitalented, and capable of turning physical effort into fine art. You excel across varied trades or design disciplines, challenged to avoid chronic overwork through focused moderation.'
       },
       '4 of Spades': {
         slug: '4-of-spades',
-        archetype: 'The Unshakable Foundation & Pillar of Health',
+        archetype: 'The Strong Spirit',
         desc: 'Resilient, grounded, and possessing an iron constitution and work ethic. You build enduring structures and take pride in dependable labor, learning flexibility when life invites new methods.'
       },
       '5 of Spades': {
         slug: '5-of-spades',
-        archetype: 'The Restless Wanderer & Life Reinventor',
+        archetype: 'The Wandering Spirit',
         desc: 'Dynamic, bold, and unafraid of major career transitions or physical relocations. When you anchor your transformations to a meaningful spiritual or professional mission, your adaptability becomes your greatest superpower.'
       },
       '6 of Spades': {
         slug: '6-of-spades',
-        archetype: 'The Card of Fate & The Steadfast Laborer',
+        archetype: 'The Karmic Soul',
         desc: 'Steadfast, karmically disciplined, and aligned with personal destiny. You understand that actions carry consequences, navigating work and health with unwavering integrity and calm endurance under pressure.'
       },
       '7 of Spades': {
         slug: '7-of-spades',
-        archetype: 'The Spiritual Healer & Faith Under Pressure',
+        archetype: 'The Faithful Spirit',
         desc: 'Deep, mystical, and resilient. You often encounter pivotal lessons around health or demanding workloads, discovering that inner faith and mindfulness dissolve outer obstacles into profound healing gifts.'
       },
       '8 of Spades': {
         slug: '8-of-spades',
-        archetype: 'The Power of Labor & Unstoppable Willpower',
+        archetype: 'The Deep Devotee',
         desc: 'Formidable, healing, and possessing immense stamina and executive drive. You overcome enormous obstacles through perseverance, learning to temper your iron will with gentleness and rest.'
       },
       '9 of Spades': {
         slug: '9-of-spades',
-        archetype: 'The Universal Sage & The Great Completion',
+        archetype: 'The Revolutionary',
         desc: 'Philosophically profound, compassionate, and spiritually mature. You assist others through life’s major endings and transformations, carrying the deck’s oldest wisdom into selfless service.'
       },
       '10 of Spades': {
         slug: '10-of-spades',
-        archetype: 'The Titan of Achievement & Public Mastery',
+        archetype: 'The Satisfied Soul',
         desc: 'The card of towering career success, supreme effort, and monumental accomplishment. You have the stamina to carry entire enterprises, challenged to step back and replenish your spiritual well-being.'
       },
       'Jack of Spades': {
         slug: 'jack-of-spades',
-        archetype: 'The Visionary Initiate & Spiritual Actor',
+        archetype: 'The Spiritual Initiate',
         desc: 'Clever, mystical, charismatic, and multifaceted. You operate with ease between spiritual awareness and practical mastery, called to channel your creative vision into transformative work.'
       },
       'Queen of Spades': {
         slug: 'queen-of-spades',
-        archetype: 'The Sovereign of Self-Mastery & Practical Wisdom',
+        archetype: 'The Medicine Spirit',
         desc: 'Disciplined, capable, intuitive, and deeply authoritative. You combine spiritual insight with organizational prowess, inspiring others through selfless service and quiet dignity.'
       },
       'King of Spades': {
         slug: 'king-of-spades',
-        archetype: 'The Crown of Wisdom & Supreme Master',
+        archetype: 'The Master of Self',
         desc: 'The highest card in the entire deck. Regal, principled, and seasoned by life’s ultimate lessons, you hold innate authority across work, philosophy, and leadership, governing with impartial grace.'
       },
 
@@ -2587,28 +2925,102 @@
     };
 
     // Real client quotes from Katie's practice, matched to the visitor's suit.
-    const STORIES = {
-      maggie: { quote: 'Katie has made connection charts for me, my ex, my whole family, and my now wife. It\u2019s helped me make big decisions.', name: 'Maggie', card: 'Eight of Diamonds', suit: 'Diamonds' },
-      steph: { quote: 'Wonderful, helpful, and so treasured. A map for our lifetimes.', name: 'Steph', card: 'Seven of Spades', suit: 'Spades' },
-      joker: { quote: 'I feel like I\u2019m approaching the world differently after your reading.', name: 'A client', card: 'The Joker', suit: 'Joker' }
-    };
-    const STORY_BY_SUIT = { Hearts: 'maggie', Diamonds: 'maggie', Spades: 'steph', Clubs: 'joker', Joker: 'joker' };
-    const storyBox = document.getElementById('resultStory');
-    const storyQuote = document.getElementById('resultStoryQuote');
-    const storyCite = document.getElementById('resultStoryCite');
-
-    function showStory(suitName) {
-      const story = STORIES[STORY_BY_SUIT[suitName]];
-      if (!storyBox || !story) return;
-      const kin = story.suit === suitName
-        ? (suitName === 'Joker' ? 'a fellow Joker' : `a fellow ${suitName} card`)
-        : 'one of Katie\u2019s clients';
-      storyQuote.textContent = `\u201C${story.quote}\u201D`;
-      storyCite.textContent = `${story.name}, ${story.card} \u00B7 ${kin}`;
-      storyBox.hidden = false;
+    // Archetype, card name, one sentence and a link. The rest lives on the profile page.
+    function showResult(headlineHtml, profile, targetUrl, fullName) {
+      if (archetypeEl) archetypeEl.textContent = cardTitle(fullName);
+      if (headline) headline.innerHTML = headlineHtml;
+      if (desc) {
+        const first = (profile.desc.match(/^.*?[.!?](?=\s|$)/) || [profile.desc])[0];
+        desc.innerHTML = `${first} <a href="${targetUrl}" class="result-inline-link">Read more</a>`;
+      }
     }
 
+    // ---- Card details modal: "Read more" and the revealed card open the app's
+    // own copy for the card (card_descriptions, public read) instead of leaving.
+    const cardModal = document.getElementById('cardModal');
+    const cardCopy = {};
+    let currentCard = null;
+
+    function loadCardCopy(id) {
+      if (!id || cardCopy[id]) return cardCopy[id];
+      const url = `${SUPABASE_URL}/rest/v1/card_descriptions?select=context_type,title,description` +
+        `&card_id=eq.${encodeURIComponent(id)}&context_type=in.(personal,general)`;
+      cardCopy[id] = fetch(url, { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } })
+        .then((r) => (r.ok ? r.json() : []))
+        .then((rows) => Object.fromEntries(rows.map((r) => [r.context_type, r])))
+        .catch(() => ({}));
+      return cardCopy[id];
+    }
+
+    function section(heading, text) {
+      const frag = document.createDocumentFragment();
+      const h = document.createElement('h3');
+      h.textContent = heading;
+      const p = document.createElement('p');
+      p.textContent = text;
+      frag.append(h, p);
+      return frag;
+    }
+
+    async function openCardModal() {
+      if (!currentCard) return;
+      const c = currentCard;
+      const art = document.getElementById('cardModalArt');
+      art.hidden = !c.art;
+      if (c.art) { art.src = c.art; art.alt = c.name; }
+      document.getElementById('cardModalName').textContent = c.name;
+      document.getElementById('cardModalTitle').textContent = c.profile.archetype;
+      document.getElementById('cardModalMore').href = c.url;
+      const body = document.getElementById('cardModalBody');
+      body.replaceChildren(section('Who you are', c.profile.desc));
+      body.classList.add('is-loading');
+      cardModal.classList.add('open');
+      cardModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('cardModalClose').focus();
+      window.cardyTrack('web_card_info_opened', { card: c.name });
+
+      const copy = await loadCardCopy(c.id);
+      if (currentCard !== c || !cardModal.classList.contains('open')) return;
+      body.classList.remove('is-loading');
+      if (!copy || !copy.personal) return; // keep the site's own summary
+      if (copy.personal.title) document.getElementById('cardModalTitle').textContent = copy.personal.title;
+      body.replaceChildren(section('Who you are', copy.personal.description));
+      if (copy.general && copy.general.description) {
+        body.append(section(`The ${c.name} in the deck`, copy.general.description));
+      }
+    }
+
+    function closeCardModal() {
+      if (!cardModal.classList.contains('open')) return;
+      cardModal.classList.remove('open');
+      cardModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('#card1Link, #card1DescLink, #unlockDesc a');
+      if (!link || !currentCard || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      openCardModal();
+    });
+    cardModal.addEventListener('click', (e) => { if (e.target === cardModal) closeCardModal(); });
+    document.getElementById('cardModalClose').addEventListener('click', closeCardModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCardModal(); });
+    document.getElementById('cardModalUnlock').addEventListener('click', () => {
+      closeCardModal();
+      window.cardyTrack('web_card_info_unlock_clicked', { card: currentCard ? currentCard.name : '' });
+      const email = document.getElementById('leadEmail');
+      if (email) {
+        email.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        email.focus({ preventScroll: true });
+      }
+    });
+
     function applyCardData(m, d) {
+      // The email capture sends the birthday that was actually revealed.
+      unlockBox.dataset.month = m;
+      unlockBox.dataset.day = d;
       let fullName = '';
       let targetUrl = '/birth-card-meanings';
       let profile = null;
@@ -2623,14 +3035,7 @@
         if (suitB) { suitB.textContent = '🃏'; suitB.style.color = '#C92A1D'; }
         if (centerSuit) { centerSuit.textContent = '🃏'; centerSuit.style.color = '#C92A1D'; }
         setCardArt(null);
-        if (headline) headline.innerHTML = `You are <strong>${fullName}</strong> — ${profile.archetype}!`;
-        if (desc) {
-          desc.innerHTML = `
-            <p style="color: rgba(255, 244, 244, 0.9); font-size: 15px; line-height: 1.6; margin-bottom: 12px;">${profile.desc}</p>
-            <div style="margin-bottom: 8px;"><a href="${targetUrl}" class="result-inline-link">Read full ${fullName} profile ↗</a></div>
-            <div style="color: var(--text-muted); font-size: 13.5px;">Download Cardy for Cards 2 and 3 and your daily readings.</div>
-          `;
-        }
+        showResult(`You're <strong>${fullName}</strong>`, profile, targetUrl, fullName);
       } else {
         let val = 55 - (2 * m + d);
         if (val <= 0) val += 52;
@@ -2653,19 +3058,28 @@
         if (centerSuit) { centerSuit.textContent = suit.symbol; centerSuit.style.color = suit.color; }
         setCardArt(`/assets/cards/${suit.name.toLowerCase()}-${(rankNames[rIdx] || String(rIdx)).toLowerCase()}.webp`, fullName);
 
-        if (headline) {
-          headline.innerHTML = `You are a <strong>${fullName}</strong> — ${profile.archetype}!`;
-        }
-        if (desc) {
-          desc.innerHTML = `
-            <p style="color: rgba(255, 244, 244, 0.9); font-size: 15px; line-height: 1.6; margin-bottom: 12px;">${profile.desc}</p>
-            <div style="margin-bottom: 10px;"><a href="${targetUrl}" class="result-inline-link">Read full ${fullName} profile & lessons ↗</a></div>
-            <div style="color: var(--text-muted); font-size: 13.5px;">Your zodiac sign shapes <strong>Card 2</strong>, and the two combine into <strong>Card 3</strong>. Both are waiting in the app.</div>
-          `;
-        }
+        showResult(`You're the <strong>${fullName}</strong>`, profile, targetUrl, fullName);
       }
 
-      if (card1Title) card1Title.textContent = fullName;
+      const isJoker = m === 12 && d === 31;
+      const cardId = isJoker ? null : fullName.replace(/^(\w+) of (\w+)$/, '$2-$1');
+      currentCard = {
+        id: cardId,
+        name: fullName,
+        profile: profile,
+        url: targetUrl,
+        art: cardId ? `/assets/cards/${cardId.toLowerCase()}.webp` : null,
+      };
+      loadCardCopy(cardId);
+
+      if (card1Title) card1Title.textContent = cardTitle(fullName);
+      unlockBox.dataset.card = fullName;
+      if (m === 12 && d === 31) teaseLaterCards(['The Joker', 'The Joker']);
+      else {
+        let v1 = 55 - (2 * m + d);
+        if (v1 <= 0) v1 += 52;
+        teaseLaterCards(laterCardNames(m, d, v1));
+      }
       if (card1Unselected) card1Unselected.style.display = 'none';
       if (card1Active) card1Active.style.display = 'flex';
       if (card1Link) {
@@ -2676,22 +3090,19 @@
         card1DescLink.href = targetUrl;
         card1DescLink.style.display = 'inline-flex';
       }
-      showStory(m === 12 && d === 31 ? 'Joker' : fullName.split(' of ')[1]);
     }
 
     function revealCards() {
-      const m = parseInt(mSelect.value, 10);
-      const d = parseInt(dSelect.value, 10);
-      if (!m || !d) {
-        const missing = !m ? mSelect : dSelect;
-        mSelect.classList.toggle('is-invalid', !m);
-        dSelect.classList.toggle('is-invalid', !d);
+      const bday = readBirthday();
+      if (!bday) {
+        bdayInput.classList.add('is-invalid');
         if (revealBar) revealBar.classList.add('is-invalid');
         if (revealHint) revealHint.hidden = false;
-        missing.focus();
-        window.cardyTrack('web_reveal_invalid', { missing: !m && !d ? 'both' : (!m ? 'month' : 'day') });
+        bdayInput.focus();
+        window.cardyTrack('web_reveal_invalid', { missing: bdayInput.value ? 'invalid' : 'empty' });
         return;
       }
+      const m = bday.m, d = bday.d;
       clearInvalid();
       const run = ++revealRun;
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2792,11 +3203,10 @@
       if (card1Back) card1Back.hidden = true;
       if (unlockBox) unlockBox.style.display = 'block';
       revealCount += 1;
-      const cardName = card1Title ? card1Title.textContent : '';
+      const cardName = unlockBox.dataset.card || '';
       window.cardyTrack('web_card_revealed', {
         card: cardName,
         suit: cardName === 'The Joker' ? 'Joker' : (cardName.split(' of ')[1] || ''),
-        story_shown: storyBox ? !storyBox.hidden : false,
         reveal_count: revealCount,
         animated: animated
       });
@@ -2807,10 +3217,11 @@
     const heroDeck = document.getElementById('heroDeck');
     function syncDeck() {
       if (!heroDeck) return;
-      heroDeck.classList.toggle('lift-1', !!mSelect.value && !dSelect.value);
-      heroDeck.classList.toggle('lift-2', !!mSelect.value && !!dSelect.value);
+      const full = !!readBirthday();
+      heroDeck.classList.toggle('lift-1', !!bdayInput.value && !full);
+      heroDeck.classList.toggle('lift-2', full);
     }
-    [mSelect, dSelect].forEach((sel) => sel.addEventListener('change', syncDeck));
+    bdayInput.addEventListener('input', syncDeck);
     function dealFromDeck(reduce) {
       if (!heroDeck || reduce) return;
       heroDeck.classList.add('dealt');
@@ -2828,10 +3239,9 @@
     if (card1Link) {
       card1Link.addEventListener('click', (e) => {
         // If birthday hasn't been chosen yet, focus the input instead of navigating
-        if (!mSelect.value || !dSelect.value) {
+        if (!readBirthday()) {
           e.preventDefault();
-          if (!mSelect.value) mSelect.focus();
-          else dSelect.focus();
+          bdayInput.focus();
         }
       });
     }
@@ -2954,6 +3364,122 @@
       alert('Something went wrong. Please try again.');
     }
   }
+
+  // Email capture on the reveal result: stores the lead (capture-lead edge
+  // function), emails all 3 cards, and turns Cards 2 and 3 face up here.
+  (function initLeadCapture() {
+    const form = document.getElementById('leadCapture');
+    if (!form) return;
+    const track = window.cardyTrack || function () {};
+    const input = document.getElementById('leadEmail');
+    const btn = document.getElementById('leadBtn');
+    const msg = document.getElementById('leadMsg');
+    const wraps = Array.from(document.querySelectorAll('.stage-card-wrap.locked'));
+    const lockedHtml = wraps.map((w) => w.innerHTML);
+    const defaultMsg = msg.textContent;
+    const altLabel = document.getElementById('resultAltLabel');
+    const defaultAltLabel = altLabel.textContent;
+    // Analytics only; the layout is the same everywhere.
+    const device = window.matchMedia('(hover: hover) and (pointer: fine)').matches ? 'desktop' : 'mobile';
+    let viewed = false;
+
+    // Track the first time the result (and so the form) is on screen.
+    const unlockBox = document.getElementById('heroCalcUnlock');
+    new MutationObserver(() => {
+      if (!viewed && unlockBox.style.display !== 'none') {
+        viewed = true;
+        track('web_email_capture_viewed', { device: device });
+      }
+    }).observe(unlockBox, { attributes: true, attributeFilter: ['style'] });
+
+    // A new birthday puts Cards 2 and 3 back face down.
+    function relock() {
+      wraps.forEach((w, i) => { w.classList.remove('unlocked'); w.classList.add('locked'); w.innerHTML = lockedHtml[i]; });
+      form.classList.remove('is-done');
+      msg.classList.remove('is-error');
+      msg.textContent = defaultMsg;
+      altLabel.textContent = defaultAltLabel;
+    }
+    document.getElementById('heroCalcBtn').addEventListener('click', relock);
+    document.getElementById('heroBirthday').addEventListener('keydown', (e) => { if (e.key === 'Enter') relock(); });
+
+    function showCards(cards) {
+      cards.slice(1).forEach((c, i) => {
+        const w = wraps[i];
+        if (!w) return;
+        w.classList.remove('locked');
+        w.classList.add('unlocked');
+        const back = w.querySelector('.card-static-back');
+        back.innerHTML = '';
+        const img = document.createElement('img');
+        img.className = 'unlocked-art';
+        img.src = c.image;
+        img.alt = c.name;
+        back.appendChild(img);
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = input.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        input.classList.add('is-invalid');
+        msg.classList.add('is-error');
+        msg.textContent = 'That email doesn’t look right. Mind checking it?';
+        input.focus();
+        track('web_email_invalid', { device: device });
+        return;
+      }
+      input.classList.remove('is-invalid');
+      msg.classList.remove('is-error');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      track('web_email_submitted', { device: device });
+
+      const params = new URLSearchParams(location.search);
+      let posthogId = null;
+      try { posthogId = posthog.get_distinct_id(); } catch (err) {}
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/capture-lead`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY },
+          body: JSON.stringify({
+            email: email,
+            month: parseInt(unlockBox.dataset.month, 10),
+            day: parseInt(unlockBox.dataset.day, 10),
+            source: 'home_reveal',
+            page: location.pathname,
+            device: device,
+            utm_source: params.get('utm_source'),
+            utm_medium: params.get('utm_medium'),
+            utm_campaign: params.get('utm_campaign'),
+            posthog_id: posthogId,
+            website: form.elements.website.value,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.success) throw new Error(data.error || 'capture_failed');
+
+        showCards(data.cards || []);
+        form.classList.add('is-done');
+        altLabel.textContent = 'Get daily readings in the app:';
+        msg.textContent = data.emailed
+          ? `Sent! Your 3 cards are on their way to ${email}.`
+          : 'Here are all 3 of your cards. We’ll email you a copy.';
+        track('web_email_captured', { device: device, emailed: !!data.emailed });
+        try { posthog.people.set({ email_captured: true }); } catch (err) {}
+      } catch (err) {
+        msg.classList.add('is-error');
+        msg.textContent = err.message === 'invalid_email'
+          ? 'That email doesn’t look right. Mind checking it?'
+          : 'Something went wrong. Please try again.';
+        track('web_email_failed', { device: device, error: String(err.message || err) });
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Unlock cards 2 & 3';
+      }
+    });
+  })();
 </script>
 
 <!-- Vercel Web Analytics -->
