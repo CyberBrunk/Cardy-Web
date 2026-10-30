@@ -1422,6 +1422,7 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--cream); }
+    .footer-yt { display: inline-flex; align-items: center; gap: 6px; }
 
     /* ---- Support Modal ---- */
     .modal-overlay {
@@ -2251,6 +2252,7 @@
       <li><a href="/cardology-compatibility">Compatibility</a></li>
       <li><a href="/what-is-cardology">What is Cardology?</a></li>
       <li><a href="#support">Support</a></li>
+      <li><a href="https://www.youtube.com/@thecardyapp" target="_blank" rel="noopener" class="footer-yt" aria-label="Cardy on YouTube"><svg width="22" height="16" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11.2 5.6v8.8l7.6-4.4z" fill="#fff"/></svg>YouTube</a></li>
       <li><a href="#privacy">Privacy Policy</a></li>
       <li><a href="#terms">Terms of Service</a></li>
     </ul>
@@ -2329,7 +2331,7 @@
       <h2>Privacy Policy</h2>
       <button class="modal-close" onclick="closePrivacy()" aria-label="Close">&times;</button>
     </div>
-    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: August 25, 2026</p>
+    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: October 30, 2026</p>
     <div class="privacy-content">
       <p>Your privacy is important to us. This Privacy Policy explains how Cardy ("the App") collects, uses, and protects your information.</p>
 
@@ -2370,14 +2372,20 @@
         <li>Meta / Facebook (advertising measurement and app install attribution)</li>
         <li>PostHog (product analytics for the App and this website)</li>
         <li>Vercel (website hosting and page analytics)</li>
+        <li>Google / YouTube (publishing our videos to our own YouTube channel, as described in Section 5)</li>
       </ul>
       <p>These providers process data solely to deliver their services and are bound by their own privacy policies.</p>
       <p>To measure how well our advertising performs, we use the Meta SDK, which shares a limited set of app activity with Meta, such as app installs and events like completing sign-up or starting a subscription, along with a device identifier. We do not enable Meta's advertising identifier (IDFA) and we do not track you across other apps or websites. This measurement is performed in aggregate through Apple's SKAdNetwork, and we never ask you to opt in to tracking. You can learn how Meta uses this data in the <a href="https://www.facebook.com/privacy/policy" style="color: var(--red-light);">Meta Privacy Policy</a>.</p>
 
-      <h3>5. Data Storage and Security</h3>
+      <h3>5. YouTube</h3>
+      <p>Cardy publishes short videos to its own YouTube channel, <a href="https://www.youtube.com/@thecardyapp" style="color: var(--red-light);">@thecardyapp</a>. Our internal publishing tool uses YouTube API Services to upload those videos. By watching our videos on YouTube, you agree to the <a href="https://www.youtube.com/t/terms" style="color: var(--red-light);">YouTube Terms of Service</a>, and Google handles your data under the <a href="https://policies.google.com/privacy" style="color: var(--red-light);">Google Privacy Policy</a>.</p>
+      <p>Our use of YouTube API Services only uploads videos to our own channel. We do not access, collect, store, use or share any information about you or your YouTube account through YouTube API Services, and we never ask you to connect your Google or YouTube account to Cardy. The only YouTube credential we keep is the authorization for our own channel, stored encrypted.</p>
+      <p>Because we hold no YouTube data about you, there is nothing of yours to delete; you can still contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a> with any request. If you have ever granted any app access to your Google account, you can review or revoke it at any time from your <a href="https://security.google.com/settings/security/permissions" style="color: var(--red-light);">Google security settings</a>.</p>
+
+      <h3>6. Data Storage and Security</h3>
       <p>Your data is stored securely using Supabase with row-level security policies. We use industry-standard encryption for data in transit and at rest. Check-in and journal data is retained for as long as your account is active. You may delete individual check-ins or journal entries at any time within the App.</p>
 
-      <h3>6. Your Rights</h3>
+      <h3>7. Your Rights</h3>
       <p>You can:</p>
       <ul>
         <li>Access and update your profile information in the App settings</li>
@@ -2388,13 +2396,13 @@
       </ul>
       <p>If you are a resident of California, you have additional rights under the CCPA, including the right to know what data we collect, to request deletion, and to opt out of the sale of personal information (we do not sell your data). If you are a resident of the EU/EEA, you have rights under GDPR including access, rectification, erasure, and data portability. To exercise these rights, contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
 
-      <h3>7. Children's Privacy</h3>
+      <h3>8. Children's Privacy</h3>
       <p>Cardy is not intended for children under 13. We do not knowingly collect information from children under 13. If we learn we have collected data from a child under 13, we will delete it promptly.</p>
 
-      <h3>8. Changes to This Policy</h3>
+      <h3>9. Changes to This Policy</h3>
       <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the App.</p>
 
-      <h3>9. Contact</h3>
+      <h3>10. Contact</h3>
       <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
     </div>
   </div>
@@ -2407,7 +2415,7 @@
       <h2>Terms of Service</h2>
       <button class="modal-close" onclick="closeTerms()" aria-label="Close">&times;</button>
     </div>
-    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: February 20, 2026</p>
+    <p class="modal-sub" style="margin-bottom: 16px;">Last Updated: October 30, 2026</p>
     <div class="privacy-content">
       <p>Welcome to Cardy. By using our app, you agree to these Terms of Service. Please read them carefully.</p>
 
@@ -2441,10 +2449,13 @@
       <h3>10. Limitation of Liability</h3>
       <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the App.</p>
 
-      <h3>11. Changes to Terms</h3>
+      <h3>11. YouTube</h3>
+      <p>Cardy publishes videos to its YouTube channel, <a href="https://www.youtube.com/@thecardyapp" style="color: var(--red-light);">@thecardyapp</a>, using YouTube API Services. Your use of YouTube, including watching our videos there, is governed by the <a href="https://www.youtube.com/t/terms" style="color: var(--red-light);">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" style="color: var(--red-light);">Google Privacy Policy</a>.</p>
+
+      <h3>12. Changes to Terms</h3>
       <p>We may update these Terms from time to time. Continued use of the App after changes constitutes acceptance of the updated Terms.</p>
 
-      <h3>12. Contact</h3>
+      <h3>13. Contact</h3>
       <p>If you have questions about these Terms, please contact us at <a href="mailto:support@cardy.today" style="color: var(--red-light);">support@cardy.today</a>.</p>
     </div>
   </div>
