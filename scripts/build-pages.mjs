@@ -10,7 +10,7 @@ const partialsDir = path.join(rootDir, 'seo-content', 'partials');
 const readPartial = (name) => fs.readFileSync(path.join(partialsDir, name), 'utf-8');
 
 const DOMAIN = 'https://cardy.today';
-const APP_STORE_URL = 'https://apps.apple.com/us/app/cardy-reflections/id6757249840';
+const APP_STORE_URL = 'https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone';
 const WEB_APP_URL = 'https://app.cardy.today';
 
 // Dates for Article schema freshness signals (AI systems favor dated, recently-updated content).

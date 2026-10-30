@@ -40,7 +40,7 @@ notes: Coming-soon framing (no live web tool; not yet in the app either). Do not
         <span class="period-days">Days 105–156</span>
       </div>
     </div>
-    <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="btn-app-preview" target="_blank" rel="noopener">Get your daily card in Cardy →</a>
+    <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone" class="btn-app-preview" target="_blank" rel="noopener">Get your daily card in Cardy →</a>
   </div>
 </div>
 <!-- COMING SOON TOOL PREVIEW END -->

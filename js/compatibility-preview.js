@@ -261,7 +261,7 @@
       '<div class="cp-cta">' +
         '<p>See all ' + (shown ? list.length + ' planet' + (list.length === 1 ? '' : 's') + ', ' : '') + '9 compatibility cards, and both full profiles in Cardy.</p>' +
         '<div class="cp-cta-row">' +
-          '<a class="cp-btn cp-btn--app" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener" data-placement="compat_result">Unlock in the App</a>' +
+          '<a class="cp-btn cp-btn--app" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone" target="_blank" rel="noopener" data-placement="compat_result">Unlock in the App</a>' +
           '<a class="cp-btn cp-btn--web" href="https://app.cardy.today" target="_blank" rel="noopener" data-placement="compat_result">Web App (Android) →</a>' +
         '</div>' +
       '</div>';

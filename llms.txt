@@ -9,7 +9,7 @@
 - **How cardology relates to astrology:** it does not compete with astrology — it incorporates your zodiac sign into Card 2, and adds a birth-date layer, so two people with the same sun sign but different birthdays get different cards.
 - **Karma cards:** a separate, deeper layer — a supporting (Blessing) card and a challenging (Duty) card tied to your Birth Card.
 - **Platforms:** iOS app and web app. Free to download; your Birth Card is calculated free.
-- **App Store:** https://apps.apple.com/us/app/cardy-reflections/id6757249840
+- **App Store:** https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone
 - **Web app:** https://app.cardy.today
 - **AI assistant connector (MCP):** https://app.cardy.today/api/mcp — free, no login (setup: https://cardy.today/use-cardy-in-claude)
 
