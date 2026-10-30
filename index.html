@@ -818,6 +818,8 @@
     .lead-fine.is-error { color: #FF8A80; }
     .lead-capture.is-done .lead-capture-row { display: none; }
     .lead-capture.is-done .lead-fine { font-size: 14px; color: var(--cream); }
+    .lead-continue { display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; padding: 14px 28px; font-size: 15px; text-decoration: none; }
+    .lead-continue[hidden] { display: none; }
     .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
     /* Cards 2 and 3, face up once the email is in */
@@ -2043,6 +2045,7 @@
           <button type="submit" class="lead-btn" id="leadBtn">Unlock cards 2 &amp; 3</button>
         </div>
         <p class="lead-fine" id="leadMsg" role="status">We’ll email you all three. Unsubscribe anytime.</p>
+        <a class="lead-btn lead-continue" id="leadContinue" href="https://app.cardy.today/onboarding" data-placement="lead_unlock" hidden>See your full reading →</a>
       </form>
       <div class="result-alt">
         <p class="result-alt-label" id="resultAltLabel">Or unlock them in the app</p>
@@ -3066,7 +3069,7 @@
         .then((rows) => {
           const general = rows.find((r) => r.context_type === 'general');
           const personal = rows.find((r) => r.context_type === 'personal');
-          return general ? { ...general, short: personal && personal.short_description } : null;
+          return general ? { ...general, short: personal && personal.short_description, personal: personal && personal.description } : null;
         })
         .catch(() => null);
       return cardCopy[id];
@@ -3252,12 +3255,15 @@
         url: targetUrl,
         art: cardId ? `/assets/cards/${cardId.toLowerCase()}.webp` : null,
       };
-      // Swap the site's summary for the app's one-liner once it arrives.
+      // Swap the site's summary for the opening of the app's own reading
+      // (personal description: first three sentences), else its one-liner.
       const revealed = currentCard;
       Promise.resolve(loadCardCopy(cardId)).then((copy) => {
-        if (copy && copy.short && currentCard === revealed && desc) {
+        const sentences = copy && copy.personal ? copy.personal.match(/[^.!?]+[.!?]+["”’]?(?=\s|$)/g) : null;
+        const text = sentences ? sentences.slice(0, 3).map((x) => x.trim()).join(' ') : copy && copy.short;
+        if (text && currentCard === revealed && desc) {
           desc.innerHTML = '';
-          desc.append(document.createTextNode(copy.short + ' '));
+          desc.append(document.createTextNode(text + ' '));
           const more = document.createElement('a');
           more.href = targetUrl;
           more.className = 'result-inline-link';
@@ -3572,6 +3578,7 @@
     const lockedHtml = wraps.map((w) => w.innerHTML);
     const defaultMsg = msg.textContent;
     const altLabel = document.getElementById('resultAltLabel');
+    const continueBtn = document.getElementById('leadContinue');
     const defaultAltLabel = altLabel.textContent;
     // Analytics only; the layout is the same everywhere.
     const device = window.matchMedia('(hover: hover) and (pointer: fine)').matches ? 'desktop' : 'mobile';
@@ -3593,6 +3600,7 @@
       msg.classList.remove('is-error');
       msg.textContent = defaultMsg;
       altLabel.textContent = defaultAltLabel;
+      continueBtn.hidden = true;
     }
     document.getElementById('heroCalcBtn').addEventListener('click', relock);
     document.getElementById('heroBirthday').addEventListener('keydown', (e) => { if (e.key === 'Enter') relock(); });
@@ -3657,6 +3665,10 @@
         showCards(data.cards || []);
         form.classList.add('is-done');
         altLabel.textContent = 'Get daily readings in the app';
+        if (data.handoff_url) {
+          continueBtn.href = data.handoff_url;
+          continueBtn.hidden = false;
+        }
         msg.textContent = data.emailed
           ? `Sent! Your 3 cards are on their way to ${email}.`
           : 'Here are all 3 of your cards. We’ll email you a copy.';
