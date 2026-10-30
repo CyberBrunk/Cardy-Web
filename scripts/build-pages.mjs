@@ -627,7 +627,7 @@ ${hasCompatPreview ? '\n      ' + readPartial('compatibility-preview.html') : ''
     <div class="footer-inner">
       <div class="footer-left">
         <img src="/icon@3x.png" alt="Cardy" />
-        <span>&copy; <span id="copyrightYear">2026</span> Cardy. Play your cards right.</span>
+        <span>&copy; <span id="copyrightYear">2026</span> Channel22 LLC. Play your cards right.</span>
       </div>
       <ul class="footer-links">
         <li><a href="/destiny-cards-calculator">Calculator</a></li>
