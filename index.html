@@ -699,9 +699,24 @@
       margin: 0 auto 22px;
       max-width: 440px;
     }
-    .result-alt { margin-top: 16px; font-size: 13px; color: var(--cream-dim); }
-    .result-alt a { color: var(--cream); font-weight: 600; text-underline-offset: 3px; }
-    .result-alt a:hover { color: #FF8A80; }
+    .result-alt { margin-top: 20px; }
+    .result-alt-label { font-size: 13px; color: var(--cream-dim); margin-bottom: 10px; }
+    .result-alt-btns { display: flex; gap: 10px; justify-content: center; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 244, 244, 0.55);
+      border-radius: 12px;
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255, 244, 244, 0.08); border-color: var(--cream); }
 
     /* ---- Email capture: unlocks Cards 2 and 3 ---- */
     .lead-capture-row { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
@@ -829,13 +844,6 @@
       0% { transform: translateX(-120%); opacity: 1; }
       100% { transform: translateX(120%); opacity: 1; }
     }
-    .hero-alt {
-      font-size: 15px;
-      color: var(--cream-dim);
-      margin-bottom: 10px;
-    }
-    .hero-alt a { color: var(--cream); font-weight: 600; text-underline-offset: 3px; }
-    .hero-alt a:hover { color: #FF8A80; }
     .hero-trust { font-size: 14px; color: var(--cream-dim); }
     .trust-stars { color: #FFB300; letter-spacing: 1px; margin-right: 4px; }
 
@@ -1401,6 +1409,28 @@
     .card-modal-body h3:first-child { margin-top: 0; }
     .card-modal-body p { font-size: 15px; line-height: 1.65; color: rgba(255, 244, 244, 0.88); }
     .card-modal-body.is-loading p { opacity: 0.5; }
+    .card-modal-keywords { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .card-modal-keywords:empty { display: none; }
+    .card-modal-keywords span {
+      padding: 4px 11px; border-radius: 999px; font-size: 12px; text-transform: capitalize;
+      color: var(--cream-dim); background: rgba(255, 244, 244, 0.05); border: 1px solid rgba(255, 244, 244, 0.12);
+    }
+    /* Same sections as the app's "My cards" reading */
+    .cm-traits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .cm-trait { padding: 14px; border-radius: 14px; background: rgba(255, 244, 244, 0.05); border: 1px solid rgba(255, 244, 244, 0.1); }
+    .cm-trait-head { font-size: 12px; font-weight: 700; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .cm-trait p { font-size: 14px !important; line-height: 1.5 !important; }
+    .cm-gift .cm-trait-head { color: #FFD27A; }
+    .cm-growth .cm-trait-head { color: #FF8A80; }
+    .cm-bullets { padding: 18px; border-radius: 14px; background: rgba(255, 244, 244, 0.06); border: 1px solid rgba(255, 244, 244, 0.1); margin-bottom: 18px; }
+    .cm-bullets-head { font-family: var(--font-display); font-size: 19px; color: var(--cream); margin-bottom: 12px; }
+    .cm-bullets ol { list-style: none; display: grid; gap: 10px; margin: 0; padding: 0; }
+    .cm-bullets li { display: flex; gap: 12px; font-size: 14px; line-height: 1.55; color: rgba(255, 244, 244, 0.9); }
+    .cm-bullets li span { font-family: var(--font-display); color: #E8B86B; font-variant-numeric: tabular-nums; }
+    .cm-quote { border-left: 2px solid rgba(232, 184, 107, 0.6); padding-left: 14px; margin-bottom: 14px;
+      font-family: var(--font-display); font-size: 19px; line-height: 1.35; color: #F3DFC1; }
+    .card-modal-body > p + p { margin-top: 12px; }
+    @media (max-width: 600px) { .cm-traits { grid-template-columns: 1fr; } }
     .card-modal-cta {
       display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
       margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(255, 244, 244, 0.1);
@@ -1847,7 +1877,6 @@
   </div>
 
       <p class="reveal-hint" id="revealHint" role="alert" hidden>Enter your birthday as month / day, like 03 / 14.</p>
-      <p class="hero-alt" id="download">Or get the app: <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web App (Android)</a></p>
       <div class="hero-proof">
         <a class="katie-byline" href="#katie" data-track="katie_byline">
           <img class="katie-mono" src="/assets/katie/katie-avatar.webp" alt="" width="36" height="36" />
@@ -1940,7 +1969,16 @@
         </div>
         <p class="lead-fine" id="leadMsg" role="status">We’ll email you all three. Unsubscribe anytime.</p>
       </form>
-      <p class="result-alt"><span id="resultAltLabel">Or unlock them in the app:</span> <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" target="_blank" rel="noopener">App Store</a> · <a href="https://app.cardy.today" target="_blank" rel="noopener">Web app</a></p>
+      <div class="result-alt">
+        <p class="result-alt-label" id="resultAltLabel">Or unlock them in the app</p>
+        <div class="result-alt-btns">
+          <a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840" class="btn-outline" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a href="https://app.cardy.today" class="btn-outline" target="_blank" rel="noopener">Web app</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2158,6 +2196,7 @@
         <p class="result-kicker">Card 1 · Inner Child</p>
         <h2 class="card-modal-name" id="cardModalName"></h2>
         <p class="card-modal-title" id="cardModalTitle"></p>
+        <div class="card-modal-keywords" id="cardModalKeywords"></div>
       </div>
     </div>
     <div class="card-modal-body" id="cardModalBody"></div>
@@ -2941,25 +2980,93 @@
     const cardCopy = {};
     let currentCard = null;
 
+    // The app's "My cards" page reads the card's `general` row; its one-liner
+    // is the `personal` short description.
     function loadCardCopy(id) {
       if (!id || cardCopy[id]) return cardCopy[id];
-      const url = `${SUPABASE_URL}/rest/v1/card_descriptions?select=context_type,title,description` +
-        `&card_id=eq.${encodeURIComponent(id)}&context_type=in.(personal,general)`;
+      const url = `${SUPABASE_URL}/rest/v1/card_descriptions?select=context_type,title,description,short_description,keywords` +
+        `&card_id=eq.${encodeURIComponent(id)}&context_type=in.(general,personal)`;
       cardCopy[id] = fetch(url, { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } })
         .then((r) => (r.ok ? r.json() : []))
-        .then((rows) => Object.fromEntries(rows.map((r) => [r.context_type, r])))
-        .catch(() => ({}));
+        .then((rows) => {
+          const general = rows.find((r) => r.context_type === 'general');
+          const personal = rows.find((r) => r.context_type === 'personal');
+          return general ? { ...general, short: personal && personal.short_description } : null;
+        })
+        .catch(() => null);
       return cardCopy[id];
     }
 
-    function section(heading, text) {
-      const frag = document.createDocumentFragment();
-      const h = document.createElement('h3');
-      h.textContent = heading;
-      const p = document.createElement('p');
-      p.textContent = text;
-      frag.append(h, p);
-      return frag;
+    // Port of the app's parseCardMeaning (lib/cardMeaning.ts): labelled lines
+    // become gift / growth / bullets / pull quote; the rest is reading prose.
+    function parseCardMeaning(description) {
+      const out = { bullets: [], paragraphs: [] };
+      const text = (description || '').trim();
+      if (!text) return out;
+      const valueOf = (line, labels) => {
+        for (const l of labels) if (line.startsWith(l)) return line.slice(l.length).trim() || undefined;
+      };
+      let inList = false;
+      for (const raw of text.split(/\r?\n/)) {
+        const line = raw.trim();
+        if (!line) { inList = false; continue; }
+        let v;
+        if ((v = valueOf(line, ['Pull quote:', 'Quote:']))) out.quote = v;
+        else if ((v = valueOf(line, ['Gift:']))) out.gift = v;
+        else if ((v = valueOf(line, ['Growth edge:', 'Growth:']))) out.growth = v;
+        else if (line.startsWith('Bullets:') || line.startsWith("When you're a")) inList = true;
+        else {
+          const m = /^(\d{1,2})\.(.*)$/.exec(line);
+          const bullet = line[0] === '-' || line[0] === '•' ? line.slice(1).trim() : m ? m[2].trim() : null;
+          if (bullet !== null) out.bullets.push(bullet);
+          else if (inList) out.bullets.push(line);
+          else out.paragraphs.push(line);
+        }
+      }
+      const first = out.paragraphs[0];
+      if (!out.quote && first) {
+        const dot = first.search(/[.!?]/);
+        const sentence = dot >= 0 ? first.slice(0, dot + 1) : '';
+        if (sentence.length >= 20 && sentence.length < 150) {
+          out.quote = sentence;
+          const rest = first.slice(dot + 1).trim();
+          if (rest) out.paragraphs[0] = rest; else out.paragraphs.shift();
+        }
+      }
+      return out;
+    }
+
+    function el(tag, className, text) {
+      const e = document.createElement(tag);
+      if (className) e.className = className;
+      if (text !== undefined) e.textContent = text;
+      return e;
+    }
+    function bulletsHeading(name) {
+      const [rank, suit] = name.split(' of ');
+      const short = { Ace: 'A', Jack: 'J', Queen: 'Q', King: 'K' }[rank] || rank;
+      const symbol = { Hearts: '♥', Clubs: '♣', Diamonds: '♦', Spades: '♠' }[suit];
+      if (!symbol) return 'You know it’s you when…';
+      return `You know you're ${rank === '8' || rank === 'Ace' ? 'an' : 'a'} ${short}${symbol} when…`;
+    }
+    function renderMeaning(body, name, meaning) {
+      const nodes = [];
+      if (meaning.gift || meaning.growth) {
+        const traits = el('div', 'cm-traits');
+        if (meaning.gift) { const t = el('div', 'cm-trait cm-gift'); t.append(el('div', 'cm-trait-head', '✨ Your gift'), el('p', '', meaning.gift)); traits.append(t); }
+        if (meaning.growth) { const t = el('div', 'cm-trait cm-growth'); t.append(el('div', 'cm-trait-head', '↗ Growth edge'), el('p', '', meaning.growth)); traits.append(t); }
+        nodes.push(traits);
+      }
+      if (meaning.bullets.length) {
+        const box = el('section', 'cm-bullets');
+        const ol = el('ol');
+        meaning.bullets.forEach((b, i) => { const li = el('li'); li.append(el('span', '', String(i + 1).padStart(2, '0')), document.createTextNode(b)); ol.append(li); });
+        box.append(el('p', 'cm-bullets-head', bulletsHeading(name)), ol);
+        nodes.push(box);
+      }
+      if (meaning.quote) nodes.push(el('p', 'cm-quote', meaning.quote));
+      meaning.paragraphs.forEach((p) => nodes.push(el('p', '', p)));
+      body.replaceChildren(...nodes);
     }
 
     async function openCardModal() {
@@ -2968,11 +3075,13 @@
       const art = document.getElementById('cardModalArt');
       art.hidden = !c.art;
       if (c.art) { art.src = c.art; art.alt = c.name; }
-      document.getElementById('cardModalName').textContent = c.name;
-      document.getElementById('cardModalTitle').textContent = c.profile.archetype;
+      // As in the app: the title is the headline, the card name sits under it.
+      document.getElementById('cardModalName').textContent = cardTitle(c.name);
+      document.getElementById('cardModalTitle').textContent = c.name;
+      document.getElementById('cardModalKeywords').replaceChildren();
       document.getElementById('cardModalMore').href = c.url;
       const body = document.getElementById('cardModalBody');
-      body.replaceChildren(section('Who you are', c.profile.desc));
+      body.replaceChildren(el('p', '', c.profile.desc));
       body.classList.add('is-loading');
       cardModal.classList.add('open');
       cardModal.setAttribute('aria-hidden', 'false');
@@ -2983,12 +3092,10 @@
       const copy = await loadCardCopy(c.id);
       if (currentCard !== c || !cardModal.classList.contains('open')) return;
       body.classList.remove('is-loading');
-      if (!copy || !copy.personal) return; // keep the site's own summary
-      if (copy.personal.title) document.getElementById('cardModalTitle').textContent = copy.personal.title;
-      body.replaceChildren(section('Who you are', copy.personal.description));
-      if (copy.general && copy.general.description) {
-        body.append(section(`The ${c.name} in the deck`, copy.general.description));
-      }
+      if (!copy || !copy.description) return; // keep the site's own summary
+      if (copy.title) document.getElementById('cardModalName').textContent = copy.title;
+      document.getElementById('cardModalKeywords').replaceChildren(...(copy.keywords || []).slice(0, 3).map((k) => el('span', '', k)));
+      renderMeaning(body, c.name, parseCardMeaning(copy.description));
     }
 
     function closeCardModal() {
@@ -3070,7 +3177,19 @@
         url: targetUrl,
         art: cardId ? `/assets/cards/${cardId.toLowerCase()}.webp` : null,
       };
-      loadCardCopy(cardId);
+      // Swap the site's summary for the app's one-liner once it arrives.
+      const revealed = currentCard;
+      Promise.resolve(loadCardCopy(cardId)).then((copy) => {
+        if (copy && copy.short && currentCard === revealed && desc) {
+          desc.innerHTML = '';
+          desc.append(document.createTextNode(copy.short + ' '));
+          const more = document.createElement('a');
+          more.href = targetUrl;
+          more.className = 'result-inline-link';
+          more.textContent = 'Read more';
+          desc.append(more);
+        }
+      });
 
       if (card1Title) card1Title.textContent = cardTitle(fullName);
       unlockBox.dataset.card = fullName;
@@ -3462,7 +3581,7 @@
 
         showCards(data.cards || []);
         form.classList.add('is-done');
-        altLabel.textContent = 'Get daily readings in the app:';
+        altLabel.textContent = 'Get daily readings in the app';
         msg.textContent = data.emailed
           ? `Sent! Your 3 cards are on their way to ${email}.`
           : 'Here are all 3 of your cards. We’ll email you a copy.';
