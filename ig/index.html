@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cardy · Get the app</title>
+  <meta name="description" content="Your birthday maps to three cards. See what they say about you with Cardy." />
+  <!-- Link-in-bio page for social traffic: served at /ig and /tiktok (see vercel.json), kept out of search. -->
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0B0E1A" />
+  <meta property="og:title" content="Cardy: Play your cards right" />
+  <meta property="og:description" content="Your birthday maps to three cards. See what they say about you." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cardy.today/icon@3x.png" />
+  <link rel="icon" type="image/png" href="/icon@3x.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Analytics: PostHog (same project as the iOS app) + Vercel custom events -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag onFeatureFlags identify alias people.set people.set_once set_config get_distinct_id".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_AkvPJMCxPSt5mxPBuuWasEU63eiUtHhACUMvAorEqegF', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: false,
+      disable_session_recording: true
+    });
+    // The URL says which platform sent the visit: /ig or /tiktok.
+    window.cardySource = location.pathname.indexOf('tiktok') !== -1 ? 'tiktok' : 'ig';
+    posthog.register({ environment: 'web', page: 'social_landing', social_source: window.cardySource });
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.cardyTrack = function (name, props) {
+      try { posthog.capture(name, props || {}); } catch (e) {}
+      try { window.va('event', { name: name, data: props || {} }); } catch (e) {}
+    };
+  </script>
+  <style>
+    :root {
+      --red: #B42B19;
+      --red-light: #D83A26;
+      --coral: #F0705F;
+      --cream: #FFF4F4;
+      --cream-dim: #FFF4F4B8;
+      --cream-faint: #FFF4F480;
+      --dark: #0B0E1A;
+      --card: #131729;
+      --line: #FFF4F41A;
+      --font-display: 'Abril Fatface', serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { -webkit-text-size-adjust: 100%; background: var(--dark); }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(120% 420px at 50% -60px, #B42B1966, transparent) no-repeat var(--dark);
+      color: var(--cream);
+      font-family: var(--font-body);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    main {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: max(28px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+    }
+
+    /* Header */
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+    .brand-name { font-family: var(--font-display); font-size: 30px; line-height: 1; }
+    .brand-sub { margin-top: 5px; font-size: 14px; color: var(--cream-dim); }
+    h1 {
+      margin: 24px 0 20px;
+      font-family: var(--font-display);
+      font-size: clamp(34px, 10.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    h1 em { margin: 0 .05em 0 -.06em; color: var(--coral); }
+
+    /* Download panel */
+    .panel { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; }
+    .btn-store {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 72px;
+      background: linear-gradient(135deg, var(--red), var(--red-light));
+      border-radius: 18px;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .btn-store:hover { filter: brightness(1.08); }
+    .btn-store:active { transform: scale(.98); }
+    .btn-store:focus-visible, .btn-web:focus-visible, footer a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+    .btn-store svg { flex: none; }
+    .btn-store small { display: block; font-size: 12.5px; font-weight: 500; line-height: 1.2; }
+    .btn-store strong { display: block; font-size: 24px; font-weight: 700; line-height: 1.15; }
+    .reassure { margin-top: 12px; text-align: center; font-size: 14px; font-weight: 600; }
+    .btn-web {
+      display: block;
+      margin-top: 6px;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--cream-dim);
+      border-radius: 10px;
+    }
+    .btn-web:hover { color: var(--cream); }
+
+    /* Follow */
+    .social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 60px;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+    .social a:hover { border-color: var(--cream-faint); }
+    .social a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+    /* Section labels */
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .steps { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px 12px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
+    /* The art has wide transparent margins, so scale it up inside its box. */
+    .step img { width: 72px; height: 84px; flex: none; object-fit: contain; transform: scale(1.3); }
+    .step-from { font-size: 12.5px; font-weight: 600; color: var(--cream-faint); }
+    .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
+    .step p { font-size: 14px; color: var(--cream-dim); }
+
+    /* Author */
+    .katie { display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 14px; color: var(--cream-dim); }
+    .katie img { width: 44px; height: 44px; flex: none; border-radius: 50%; object-fit: cover; }
+    .katie strong { color: var(--cream); font-weight: 700; }
+
+    /* Footer */
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); text-align: center; font-size: 12.5px; color: var(--cream-faint); }
+    footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 16px; margin-bottom: 6px; font-weight: 600; color: var(--cream-dim); }
+    footer nav a { padding: 4px 0; }
+    footer nav a:hover { color: var(--cream); }
+
+    @media (prefers-reduced-motion: reduce) { .btn-store { transition: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header class="brand">
+    <img src="/icon@3x.png" alt="" width="56" height="56" />
+    <div>
+      <div class="brand-name">Cardy</div>
+      <div class="brand-sub">Play your cards right</div>
+    </div>
+  </header>
+
+  <h1>Know <em>why</em> you are the way you are</h1>
+
+  <section class="panel" aria-label="Get the app">
+    <a class="btn-store" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone" data-store="app_store">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span>
+        <small>Download on the</small>
+        <strong>App Store</strong>
+      </span>
+    </a>
+    <p class="reassure">Your first card is free</p>
+    <a class="btn-web" href="https://app.cardy.today" data-store="web_app">On Android? Use the web app →</a>
+  </section>
+
+  <h2>Follow us</h2>
+  <div class="social">
+    <a href="https://www.tiktok.com/@the.cardy.app" data-social="tiktok" aria-label="Cardy on TikTok, @the.cardy.app">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      TikTok
+    </a>
+    <a href="https://www.instagram.com/the.cardy.app/" data-social="instagram" aria-label="Cardy on Instagram, @the.cardy.app">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.25" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+  </div>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li class="step">
+      <img src="/assets/sun-cards/inner-child.webp" alt="" width="84" height="84" />
+      <div>
+        <div class="step-from">Your birth date</div>
+        <h3>Inner Child</h3>
+        <p>Your core nature.</p>
+      </div>
+    </li>
+    <li class="step">
+      <img src="/assets/sun-cards/chosen-purpose.webp" alt="" width="84" height="84" loading="lazy" />
+      <div>
+        <div class="step-from">Your zodiac sign</div>
+        <h3>Chosen Purpose</h3>
+        <p>What you're here to do.</p>
+      </div>
+    </li>
+    <li class="step">
+      <img src="/assets/sun-cards/highest-self.webp" alt="" width="84" height="84" loading="lazy" />
+      <div>
+        <div class="step-from">The two combined</div>
+        <h3>Highest Self</h3>
+        <p>You at your fullest.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="katie">
+    <img src="/assets/katie/katie-avatar.webp" alt="" width="44" height="44" loading="lazy" />
+    <span>Built on <strong>15+ years of readings</strong> by Katie, the Card Lady</span>
+  </div>
+
+  <footer>
+    <nav aria-label="Footer">
+      <a href="/">Website</a>
+      <a href="/#support">Support</a>
+      <a href="/#privacy">Privacy</a>
+      <a href="/#terms">Terms</a>
+    </nav>
+    <div>© <span id="year">2026</span> Channel22 LLC</div>
+  </footer>
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // The CTAs open in the same tab: new-tab links are unreliable in Instagram and TikTok's in-app browsers.
+  document.querySelectorAll('a[data-store]').forEach(function (link) {
+    if (link.dataset.store === 'web_app') {
+      // Hand the source to the web app so its own analytics can attribute the visit.
+      var url = new URL(link.href);
+      url.searchParams.set('utm_source', window.cardySource);
+      url.searchParams.set('utm_medium', 'social');
+      url.searchParams.set('utm_campaign', 'link_in_bio');
+      link.href = url.toString();
+    }
+    link.addEventListener('click', function () {
+      window.cardyTrack('web_store_clicked', { store: link.dataset.store, placement: 'social_landing', social_source: window.cardySource });
+    });
+  });
+
+  document.querySelectorAll('a[data-social]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      window.cardyTrack('web_social_clicked', { network: link.dataset.social, placement: 'social_landing', social_source: window.cardySource });
+    });
+  });
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</body>
+</html>

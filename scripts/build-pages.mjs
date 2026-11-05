@@ -825,7 +825,9 @@ const STATIC_ENTRIES = [
   'index.html', 'cardy-hero.png', 'icon@3x.png',
   'robots.txt', 'sitemap.xml', 'llms.txt', 'css', 'js', 'assets',
   // App Clip: Apple's association file and the shared-reading page links point to.
-  '.well-known', 'card', 'c'
+  '.well-known', 'card', 'c',
+  // Link-in-bio landing page for Instagram and TikTok (also served at /tiktok, see vercel.json).
+  'ig'
 ];
 
 function exportSite(pages) {

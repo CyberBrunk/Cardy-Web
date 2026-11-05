@@ -24,6 +24,10 @@
     {
       "source": "/c/:code",
       "destination": "/c/index.html"
+    },
+    {
+      "source": "/tiktok",
+      "destination": "/ig/index.html"
     }
   ]
 }
