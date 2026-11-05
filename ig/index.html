@@ -152,6 +152,10 @@
     .step-num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; color: var(--coral); }
     .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
     .step p { font-size: 14px; color: var(--cream-dim); }
+    .card-list { display: grid; gap: 4px; margin-top: 6px; padding: 0; list-style: none; font-size: 14px; color: var(--cream-dim); }
+    .card-list li { display: flex; align-items: center; gap: 8px; }
+    /* The art has wide transparent margins, so scale it up inside its box. */
+    .card-list img { width: 24px; height: 24px; flex: none; object-fit: contain; transform: scale(1.35); }
 
     /* Author */
     .katie { display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 14px; color: var(--cream-dim); }
@@ -187,7 +191,7 @@
         <strong>App Store</strong>
       </span>
     </a>
-    <p class="reassure">Your first card is free</p>
+    <p class="reassure">Try it free. Cancel anytime.</p>
     <a class="btn-web" href="https://app.cardy.today" data-store="web_app">On Android? Use the web app →</a>
   </section>
 
@@ -218,7 +222,11 @@
       <div>
         <div class="step-num">02</div>
         <h3>Get your 3 cards and planetary path</h3>
-        <p>Inner Child, Chosen Purpose, and Highest Self, plus where you're headed.</p>
+        <ul class="card-list">
+          <li><img src="/assets/sun-cards/inner-child.webp" alt="" width="28" height="28" />Inner Child</li>
+          <li><img src="/assets/sun-cards/chosen-purpose.webp" alt="" width="28" height="28" />Chosen Purpose</li>
+          <li><img src="/assets/sun-cards/highest-self.webp" alt="" width="28" height="28" />Highest Self</li>
+        </ul>
       </div>
     </li>
     <li class="step">
