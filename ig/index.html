@@ -147,9 +147,9 @@
       border: 1px solid var(--line);
       border-radius: 20px;
     }
-    /* The art has wide transparent margins, so scale it up inside its box. */
-    .step img { width: 72px; height: 84px; flex: none; object-fit: contain; transform: scale(1.3); }
-    .step-from { font-size: 12.5px; font-weight: 600; color: var(--cream-faint); }
+    .step-art { display: grid; place-items: center; width: 72px; height: 72px; flex: none; background: #B42B1933; border-radius: 16px; }
+    .step-art img { width: 44px; height: 44px; }
+    .step-num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; color: var(--coral); }
     .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
     .step p { font-size: 14px; color: var(--cream-dim); }
 
@@ -206,27 +206,27 @@
   <h2>How it works</h2>
   <ol class="steps">
     <li class="step">
-      <img src="/assets/sun-cards/inner-child.webp" alt="" width="84" height="84" />
+      <div class="step-art"><img src="/assets/icons/cal.webp" alt="" width="44" height="44" /></div>
       <div>
-        <div class="step-from">Your birth date</div>
-        <h3>Inner Child</h3>
-        <p>Your core nature.</p>
+        <div class="step-num">01</div>
+        <h3>Enter your birthday</h3>
+        <p>It all starts with one date.</p>
       </div>
     </li>
     <li class="step">
-      <img src="/assets/sun-cards/chosen-purpose.webp" alt="" width="84" height="84" loading="lazy" />
+      <div class="step-art"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
       <div>
-        <div class="step-from">Your zodiac sign</div>
-        <h3>Chosen Purpose</h3>
-        <p>What you're here to do.</p>
+        <div class="step-num">02</div>
+        <h3>Get your 3 cards and planetary path</h3>
+        <p>See what drives you and where you're headed.</p>
       </div>
     </li>
     <li class="step">
-      <img src="/assets/sun-cards/highest-self.webp" alt="" width="84" height="84" loading="lazy" />
+      <div class="step-art"><img src="/assets/icons/compatibility.webp" alt="" width="44" height="44" /></div>
       <div>
-        <div class="step-from">The two combined</div>
-        <h3>Highest Self</h3>
-        <p>You at your fullest.</p>
+        <div class="step-num">03</div>
+        <h3>See why you click (or clash)</h3>
+        <p>Check your compatibility with friends and family.</p>
       </div>
     </li>
   </ol>
