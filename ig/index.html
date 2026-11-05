@@ -273,10 +273,10 @@
 
   <footer>
     <nav aria-label="Footer">
-      <a href="/">Website</a>
-      <a href="/#support">Support</a>
-      <a href="/#privacy">Privacy</a>
-      <a href="/#terms">Terms</a>
+      <a href="/" data-footer="website">Website</a>
+      <a href="/#support" data-footer="support">Support</a>
+      <a href="/#privacy" data-footer="privacy">Privacy</a>
+      <a href="/#terms" data-footer="terms">Terms</a>
     </nav>
     <div>© <span id="year">2026</span> Channel22 LLC</div>
   </footer>
@@ -391,6 +391,12 @@
   document.querySelectorAll('a[data-social]').forEach(function (link) {
     link.addEventListener('click', function () {
       window.cardyTrack('web_social_clicked', { network: link.dataset.social, placement: 'social_landing', social_source: window.cardySource });
+    });
+  });
+
+  document.querySelectorAll('a[data-footer]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      window.cardyTrack('web_footer_clicked', { link: link.dataset.footer, placement: 'social_landing', social_source: window.cardySource });
     });
   });
 </script>
