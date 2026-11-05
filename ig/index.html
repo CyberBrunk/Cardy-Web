@@ -152,6 +152,7 @@
       border-radius: 20px;
     }
     .step-art { display: grid; place-items: center; width: 72px; height: 72px; flex: none; background: #B42B1933; border-radius: 16px; }
+    .step-art--top { align-self: flex-start; }
     .step-art img { width: 44px; height: 44px; }
     .step-num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; color: var(--coral); }
     .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
@@ -231,7 +232,7 @@
       </div>
     </li>
     <li class="step">
-      <div class="step-art"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art step-art--top"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
       <div>
         <div class="step-num">02</div>
         <h3>Get your 3 cards and planetary path</h3>
@@ -369,7 +370,8 @@
     document.getElementById('drawDates').textContent = birthdaysFor(value).join(', ');
     document.getElementById('draw').hidden = false;
   }
-  showCard(Math.floor(Math.random() * 52) + 1);
+  // Section hidden for now. To bring it back, uncomment this line.
+  // showCard(Math.floor(Math.random() * 52) + 1);
 
   // The CTAs open in the same tab: new-tab links are unreliable in Instagram and TikTok's in-app browsers.
   document.querySelectorAll('a[data-store]').forEach(function (link) {
