@@ -101,15 +101,19 @@
     .btn-store strong { display: block; font-size: 24px; font-weight: 700; line-height: 1.15; }
     .reassure { margin-top: 12px; text-align: center; font-size: 14px; font-weight: 600; }
     .btn-web {
-      display: block;
-      margin-top: 6px;
-      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 15px;
+      font-weight: 600;
       text-align: center;
-      font-size: 14px;
-      color: var(--cream-dim);
-      border-radius: 10px;
+      border: 1px solid var(--cream-faint);
+      border-radius: 18px;
     }
-    .btn-web:hover { color: var(--cream); }
+    .btn-web:hover { border-color: var(--cream); }
 
     /* Follow */
     .social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -157,6 +161,15 @@
     /* The art has wide transparent margins, so scale it up inside its box. */
     .card-list img { width: 24px; height: 24px; flex: none; object-fit: contain; transform: scale(1.35); }
 
+    /* Random card */
+    .draw { display: flex; align-items: flex-start; gap: 14px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; }
+    .draw img { width: 104px; height: auto; flex: none; border-radius: 8px; }
+    .draw-name { font-size: 12.5px; font-weight: 700; color: var(--coral); }
+    .draw h3 { margin: 1px 0 5px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
+    .draw p { font-size: 14px; color: var(--cream-dim); }
+    .draw .draw-dates { margin-top: 8px; font-size: 13px; color: var(--cream-faint); }
+    .draw-dates strong { font-weight: 600; color: var(--cream-dim); }
+
     /* Author */
     .katie { display: flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 14px; color: var(--cream-dim); }
     .katie img { width: 44px; height: 44px; flex: none; border-radius: 50%; object-fit: cover; }
@@ -191,8 +204,8 @@
         <strong>App Store</strong>
       </span>
     </a>
-    <p class="reassure">Try it free. Cancel anytime.</p>
     <a class="btn-web" href="https://app.cardy.today" data-store="web_app">On Android? Use the web app →</a>
+    <p class="reassure">Try it free. Cancel anytime.</p>
   </section>
 
   <h2>Follow us</h2>
@@ -239,6 +252,19 @@
     </li>
   </ol>
 
+  <section id="draw" hidden>
+    <h2>Is this your card?</h2>
+    <div class="draw">
+      <img id="drawImg" alt="" width="400" height="592" />
+      <div>
+        <div class="draw-name" id="drawName"></div>
+        <h3 id="drawTitle"></h3>
+        <p id="drawDesc"></p>
+        <p class="draw-dates"><strong>Birthdays:</strong> <span id="drawDates"></span></p>
+      </div>
+    </div>
+  </section>
+
   <div class="katie">
     <img src="/assets/katie/katie-avatar.webp" alt="" width="44" height="44" loading="lazy" />
     <span>Built on <strong>15+ years of readings</strong> by Katie, the Card Lady</span>
@@ -257,6 +283,93 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // A random card on each visit. Listed in deck order, so position + 1 is the card's value:
+  // Hearts 1-13, Clubs 14-26, Diamonds 27-39, Spades 40-52, Ace to King.
+  // [title, description]: titles and copy come from CARD_PROFILES in js/card-calculator.js.
+  var DECK = [
+    ["The Love Catalyst","The pioneer of the heart."],
+    ["The Synergizer of Love","Deeply devoted, affectionate, and wired for intimate partnership."],
+    ["The Heart Expander","An expressive artist and social butterfly gifted with immense charm, playful wit, and emotional curiosity."],
+    ["The Protector of Love","Stable, loyal, and deeply protective of family and lifelong companions."],
+    ["The Explorer of Love","Curious, freedom-loving, and driven by an appetite for emotional adventure and travel."],
+    ["The Warrior of Peace","A natural healer and diplomat centered on peace, fairness, and domestic responsibility."],
+    ["The Loving Alchemist","A card of high emotional sensitivity, deep intuition, and spiritual awakening through love."],
+    ["The Devotee of Love","Magnetic, captivating, and socially formidable."],
+    ["The Heartbreaker","Compassionate, generous, and attuned to the broader human condition."],
+    ["The Mentor of Love","Charismatic, uplifting, and born to shine in front of groups."],
+    ["Sacrificial Love","Playful, idealistic, and driven by selfless devotion to the people and causes you love."],
+    ["Mystical Love","Warm, regal, highly intuitive, and instinctively supportive."],
+    ["Masterful Love","Wise, protective, composed, and fatherly."],
+    ["The Insatiable Mind","Fueled by an unquenchable thirst for knowledge, books, and fresh ideas."],
+    ["The Mental Mirror","Gifted in dialogue, debate, and intellectual companionship."],
+    ["The Mind Expander","A rapid-fire writer, speaker, or innovator bursting with creative concepts."],
+    ["The Art-chitect","Grounded, practical, organized, and mentally resilient."],
+    ["The Open Mind","Hungry for adventure, philosophical shifts, and diverse viewpoints."],
+    ["The Messenger of Truth","Calm, reliable, and deeply committed to intellectual integrity."],
+    ["The Spiritual Mind","Intuitive, visionary, and philosophically inclined."],
+    ["The Mental Powerhouse","Mentally formidable, persuasive, and exceptionally disciplined."],
+    ["The Revolutionary Mind","Broad-minded, philanthropic, and naturally wise."],
+    ["The Teacher","Exceptionally articulate, widely read, and born to communicate to the public."],
+    ["The Creative Genius","Ingenious, witty, charismatic, and always ten steps ahead."],
+    ["The Mental Maven","Perceptive, hardworking, and gifted with razor-sharp business instincts and intuitive foresight."],
+    ["The Master Mind","Commanding, strategic, authoritative, and visionary."],
+    ["The Valuable Visionary","Enterprising, self-reliant, and motivated by tangible achievement."],
+    ["The Worth Weaver","Diplomatic, commercially savvy, and skilled in collaborative enterprise."],
+    ["The Value Expander","Versatile, entrepreneurial, and creative in commerce."],
+    ["The Builder of Value","Methodical, hardworking, and dedicated to building enduring financial stability."],
+    ["The Seeker of Truth","Free-spirited, adaptive, and drawn to diverse ventures, trading, and travel."],
+    ["The Earth Balancer","Fair, generous, and committed to financial integrity and karmic settling."],
+    ["The Lucky Charm","Intuitive, discerning, and spiritually tested around money."],
+    ["The Sunbeam","Imposing, prosperous, and naturally influential in business."],
+    ["The Dragon Slayer","Generous, worldly, and driven by higher humanitarian values over mere accumulation."],
+    ["The Blessed One","Highly ambitious, capable, and born for grand-scale prosperity."],
+    ["The Free Flyer","Shrewd, persuasive, and magnetically creative in sales, technology, and enterprise."],
+    ["The Philanthropist","Elegant, astute, and gifted with a refined appreciation for quality and craftsmanship."],
+    ["The Master of Action","Decisive, authoritative, and seasoned in the laws of value and enterprise."],
+    ["The Magi","The ancient card of profound metamorphosis, ambition, and spiritual awakening."],
+    ["The Spiritual Symbiote","Reliable, loyal, and committed to common causes in work and craftsmanship."],
+    ["The Soul Expander","Energetic, multitalented, and capable of turning physical effort into fine art."],
+    ["The Strong Spirit","Resilient, grounded, and possessing an iron constitution and work ethic."],
+    ["The Wandering Spirit","Dynamic, bold, and unafraid of major career transitions or physical relocations."],
+    ["The Karmic Soul","Steadfast, karmically disciplined, and aligned with personal destiny."],
+    ["The Faithful Spirit","Deep, mystical, and resilient."],
+    ["The Deep Devotee","Formidable, healing, and possessing immense stamina and executive drive."],
+    ["The Revolutionary","Philosophically profound, compassionate, and spiritually mature."],
+    ["The Satisfied Soul","The card of towering career success, supreme effort, and monumental accomplishment."],
+    ["The Spiritual Initiate","Clever, mystical, charismatic, and multifaceted."],
+    ["The Medicine Spirit","Disciplined, capable, intuitive, and deeply authoritative."],
+    ["The Master of Self","The highest card in the entire deck."]
+  ];
+  var RANKS = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+  var SUITS = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var MONTH_DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  // Every birthday whose birth card is this value: value = 55 - (2 * month + day).
+  function birthdaysFor(value) {
+    var dates = [];
+    MONTHS.forEach(function (name, i) {
+      var day = 55 - value - 2 * (i + 1);
+      if (day >= 1 && day <= MONTH_DAYS[i]) dates.push(name + ' ' + day);
+    });
+    return dates;
+  }
+
+  function showCard(value) {
+    var rank = RANKS[(value - 1) % 13];
+    var suit = SUITS[Math.floor((value - 1) / 13)];
+    var name = rank + ' of ' + suit;
+    var img = document.getElementById('drawImg');
+    img.src = '/assets/cards/' + suit.toLowerCase() + '-' + rank.toLowerCase() + '.webp';
+    img.alt = name;
+    document.getElementById('drawName').textContent = name;
+    document.getElementById('drawTitle').textContent = DECK[value - 1][0];
+    document.getElementById('drawDesc').textContent = DECK[value - 1][1];
+    document.getElementById('drawDates').textContent = birthdaysFor(value).join(', ');
+    document.getElementById('draw').hidden = false;
+  }
+  showCard(Math.floor(Math.random() * 52) + 1);
 
   // The CTAs open in the same tab: new-tab links are unreliable in Instagram and TikTok's in-app browsers.
   document.querySelectorAll('a[data-store]').forEach(function (link) {
