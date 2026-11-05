@@ -113,16 +113,18 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--cream); }
+    /* Outline, so the birthday reveal stays the one filled button above the fold. */
     .nav-cta {
-      background: var(--red);
+      background: transparent;
       color: var(--cream) !important;
-      padding: 10px 24px;
+      padding: 9px 22px;
+      border: 1px solid rgba(255, 244, 244, 0.28);
       border-radius: 999px;
       font-weight: 600 !important;
       white-space: nowrap;
-      transition: background 0.2s, transform 0.15s !important;
+      transition: border-color 0.2s, background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--red-light); transform: scale(1.03); }
+    .nav-cta:hover { border-color: rgba(255, 244, 244, 0.6); background: rgba(255, 244, 244, 0.06); }
 
     /* ---- Hero ---- */
     .hero {
