@@ -113,18 +113,16 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--cream); }
-    /* Secondary on purpose: the birthday reveal is the page's one primary action. */
     .nav-cta {
-      background: transparent;
+      background: var(--red);
       color: var(--cream) !important;
-      padding: 9px 22px;
-      border: 1px solid rgba(255, 244, 244, 0.28);
+      padding: 10px 24px;
       border-radius: 999px;
       font-weight: 600 !important;
       white-space: nowrap;
-      transition: border-color 0.2s, background 0.2s !important;
+      transition: background 0.2s, transform 0.15s !important;
     }
-    .nav-cta:hover { border-color: rgba(255, 244, 244, 0.6); background: rgba(255, 244, 244, 0.06); }
+    .nav-cta:hover { background: var(--red-light); transform: scale(1.03); }
 
     /* ---- Hero ---- */
     .hero {
@@ -206,7 +204,6 @@
       margin-bottom: 40px;
       font-weight: 400;
     }
-    .hero-sub strong { color: var(--cream); font-weight: 600; }
     .hero-buttons {
       display: flex;
       gap: 16px;
@@ -1815,22 +1812,18 @@
     <li><a href="#library">Learn</a></li>
     <li class="hide-sm"><a href="/cardology-compatibility">Compatibility</a></li>
     <li class="hide-sm"><a href="#support">Support</a></li>
-    <li><a href="#top" class="nav-cta" id="navFindCard" data-track="nav_find_card">Find my card</a></li>
+    <li><a href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone" class="nav-cta" id="navCta" target="_blank" rel="noopener">Download</a></li>
   </ul>
 </nav>
 <script>
-  // Nav button: back to the hero and straight into the birthday input.
-  (function initFindCard() {
-    const link = document.getElementById('navFindCard');
-    if (!link) return;
-    link.addEventListener('click', (e) => {
-      const input = document.getElementById('heroBirthday');
-      if (!input) return;
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      input.focus({ preventScroll: true });
-      // Tracked by the delegated click handler via data-track.
-    });
+  // Nav button: the App Store on iPhone; everyone else signs up in the web app
+  // (the app is iPhone-only). Clicks are tracked as web_store_clicked by the
+  // delegated click handler.
+  (function initNavCta() {
+    const link = document.getElementById('navCta');
+    if (!link || /iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+    link.textContent = 'Sign up';
+    link.href = 'https://app.cardy.today/onboarding';
   })();
 </script>
 
@@ -1844,7 +1837,7 @@
         <span class="tag-index tag-index--flip" aria-hidden="true">A<span>♠</span></span>
       </div>
       <h1>Know <em>why</em> you are the way you are</h1>
-      <p class="hero-sub">Your birthday deals you three cards. Born March 14? You’re the <strong>9 of Diamonds, The Dragon Slayer</strong>: you clear away what’s outdated so something truer can rise.</p>
+      <p class="hero-sub">Your birthday holds three cards that explain how you love, what drives you, and who you’re becoming.</p>
   <!-- Sleek Birthday Input Bar, with a small deck resting behind it -->
   <div class="reveal-wrap">
   <div class="hero-deck" id="heroDeck" aria-hidden="true"><span></span><span></span><span></span></div>
