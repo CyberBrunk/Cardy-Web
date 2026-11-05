@@ -157,8 +157,9 @@
     .step-num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; color: var(--coral); }
     .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
     .step p { font-size: 14px; color: var(--cream-dim); }
-    .card-list { display: grid; gap: 4px; margin-top: 6px; padding: 0; list-style: none; font-size: 14px; color: var(--cream-dim); }
+    .card-list { display: grid; gap: 8px; margin-top: 8px; padding: 0; list-style: none; font-size: 14px; line-height: 1.3; color: var(--cream-dim); }
     .card-list li { display: flex; align-items: center; gap: 8px; }
+    .card-list strong { display: block; font-weight: 600; color: var(--cream); }
     /* The art has wide transparent margins, so scale it up inside its box. */
     .card-list img { width: 24px; height: 24px; flex: none; object-fit: contain; transform: scale(1.35); }
 
@@ -221,34 +222,42 @@
     </a>
   </div>
 
-  <h2>How it works</h2>
+  <h2>What your birthday says about you</h2>
   <ol class="steps">
     <li class="step">
       <div class="step-art"><img src="/assets/icons/cal.webp" alt="" width="44" height="44" /></div>
       <div>
         <div class="step-num">01</div>
         <h3>Enter your birthday</h3>
-        <p>It all starts with one date.</p>
+        <p>Same sign as your best friend? You'll still get different cards.</p>
       </div>
     </li>
     <li class="step">
-      <div class="step-art step-art--top"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art step-art--top"><img src="/assets/icons/today.webp" alt="" width="44" height="44" /></div>
       <div>
         <div class="step-num">02</div>
-        <h3>Get your 3 cards and planetary path</h3>
+        <h3>Meet your 3 cards</h3>
         <ul class="card-list">
-          <li><img src="/assets/sun-cards/inner-child.webp" alt="" width="28" height="28" />Inner Child</li>
-          <li><img src="/assets/sun-cards/chosen-purpose.webp" alt="" width="28" height="28" />Chosen Purpose</li>
-          <li><img src="/assets/sun-cards/highest-self.webp" alt="" width="28" height="28" />Highest Self</li>
+          <li><img src="/assets/sun-cards/inner-child.webp" alt="" width="28" height="28" /><span><strong>Inner Child</strong> Why you are the way you are</span></li>
+          <li><img src="/assets/sun-cards/chosen-purpose.webp" alt="" width="28" height="28" /><span><strong>Chosen Purpose</strong> What you're here to do</span></li>
+          <li><img src="/assets/sun-cards/highest-self.webp" alt="" width="28" height="28" /><span><strong>Highest Self</strong> Who you're becoming</span></li>
         </ul>
+      </div>
+    </li>
+    <li class="step">
+      <div class="step-art"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
+      <div>
+        <div class="step-num">03</div>
+        <h3>Follow your planetary path</h3>
+        <p>Your cards across every planet: what you value, what drives you, where you're being challenged.</p>
       </div>
     </li>
     <li class="step">
       <div class="step-art"><img src="/assets/icons/compatibility.webp" alt="" width="44" height="44" /></div>
       <div>
-        <div class="step-num">03</div>
+        <div class="step-num">04</div>
         <h3>See why you click (or clash)</h3>
-        <p>Check your compatibility with friends and family.</p>
+        <p>Add your partner, your best friend, or your mom. Then try not to send it to them.</p>
       </div>
     </li>
   </ol>
