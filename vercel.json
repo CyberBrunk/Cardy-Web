@@ -20,6 +20,25 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/get",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*"
+        }
+      ],
+      "destination": "https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone",
+      "permanent": false
+    },
+    {
+      "source": "/get",
+      "destination": "https://app.cardy.today/?utm_source=qr&utm_medium=social&utm_campaign=link_in_bio",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/c/:code",

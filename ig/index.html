@@ -83,6 +83,16 @@
 
     /* Download panel */
     .panel { padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; }
+    /* QR code: only on devices with a mouse, where the app can't be installed directly */
+    .qr { display: none; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .qr-code { flex: none; width: 128px; height: 128px; padding: 8px; background: #fff; border-radius: 14px; }
+    .qr-code svg { display: block; width: 100%; height: 100%; }
+    .qr strong { display: block; font-size: 17px; font-weight: 700; line-height: 1.25; }
+    .qr p { margin-top: 5px; font-size: 14px; color: var(--cream-dim); }
+    @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+      .qr { display: flex; }
+    }
+
     .btn-store {
       display: flex;
       align-items: center;
@@ -153,7 +163,58 @@
     }
     .step-art { display: grid; place-items: center; width: 72px; height: 72px; flex: none; background: #B42B1933; border-radius: 16px; }
     .step-art--top { align-self: flex-start; }
-    .step-art img { width: 44px; height: 44px; }
+    .step-art svg { display: block; width: 72px; height: 72px; overflow: visible; }
+
+    /* Step animations. Each element's un-animated style is its resting pose, so reduced motion still looks finished. */
+    .a-line { fill: none; stroke: var(--cream); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .a-coral { fill: var(--coral); }
+    .a-white { fill: var(--cream); }
+    .a-card { fill: #2A1C2B; stroke: var(--cream); stroke-width: 2.5; }
+    .step.is-offscreen .step-art svg * { animation-play-state: paused; }
+
+    /* 01: the diamond hops across the dates, then lands on one */
+    .a-hop { transform-origin: 46px 48px; animation: a-hop 4.2s ease-in-out infinite; }
+    @keyframes a-hop {
+      0%, 8% { transform: translate(-20px, -10px); }
+      16%, 22% { transform: translate(-10px, -10px); }
+      30%, 36% { transform: translate(0, -10px); }
+      44%, 50% { transform: translate(-20px, 0); }
+      58%, 64% { transform: translate(-10px, 0); }
+      72% { transform: translate(0, 0) scale(1); }
+      78% { transform: translate(0, 0) scale(1.7); }
+      84%, 100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* 02: a stack fans out into three cards */
+    .a-fan-l, .a-fan-c, .a-fan-r { transform-origin: 36px 54px; }
+    .a-fan-l { transform: translateX(-7px) rotate(-20deg); animation: a-fan-l 4.2s cubic-bezier(.3, 1.4, .5, 1) infinite; }
+    .a-fan-c { transform: translateY(-3px); animation: a-fan-c 4.2s cubic-bezier(.3, 1.4, .5, 1) infinite; }
+    .a-fan-r { transform: translateX(7px) rotate(20deg); animation: a-fan-r 4.2s cubic-bezier(.3, 1.4, .5, 1) infinite; }
+    @keyframes a-fan-l { 0%, 12% { transform: none; } 34%, 88% { transform: translateX(-7px) rotate(-20deg); } 100% { transform: none; } }
+    @keyframes a-fan-c { 0%, 18% { transform: none; } 40%, 88% { transform: translateY(-3px); } 100% { transform: none; } }
+    @keyframes a-fan-r { 0%, 24% { transform: none; } 46%, 88% { transform: translateX(7px) rotate(20deg); } 100% { transform: none; } }
+
+    /* 03: a card orbits the planet */
+    .a-orbit { transform-origin: 36px 36px; animation: a-orbit 7s linear infinite; }
+    @keyframes a-orbit { to { transform: rotate(360deg); } }
+
+    /* 04: two rings slide together and spark */
+    .a-ring-l, .a-ring-r { animation-duration: 3.8s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5, 0, .2, 1.3); }
+    .a-ring-l { animation-name: a-ring-l; }
+    .a-ring-r { animation-name: a-ring-r; }
+    @keyframes a-ring-l { 0%, 10% { transform: translateX(-8px); } 34%, 82% { transform: none; } 100% { transform: translateX(-8px); } }
+    @keyframes a-ring-r { 0%, 10% { transform: translateX(8px); } 34%, 82% { transform: none; } 100% { transform: translateX(8px); } }
+    .a-spark { transform-origin: 36px 36px; animation: a-spark 3.8s ease-out infinite; }
+    @keyframes a-spark {
+      0%, 30% { transform: scale(0) rotate(-45deg); }
+      40% { transform: scale(1.5) rotate(0deg); }
+      52%, 78% { transform: scale(1) rotate(0deg); }
+      88%, 100% { transform: scale(0) rotate(45deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .step-art svg * { animation: none !important; }
+    }
     .step-num { font-size: 12.5px; font-weight: 700; letter-spacing: .08em; color: var(--coral); }
     .step h3 { margin: 1px 0 3px; font-family: var(--font-display); font-size: 21px; font-weight: 400; line-height: 1.2; }
     .step p { font-size: 14px; color: var(--cream-dim); }
@@ -199,6 +260,14 @@
   <h1>Know <em>why</em> you are the way you are</h1>
 
   <section class="panel" aria-label="Get the app">
+    <div class="qr">
+      <!-- Encodes https://cardy.today/get, which vercel.json redirects by device. -->
+      <div class="qr-code" role="img" aria-label="QR code that opens Cardy on your phone"><svg shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path stroke="#0B0E1A" d="M0 0.5h7m2 0h2m5 0h1m1 0h7M0 1.5h1m5 0h1m2 0h2m4 0h1m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h3m3 0h3m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h3m2 0h2m1 0h1m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m2 0h2m2 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m3 0h1m1 0h1m1 0h1M0 8.5h1m1 0h5m2 0h2m1 0h2m4 0h5M0 9.5h3m2 0h1m2 0h3m2 0h1m2 0h1m2 0h1m3 0h1M0 10.5h1m5 0h5m2 0h3m2 0h4m1 0h2M0 11.5h2m3 0h1m2 0h2m4 0h5m5 0h1M0 12.5h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h7m1 0h1m1 0h3M0 13.5h1m1 0h1m4 0h2m1 0h1m5 0h2m1 0h1m1 0h1m1 0h1M0 14.5h1m1 0h1m1 0h4m3 0h5m2 0h4m1 0h2M0 15.5h1m1 0h4m3 0h3m2 0h1m1 0h1m2 0h2m3 0h1M0 16.5h1m1 0h5m1 0h1m1 0h2m1 0h2m1 0h5m1 0h1M8 17.5h1m1 0h1m1 0h1m2 0h2m3 0h2M0 18.5h7m7 0h1m1 0h1m1 0h1m1 0h1m1 0h3M0 19.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h3m3 0h2m1 0h1M0 20.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h9m1 0h3M0 21.5h1m1 0h3m1 0h1m1 0h1m5 0h1m2 0h2m1 0h5M0 22.5h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h3m4 0h2m1 0h1M0 23.5h1m5 0h1m3 0h2m4 0h6m2 0h1M0 24.5h7m1 0h1m1 0h3m5 0h7"/></svg></div>
+      <div>
+        <strong>Scan with your phone's camera</strong>
+        <p>It opens the App Store on iPhone and the web app on Android.</p>
+      </div>
+    </div>
     <a class="btn-store" href="https://apps.apple.com/us/app/cardy-reflections/id6757249840?platform=iphone" data-store="app_store">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       <span>
@@ -222,10 +291,18 @@
     </a>
   </div>
 
-  <h2>What your birthday says about you</h2>
+  <h2>How it works</h2>
   <ol class="steps">
     <li class="step">
-      <div class="step-art"><img src="/assets/icons/cal.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art">
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <rect class="a-line" x="15" y="19" width="42" height="39" rx="7" />
+          <path class="a-line" d="M15 30h42M27 13v10M45 13v10" />
+          <circle class="a-white" cx="26" cy="38" r="2" /><circle class="a-white" cx="36" cy="38" r="2" /><circle class="a-white" cx="46" cy="38" r="2" />
+          <circle class="a-white" cx="26" cy="48" r="2" /><circle class="a-white" cx="36" cy="48" r="2" /><circle class="a-white" cx="46" cy="48" r="2" />
+          <path class="a-coral a-hop" d="M46 42.5l4.5 5.5-4.5 5.5-4.5-5.5z" />
+        </svg>
+      </div>
       <div>
         <div class="step-num">01</div>
         <h3>Enter your birthday</h3>
@@ -233,7 +310,22 @@
       </div>
     </li>
     <li class="step">
-      <div class="step-art step-art--top"><img src="/assets/icons/today.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art step-art--top">
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <g class="a-fan-l">
+            <rect class="a-card" x="25" y="24" width="22" height="30" rx="4" />
+            <path class="a-white" d="M29.5 33c-1.6-1.3-2.5-2.2-2.5-3.3 0-.9.7-1.6 1.5-1.6.5 0 .8.2 1 .6.2-.4.5-.6 1-.6.8 0 1.5.7 1.5 1.6 0 1.1-.9 2-2.5 3.3z" />
+          </g>
+          <g class="a-fan-r">
+            <rect class="a-card" x="25" y="24" width="22" height="30" rx="4" />
+            <path class="a-white" d="M42.5 28c1.6 1.5 2.5 2.4 2.5 3.4 0 .8-.6 1.4-1.4 1.4-.4 0-.7-.2-.8-.4l.3 1.6h-1.2l.3-1.6c-.1.2-.4.4-.8.4-.8 0-1.4-.6-1.4-1.4 0-1 .9-1.9 2.5-3.4z" />
+          </g>
+          <g class="a-fan-c">
+            <rect class="a-card" x="25" y="24" width="22" height="30" rx="4" />
+            <path class="a-coral" d="M36 31l5 8-5 8-5-8z" />
+          </g>
+        </svg>
+      </div>
       <div>
         <div class="step-num">02</div>
         <h3>Meet your 3 cards</h3>
@@ -245,7 +337,17 @@
       </div>
     </li>
     <li class="step">
-      <div class="step-art"><img src="/assets/icons/path.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art">
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="26" fill="none" stroke="#FFF4F4" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round" />
+          <circle class="a-line" cx="36" cy="36" r="11" />
+          <ellipse class="a-line" cx="36" cy="36" rx="17" ry="5" transform="rotate(-22 36 36)" />
+          <g class="a-orbit">
+            <rect class="a-coral" x="31.5" y="4" width="9" height="13" rx="2" transform="rotate(14 36 10.5)" />
+            <circle class="a-white" cx="36" cy="62" r="2.5" />
+          </g>
+        </svg>
+      </div>
       <div>
         <div class="step-num">03</div>
         <h3>Follow your planetary path</h3>
@@ -253,7 +355,13 @@
       </div>
     </li>
     <li class="step">
-      <div class="step-art"><img src="/assets/icons/compatibility.webp" alt="" width="44" height="44" /></div>
+      <div class="step-art">
+        <svg viewBox="0 0 72 72" aria-hidden="true">
+          <circle class="a-line a-ring-l" cx="27" cy="36" r="13" />
+          <circle class="a-line a-ring-r" cx="45" cy="36" r="13" />
+          <path class="a-coral a-spark" d="M36 28.5l1.8 5.7 5.7 1.8-5.7 1.8-1.8 5.7-1.8-5.7-5.7-1.8 5.7-1.8z" />
+        </svg>
+      </div>
       <div>
         <div class="step-num">04</div>
         <h3>See why you click (or clash)</h3>
@@ -293,6 +401,14 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Step animations run by default and pause while their step is off screen.
+  if ('IntersectionObserver' in window) {
+    var stepObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { entry.target.classList.toggle('is-offscreen', !entry.isIntersecting); });
+    });
+    document.querySelectorAll('.step').forEach(function (step) { stepObserver.observe(step); });
+  }
 
   // A random card on each visit. Listed in deck order, so position + 1 is the card's value:
   // Hearts 1-13, Clubs 14-26, Diamonds 27-39, Spades 40-52, Ace to King.
